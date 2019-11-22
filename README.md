@@ -1,6 +1,9 @@
 # Linked
 This repository contains a full collateralized stablecoin named linkedFC (LKC). Linked is a stablecoin with minimal complexity. No multiple coins needed in the implementation or a high stability fee. The stability is maintained by the collateral positions.
 
+1. If the price of the token < 1 USD: the collateral position holders will be incentivised to close their position for the the cheap token price. The buy pressure from closing the collateral positions will change the price upwards to 1 USD. Because the system collateral > total token value, selling for less then 1 USD is irrational.
+2. If the price of the token > 1 USD: ETH holders will be incentivised to open collateral positions and flood the market with new tokens. This sell pressure from the new tokens will change the price downwards to 1 USD.
+
 ## Description
 The design of linked is:
 - **Token contract - ERC20**: TBA. 
