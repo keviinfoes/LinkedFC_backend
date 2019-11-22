@@ -3,17 +3,11 @@ This repository contains a full collateralized stablecoin named linkedFC (LKC). 
 
 ## Description
 The design of linked is:
+- **Token contract - ERC20**: TBA. 
+- **Collateral contract**: Multiple oracles can be added.
 
-**Token contract - ERC20**: 
-- TBA. 
-
-**Collateral contract**: 
-- Multiple oracles can be added.
-
-The use of multiple oracles mitigates the risk of the oracles. Because if one oracle exchange is broken it can be paused and other exchanges will be used, selected by the users of LKC. 
-
-**User voting**:
-- TKC holders will be able to vote on the variables.
+## Benefits
+The use of multiple oracles mitigates the risk of the oracles. Because if one oracle exchange is broken it can be paused and other exchanges will be used, selected by the users of LKC. TKC holders will be able to vote on the variables.
 
 The benefit of this implementation is that it is fully collaterized with minimal complexity. Only a token backed by collateral positions. The creators of the collateral position receive interest based on the taxes (inflation + fee) payed by the token holders.
 
