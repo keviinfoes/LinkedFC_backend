@@ -1,5 +1,5 @@
 # Linked
-This repository contains a full collateralized stablecoin named linkedFC (LKC). Linked is a stablecoin with minimal complexity. No multiple coins needed in the implementation. The stability is maintained by the collateral positions.
+This repository contains a full collateralized stablecoin named linkedFC (LKC). Linked is a stablecoin with minimal complexity. No multiple coins needed in the implementation or a high stability fee. The stability is maintained by the collateral positions and fixed price exchange.
 
 ## Description
 The design of linked is:
