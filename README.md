@@ -5,7 +5,7 @@ This repository contains a full collateralized stablecoin named linkedFC (LKC). 
 The design of linked is:
 
 **Token contract - ERC20**: 
-- 
+- TBA. 
 
 **Collateral contract**: 
 - Multiple oracles can be added.
