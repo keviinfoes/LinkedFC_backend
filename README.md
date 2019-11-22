@@ -11,7 +11,7 @@ The use of multiple oracles mitigates the risk of the oracles. Because if one or
 
 The benefit of this implementation is that it is fully collaterized with minimal complexity. Only a token backed by collateral positions. The creators of the collateral position receive interest based on the taxes (inflation + fee) payed by the token holders.
 
-### Instructions deployment ropsten
+## Instructions deployment ropsten
 1. Install dependencies: `npm install truffle -g` & `npm install @truffle/hdwallet-provider`
 2. Clone this repository.
 3. Go to the local repository: `cd [path_folder_clone]`
@@ -22,6 +22,6 @@ The benefit of this implementation is that it is fully collaterized with minimal
 6. Deploy the compiled contracts: `truffle migrate --network Ropsten`
 7. Now you can interact with the deployed contracts.
 
-### POC deployed contract - Ropsten
+## POC deployed contract - Ropsten
 TBD
 
