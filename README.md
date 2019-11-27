@@ -1,18 +1,18 @@
-# Linked
-This repository contains a full collateralized stablecoin named linkedFC (LKC). Linked is a stablecoin with minimal complexity. No multiple coins needed in the implementation or a high stability fee. The stability is maintained by the collateral positions.
+# 
+This repository contains a full collateralized stablecoin named linkedFC (LKC). LinkedFC is a stablecoin with minimal complexity. No multiple coins needed in the implementation or a high stability fee. The stability is maintained by the collateral positions.
 
 1. If the price of the token < 1 USD: the collateral position holders will be incentivised to close their position for the the cheap token price. The buy pressure from closing the collateral positions will change the price upwards to 1 USD. Because the system collateral > total token value, selling for less then 1 USD is irrational.
 2. If the price of the token > 1 USD: ETH holders will be incentivised to open collateral positions and flood the market with new tokens. This sell pressure from the new tokens will change the price downwards to 1 USD.
 
 ## Description
-The design of linked is:
+The design of linkedFC is:
 - **Token contract - ERC20**: TBA. 
-- **Collateral contract**: Multiple oracles can be added.
+- **Collateral contract**: TBA.
 
 ## Benefits
-The use of multiple oracles mitigates the risk of the oracles. Because if one oracle exchange is broken it can be paused and other exchanges will be used, selected by the users of LKC. TKC holders will be able to vote on the variables.
+TKC holders will be able to vote on the variables.
 
-The benefit of this implementation is that it is fully collaterized with minimal complexity. Only a token backed by collateral positions. The creators of the collateral position receive interest based on the taxes (inflation + fee) payed by the token holders.
+The benefit of this implementation is that it is fully collaterized with minimal complexity. Only a token backed by collateral positions. The creators of the collateral position receive interest based on the stability tax payed by the token holders.
 
 ## Instructions deployment ropsten
 1. Install dependencies: `npm install truffle -g` & `npm install @truffle/hdwallet-provider`
