@@ -15,8 +15,9 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/access/roles/MinterRole.sol";
+import "@openzeppelin/contracts/lifecycle/Pausable.sol";
 
-contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
+contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 	using SafeMath for uint256;
 
     	struct Balance { 
@@ -57,21 +58,21 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * @dev show balance of the address.
 	 */
 	function balanceOf(address account) public view returns (uint256) {
-		uint256 blockDelta = block.number.sub(_balances[account].taxBlock);
-		uint256 yearAmount = _balances[account].amount.div(100).mul(_blockTax);
-		uint256 blockAmount = yearAmount.div(_blockYear);
-		uint256 tax = blockDelta.mul(blockAmount);
-		uint256 balance = _balances[account].amount.sub(tax);
-		return balance;
+			uint256 blockDelta = block.number.sub(_balances[account].taxBlock);
+			uint256 yearAmount = _balances[account].amount.div(100).mul(_blockTax);
+			uint256 blockAmount = yearAmount.div(_blockYear);
+			uint256 tax = blockDelta.mul(blockAmount);
+			uint256 balance = _balances[account].amount.sub(tax);
+			return balance;
 	}
 	
 	function taxReserve() public view returns (uint256) {
-		uint256 blockDelta = block.number.sub(_tax.taxBlock);
-		uint256 yearAmount = _totalSupply.div(100).mul(_blockTax);
-		uint256 blockAmount = yearAmount.div(_blockYear);
-		uint256 tax = blockDelta.mul(blockAmount);
-		uint256 balance = _tax.amount.add(tax);
-		return balance;
+			uint256 blockDelta = block.number.sub(_tax.taxBlock);
+			uint256 yearAmount = _totalSupply.div(100).mul(_blockTax);
+			uint256 blockAmount = yearAmount.div(_blockYear);
+			uint256 tax = blockDelta.mul(blockAmount);
+			uint256 balance = _tax.amount.add(tax);
+			return balance;
 	}
 	
 	/**
@@ -82,7 +83,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `recipient` cannot be the zero address.
 	 * - the caller must have a balance of at least `amount`.
 	 */
-	function transfer(address recipient, uint256 amount) public payable returns (bool) {
+	function transfer(address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
 			_transfer(msg.sender, recipient, amount);
 			return true;
 	}
@@ -90,7 +91,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	/**
 	 * @dev See `IERC20.allowance`.
 	 */
-	function allowance(address owner, address spender) public view returns (uint256) {
+	function allowance(address owner, address spender) whenNotPaused public view returns (uint256) {
 			return _allowances[owner][spender];
 	}
 
@@ -101,7 +102,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 *
 	 * - `spender` cannot be the zero address.
 	 */
-	function approve(address spender, uint256 value) public returns (bool) {
+	function approve(address spender, uint256 value) whenNotPaused public returns (bool) {
 			_approve(msg.sender, spender, value);
 			return true;
 	}
@@ -118,7 +119,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - the caller must have allowance for `sender`'s tokens of at least
 	 * `amount`.
 	 */
-	function transferFrom(address sender, address recipient, uint256 amount) public payable returns (bool) {
+	function transferFrom(address sender, address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
 			_transfer(sender, recipient, amount);
 			_approve(sender, msg.sender, _allowances[sender][msg.sender].sub(amount));
 			return true;
@@ -136,7 +137,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 *
 	 * - `spender` cannot be the zero address.
 	 */
-	function increaseAllowance(address spender, uint256 addedValue) public returns (bool) {
+	function increaseAllowance(address spender, uint256 addedValue) whenNotPaused public returns (bool) {
 			_approve(msg.sender, spender, _allowances[msg.sender][spender].add(addedValue));
 			return true;
 	}
@@ -155,35 +156,35 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `spender` must have allowance for the caller of at least
 	 * `subtractedValue`.
 	 */
-	function decreaseAllowance(address spender, uint256 subtractedValue) public returns (bool) {
+	function decreaseAllowance(address spender, uint256 subtractedValue) whenNotPaused public returns (bool) {
 			_approve(msg.sender, spender, _allowances[msg.sender][spender].sub(subtractedValue));
 			return true;
-	}
+		}
 	
 	/**
-	 * @dev Mint and burn functions - controlled by Minter (is custodian)
-   	**/
-    	function mint(address account, uint256 amount) public onlyMinter returns (bool) {
-           		 _mint(account, amount);
+	* @dev Mint and burn functions - controlled by Minter (is custodian)
+    	**/
+    	function mint(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
+            		_mint(account, amount);
             		return true;
     	}
-    	function burn(address account, uint256 amount) public onlyMinter returns (bool) {
+    	function burn(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
             		_burn(account, amount);
             		return true;
     	}
     	function tax() public returns (bool) {
-            		_taxClaim();
-            		return true;
+         	  	 _taxClaim();
+          	  	return true;
     	}
     
     	/**
-   	 * Set contract addresses
+    	* Set contract addresses
     	*/
     	function changeCustodianAddress(address payable custodianAddress) onlyOwner public returns (bool success) {
             		require (custodianAddress != address(0));
             		custodianContract = custodianAddress;
             		addMinter(custodianAddress);
-           	 return true;
+            		return true;
     	}
     	function changeTaxAddress(address payable taxAddress) onlyOwner public returns (bool success) {
             		require (taxAddress != address(0));
