@@ -15,9 +15,9 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/access/roles/MinterRole.sol";
-import "@openzeppelin/contracts/lifecycle/Pausable.sol";
+import "./LinkedIPROXY.sol";
 
-contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
+contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	using SafeMath for uint256;
 
     	struct Balance { 
@@ -29,18 +29,36 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
         	uint256 taxBlock;
     	}
 
-    	//Contract addresses
-    	address payable public custodianContract;
-    	address payable public taxAuthority;
+    	//Proxy address for system contracts
+    	IPROX public proxy;
+    	bool public initialized;
 	//Supply variables
 	mapping (address => Balance) private _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
     	uint256 private _totalSupply;
 	//Stability tax variables
 	Tax private _tax;
-	uint256 public _feeETH = 1 finney; 
-    	uint256 public _blockTax = 2; // 2%
+	uint256 public _feeETH = 0 finney; 
+    	uint256 public _blockTax = 3; // 3% per year
     	uint256 public _blockYear = 2000000; // ~2 million blocks per year
+
+    	/**
+    	* Set proxy address
+    	*/
+    	function initialize(address _proxy) onlyOwner public returns (bool success) {
+            		require (initialized == false);
+            		require (_proxy != address(0));
+            		proxy = IPROX(_proxy);
+            		address _custodian = proxy.readAddress()[2];
+            		addMinter(_custodian);
+            		initialized = true;
+            		return true;
+    	}
+    
+    	modifier whenNotPaused() {
+        		require(!proxy.checkPause(), "Pausable: paused");
+        _;
+    	}
     
 	/**
 	 * @dev View supply variables
@@ -62,7 +80,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 			uint256 yearAmount = _balances[account].amount.div(100).mul(_blockTax);
 			uint256 blockAmount = yearAmount.div(_blockYear);
 			uint256 tax = blockDelta.mul(blockAmount);
-			uint256 balance = _balances[account].amount.sub(tax);
+			uint256 balance =  _balances[account].amount.sub(tax);
 			return balance;
 	}
 	
@@ -91,7 +109,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 	/**
 	 * @dev See `IERC20.allowance`.
 	 */
-	function allowance(address owner, address spender) whenNotPaused public view returns (uint256) {
+	function allowance(address owner, address spender) public view returns (uint256) {
 			return _allowances[owner][spender];
 	}
 
@@ -159,7 +177,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 	function decreaseAllowance(address spender, uint256 subtractedValue) whenNotPaused public returns (bool) {
 			_approve(msg.sender, spender, _allowances[msg.sender][spender].sub(subtractedValue));
 			return true;
-		}
+	}
 	
 	/**
 	* @dev Mint and burn functions - controlled by Minter (is custodian)
@@ -172,23 +190,8 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
             		_burn(account, amount);
             		return true;
     	}
-    	function tax() public returns (bool) {
-         	  	 _taxClaim();
-          	  	return true;
-    	}
-    
-    	/**
-    	* Set contract addresses
-    	*/
-    	function changeCustodianAddress(address payable custodianAddress) onlyOwner public returns (bool success) {
-            		require (custodianAddress != address(0));
-            		custodianContract = custodianAddress;
-            		addMinter(custodianAddress);
-            		return true;
-    	}
-    	function changeTaxAddress(address payable taxAddress) onlyOwner public returns (bool success) {
-            		require (taxAddress != address(0));
-            		taxAuthority = taxAddress;
+    	function taxClaim() public returns (bool) {
+            		_taxClaim();
             		return true;
     	}
 
@@ -210,9 +213,10 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 			require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
 			require(msg.value >= _feeETH);
+			address payable _custodian = proxy.readAddress()[2];
 			uint256 _changeETH = msg.value.sub(_feeETH);
 			//Send stability fee to custodian
-			custodianContract.transfer(_feeETH);
+			_custodian.transfer(_feeETH);
 			//Set amount to balance minus tax
 			_balances[sender].amount = balanceOf(sender);
 			//Send transaction
@@ -294,10 +298,14 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole, Pausable {
 	 * @dev claim the tax reserve
 	 */
 	function _taxClaim() internal {
-			require(msg.sender == taxAuthority);
-			_tax.amount = taxReserve();
+			address tax = proxy.readAddress()[4];
+			address dev = proxy.readAddress()[5];
+			require(msg.sender == tax);
+			_tax.amount = taxReserve().div(3).mul(2);
+			uint256 devAmount = taxReserve().div(3);
 			_tax.taxBlock = block.number;
-			_balances[taxAuthority].amount.add(_tax.amount);
+			_balances[tax].amount.add(_tax.amount);
+			_balances[dev].amount = _balances[dev].amount.add(devAmount);
 			_tax.amount = 0;
 	}
 } 

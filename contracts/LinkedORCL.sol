@@ -5,36 +5,37 @@
 
 pragma solidity ^0.5.0;
 
-import "./LinkedIORCL.sol";
+import "@openzeppelin/contracts/ownership/Ownable.sol";
 
-contract LinkedORCL {
+import "./LinkedICOL.sol";
+import "./LinkedIPROXY.sol";
 
-    IEXC public Exchange;
+contract LinkedORCL is Ownable {
+
+    //Proxy address for system contracts
+    IPROX public proxy;
+    bool public initialized;
+    //Oracle variables
     uint256 public currentPrice;
-    address public owner;
-    
+
     /**
-    * @dev Throws if called by any account other than the owner.
+    * Set proxy address
     */
-    modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
+    function initialize(address _proxy) onlyOwner public returns (bool success) {
+            require (initialized == false);
+            require (_proxy != address(0));
+            proxy = IPROX(_proxy);
+            initialized = true;
+            return true;
     }
-    
-    //constructor
-    constructor(address exchangeContractAddr) public {
-        owner = msg.sender;
-        Exchange = IEXC(exchangeContractAddr);
-    }
-    
     
     /**
     * @dev Manualy update the contract to check the exchange contract
     */
     function UpdateRate(uint newRate) onlyOwner public {
-        assert(Exchange.updateRate(newRate));
+        ICOL collateral = ICOL(proxy.readAddress()[1]);
+        assert(collateral.updateRate(newRate));
     }
-    
     
     
      /**
