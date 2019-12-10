@@ -24,7 +24,7 @@ contract LinkedTAX is Ownable {
     //Proxy address for system contracts
     IPROX public proxy;
     bool public initialized;
-    uint256 public _blockTax = 3; // 3% per year
+    uint256 public _blockInterest = 2; // 2% per year
     uint256 public _blockYear = 2000000; // ~2 million blocks per year
 
     /**
@@ -46,17 +46,8 @@ contract LinkedTAX is Ownable {
             uint256[3] memory cpDetails = collateral.individualCPdata(claimer, idCP);
             uint256 balanceTokens = cpDetails[1];
             uint256 blockDiff = block.number.sub(cpDetails[2]);
-            uint256 balanceClaim = blockDiff.mul(balanceTokens).div(_blockYear).div(100).mul(_blockTax);
+            uint256 balanceClaim = blockDiff.mul(balanceTokens).div(_blockYear).div(100).mul(_blockInterest);
             return balanceClaim;
-    }
-    
-    /**
-    * @dev claim tax reserve to taxAuthority address
-    */
-    function claimTaxReserve() onlyOwner public returns (bool success) {
-            IERC20 token = IERC20(proxy.readAddress()[0]);
-            token.taxClaim();
-            return true;
     }
     
     /**
@@ -65,8 +56,9 @@ contract LinkedTAX is Ownable {
     function claimInterest(address receiver, uint256 id) public returns (bool success) {
             IERC20 token = IERC20(proxy.readAddress()[0]);
             uint256 interest = balanceOfInterest(receiver, id);
-            require (token.balanceOf(address(this)).sub(interest) > 0);
-            assert(token.transfer(msg.sender, interest));
+            address payable collateral = proxy.readAddress()[1];
+            require(msg.sender == collateral, "Tax: not the collateral contract");
+            assert(token.taxClaim(receiver, interest));
             return true;
     }
 }

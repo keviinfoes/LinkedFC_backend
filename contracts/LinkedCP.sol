@@ -129,10 +129,10 @@ contract LinkedCOL is Ownable {
     *  @dev Transfer collateral position to new user
     */
     function transfer(address recipient, uint256 id) whenNotPaused public returns (bool) {
-			_interestClaim(msg.sender, id);
-			_transfer(msg.sender, recipient, id);
-			emit TransferCP(msg.sender, recipient, id);
-			return true;
+		_interestClaim(msg.sender, id);
+		_transfer(msg.sender, recipient, id);
+		emit TransferCP(msg.sender, recipient, id);
+		return true;
 	}
 
     /**
@@ -159,7 +159,6 @@ contract LinkedCOL is Ownable {
             custodian.transfer(msg.value);
             return true;
     }
-
     /**
     *  @dev Witdraw ETH from existing CP || close CP when all of ETH is withdrawn
     */
@@ -193,7 +192,6 @@ contract LinkedCOL is Ownable {
             assert(custodian.transfer(msg.sender, amount));
             return true;
     }
-
     /**
     *  @dev Burn tokens from existing CP holder 
     */
@@ -221,7 +219,6 @@ contract LinkedCOL is Ownable {
             assert(custodian.burn(msg.sender, amount));
             return true;
     }
-
     /**
     *  @dev Mint new tokens from existing CP 
     */
@@ -295,7 +292,7 @@ contract LinkedCOL is Ownable {
            return true;
     }
 
-    /**
+        /**
     *  @dev Internal functions called by the above functions.
     */
     function _openCP(uint256 _index, uint256 amount, uint256 liq, uint256 liqGroup) internal {
@@ -354,7 +351,6 @@ contract LinkedCOL is Ownable {
     }
  
     function _transfer(address sender, address recipient, uint256 id) internal {
-            CP[sender][id].closed = true;
             uint256 amountETH = CP[sender][id].amountETH;
             uint256 amountToken = CP[sender][id].amountToken;
             uint256 liq = CP[sender][id].liquidation;
@@ -364,6 +360,7 @@ contract LinkedCOL is Ownable {
             require(CP[sender][id].closed == false, "CP is closed");
             require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
+            CP[sender][id].closed = true;
             _LiqInfo[liqRange][liqID].account = recipient;
             CP[sender][_index] = userCP({
                 amountETH: 0,
@@ -387,7 +384,6 @@ contract LinkedCOL is Ownable {
     
     function _interestClaim(address receiver, uint256 id) internal {
             ITAX tax = ITAX(proxy.readAddress()[4]);
-            require(CP[receiver][id].interestBlock > 0);
             CP[receiver][id].interestBlock = block.number;
             assert(tax.claimInterest(receiver, id));
     }

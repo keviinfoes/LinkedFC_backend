@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "./LinkedICOL.sol";
 import "./LinkedIPROXY.sol";
 
-contract LinkedORCL is Ownable {
+contract LinkedORCL is Ownable{
 
     //Proxy address for system contracts
     IPROX public proxy;
@@ -33,16 +33,7 @@ contract LinkedORCL is Ownable {
     * @dev Manualy update the contract to check the exchange contract
     */
     function UpdateRate(uint newRate) onlyOwner public {
-        ICOL collateral = ICOL(proxy.readAddress()[1]);
-        assert(collateral.updateRate(newRate));
+            ICOL collateral = ICOL(proxy.readAddress()[1]);
+            assert(collateral.updateRate(newRate));
     }
-    
-    
-     /**
-    * @dev Add new implementation for Link based on the SAI Oracle.
-    * 
-    * DAI oracle because it is cheap (handeld by DAI) and already
-    * available on chain. 
-    */
-    
 }
