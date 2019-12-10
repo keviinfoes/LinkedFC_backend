@@ -28,7 +28,7 @@ contract LinkedTAX is Ownable {
     uint256 public _blockYear = 2000000; // ~2 million blocks per year
 
     /**
-    * Set proxy address
+    * @dev Set proxy address
     */
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
@@ -39,39 +39,34 @@ contract LinkedTAX is Ownable {
     }
     
     /**
-    * @dev function. Used to load the exchange with ether
-    */
-    function() external payable {}
-    
-    /**
     * @dev balanceOf claim for individuald CP holder
     */
-    function balanceOfClaim(address claimer, uint256 idCP) public returns (uint256) {
-        ICOL collateral = ICOL(proxy.readAddress()[1]);
-        uint256[3] memory cpDetails = collateral.individualCPdata(claimer, idCP);
-        uint256 balanceTokens = cpDetails[1];
-        uint256 blockDiff = block.number.sub(cpDetails[2]);
-        uint256 balanceClaim = blockDiff.mul(balanceTokens).div(_blockYear).div(100).mul(_blockTax);
-        return balanceClaim;
+    function balanceOfInterest(address claimer, uint256 idCP) public view returns (uint256) {
+            ICOL collateral = ICOL(proxy.readAddress()[1]);
+            uint256[3] memory cpDetails = collateral.individualCPdata(claimer, idCP);
+            uint256 balanceTokens = cpDetails[1];
+            uint256 blockDiff = block.number.sub(cpDetails[2]);
+            uint256 balanceClaim = blockDiff.mul(balanceTokens).div(_blockYear).div(100).mul(_blockTax);
+            return balanceClaim;
     }
     
     /**
     * @dev claim tax reserve to taxAuthority address
     */
-    function claimTax() onlyOwner public returns (bool success) {
-        IERC20 token = IERC20(proxy.readAddress()[0]);
-        token.tax();
-        return true;
+    function claimTaxReserve() onlyOwner public returns (bool success) {
+            IERC20 token = IERC20(proxy.readAddress()[0]);
+            token.taxClaim();
+            return true;
     }
     
     /**
     * @dev claim interest by CP holders
     */
     function claimInterest(address receiver, uint256 id) public returns (bool success) {
-        IERC20 token = IERC20(proxy.readAddress()[0]);
-        uint256 interest = balanceOfClaim(receiver, id);
-        require (token.balanceOf(address(this)).sub(interest) > 0);
-        assert(token.transfer(msg.sender, interest));
-        return true;
+            IERC20 token = IERC20(proxy.readAddress()[0]);
+            uint256 interest = balanceOfInterest(receiver, id);
+            require (token.balanceOf(address(this)).sub(interest) > 0);
+            assert(token.transfer(msg.sender, interest));
+            return true;
     }
 }

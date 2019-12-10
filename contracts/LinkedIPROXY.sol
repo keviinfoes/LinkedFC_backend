@@ -5,7 +5,7 @@ pragma solidity ^0.5.0;
  *
  */
 interface IPROX {
-    function defcon() external returns (bool);
-    function checkPause() external returns (bool);
-    function readAddress() external returns (address payable[6] memory);
+    function defconActive() external view returns (bool);
+    function checkPause() external view returns (bool);
+    function readAddress() external view returns (address payable[6] memory);
 }

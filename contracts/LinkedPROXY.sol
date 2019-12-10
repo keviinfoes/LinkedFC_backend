@@ -17,15 +17,17 @@ contract LinkedPROXY is Ownable, Pausable {
     address payable public custodian;
     address payable public oracle;
     address payable public tax;
+    address payable public defcon;
     address payable public dev;
     bool public initialized;
-    bool public defcon;
+    bool public defconActive;
     
     function initialize(address payable _token,
                         address payable _collateral,
                         address payable _custodian,
                         address payable _oracle,
                         address payable _tax,
+                        address payable _defcon,
                         address payable _dev) 
         onlyOwner public returns (bool succes) {
             require(initialized != true);
@@ -34,6 +36,7 @@ contract LinkedPROXY is Ownable, Pausable {
             custodian = _custodian;
             oracle = _oracle;
             tax = _tax;
+            defcon = _defcon; 
             dev = _dev;
             initialized = true;
             return true;                
@@ -61,7 +64,7 @@ contract LinkedPROXY is Ownable, Pausable {
     }
     
     function activateDefcon() onlyOwner public returns (bool) {
-        defcon = true;
-        return true;
+        defconActive = true;
+        return defconActive;
     }
 }

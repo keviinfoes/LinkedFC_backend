@@ -8,9 +8,11 @@ pragma solidity ^0.5.0;
  
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import "./LinkedIPROXY.sol";
 import "./LinkedICOL.sol";
+import "./LinkedICUST.sol";
 
 contract LinkedDEFCON is Ownable {
     using SafeMath for uint256;
@@ -22,17 +24,19 @@ contract LinkedDEFCON is Ownable {
     uint256 public rateClaim;
     uint256 public poolToken;
     uint256 public poolCP;
-    
+    //Mapping CP claimed;
+    mapping (address => mapping (uint256 => bool)) public claimedCP;
+
     /**
-     * @dev Throws if called by any account other than the owner.
+     *  @dev Throws if called by any account other than the owner.
      */
     modifier onlyDefcon() {
-        require(proxy.defcon() == true, "Proxy: defcon is not active");
-        _;
+            require(proxy.defconActive() == true, "Proxy: defcon is not active");
+            _;
     }
     
     /**
-    * Set proxy address
+    *   @dev Set proxy address
     */
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
@@ -50,25 +54,33 @@ contract LinkedDEFCON is Ownable {
             return true;
     }
     
-    
-    
-    
-    //TODO  ADD BURN TOKENS AND TRANSFER ETH USER FUNCTION
-    //      ADD DETERMINE AMOUNT -> CLOSE CP AND TRANSFER ETH ->
-    
     /**
     * Claim ETH during defcon for token holders
     */
-    function defconClaimUser() public pure returns (bool success){
-            
+    function defconClaimUser() onlyDefcon public returns (bool success){
+            IERC20 token = IERC20(proxy.readAddress()[0]);  
+            ICUST custodian = ICUST(proxy.readAddress()[2]);
+            uint256 amountTokens = token.balanceOf(msg.sender);
+            uint256 amountClaim = amountTokens.div(rateClaim);
+            assert(custodian.burn(msg.sender, amountTokens));
+            assert(custodian.transfer(msg.sender, amountClaim)); 
             return true;
     }
     
     /**
     * Claim ETH during defcon for CP holders
     */
-    function defconClaimCP() public pure returns (bool success){
-            
+    function defconClaimCP(uint256 id) public returns (bool success){
+            ICOL collateral = ICOL(proxy.readAddress()[1]);
+            ICUST custodian = ICUST(proxy.readAddress()[2]);
+            uint256[3] memory _CPData = collateral.individualCPdata(msg.sender, id);
+            uint256[3] memory _CPTotalData = collateral.dataTotalCP();
+            uint256 amountETH = _CPData[0];
+            uint256 amountTotalETH = _CPTotalData[1];
+            uint256 amountClaim = amountETH.mul(poolCP).div(amountTotalETH);
+            require(claimedCP[msg.sender][id] == false, "Defcon: already claimed");
+            claimedCP[msg.sender][id] == true;
+            assert(custodian.transfer(msg.sender, amountClaim)); 
             return true;
     }
 }
