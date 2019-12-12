@@ -1,11 +1,11 @@
 pragma solidity ^0.5.0;
 
 /**
- * @dev Interface of the Custodian contract transfer funciton 
+ * @dev Interface of the Custodian contract transfer function 
  *
  */
-interface CUSTODIAN {
-        
+interface ICUST {
+    
     /**
      * @dev Interface functions for the custodian contract
      */
