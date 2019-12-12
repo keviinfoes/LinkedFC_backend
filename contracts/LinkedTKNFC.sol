@@ -20,52 +20,52 @@ import "./LinkedIPROXY.sol";
 contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	using SafeMath for uint256;
 
-    	struct Balance { 
-        	uint256 amount;
-        	uint256 taxBlock;
-    	}
-    	struct Tax {
-        	uint256 amountTax;
-        	uint256 amountDev;
-        	uint256 taxBlock;
-    	}
+    struct Balance { 
+        uint256 amount;
+        uint256 taxBlock;
+    }
+    struct Tax {
+        uint256 amountTax;
+        uint256 amountDev;
+        uint256 taxBlock;
+    }
 
-    	//Proxy address for system contracts
-    	IPROX public proxy;
-    	bool public initialized;
+    //Proxy address for system contracts
+    IPROX public proxy;
+    bool public initialized;
 	//Supply variables
 	mapping (address => Balance) private _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
-    	uint256 private _totalSupply;
+    uint256 private _totalSupply;
 	//Stability tax variables
-    	Tax private _tax;
-    	uint256 public _feeETH = 0 finney; 
-    	uint256 public _blockTax = 3; // 3% per year
-    	uint256 public _devTax = 1; //1% per year (of the 3% total)
-    	uint256 public _blockYear = 2000000; // ~2 million blocks per year
+	Tax private _tax;
+	uint256 public _feeETH = 0 finney; 
+    uint256 public _blockTax = 3; // 3% per year
+    uint256 public _devTax = 1; //1% per year (of the 3% total)
+    uint256 public _blockYear = 2000000; // ~2 million blocks per year
 
-    	/**
-    	* Set proxy address
-    	*/
-    	function initialize(address _proxy) onlyOwner public returns (bool success) {
-            	require (initialized == false);
-            	require (_proxy != address(0));
-            	proxy = IPROX(_proxy);
-            	address _custodian = proxy.readAddress()[2];
-            	addMinter(_custodian);
-            	initialized = true;
-            	return true;
-    	}
+    /**
+    * Set proxy address
+    */
+    function initialize(address _proxy) onlyOwner public returns (bool success) {
+            require (initialized == false);
+            require (_proxy != address(0));
+            proxy = IPROX(_proxy);
+            address _custodian = proxy.readAddress()[2];
+            addMinter(_custodian);
+            initialized = true;
+            return true;
+    }
     
-    	modifier whenNotPaused() {
-        	require(!proxy.checkPause(), "Pausable: paused");
-       	 	_;
-    	}	
+    modifier whenNotPaused() {
+        require(!proxy.checkPause(), "Pausable: paused");
+        _;
+    }
     
-    	/**
-    	* @dev Fallback function. Makes the contract payable.
-    	*/
-   	function() external payable {}
+    /**
+    * @dev Fallback function. Makes the contract payable.
+    */
+    function() external payable {}
     
 	/**
 	 * @dev View supply variables
@@ -78,30 +78,30 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * @dev show balance of the address.
 	 */
 	function balanceOf(address account) public view returns (uint256) {
-			uint256 blockDelta = block.number.sub(_balances[account].taxBlock);
-			uint256 yearAmount = _balances[account].amount.div(100).mul(_blockTax);
-			uint256 blockAmount = yearAmount.div(_blockYear);
-			uint256 tax = blockDelta.mul(blockAmount);
-			uint256 balance = _balances[account].amount.sub(tax);
-			return balance;
+		uint256 blockDelta = block.number.sub(_balances[account].taxBlock);
+		uint256 yearAmount = _balances[account].amount.div(100).mul(_blockTax);
+		uint256 blockAmount = yearAmount.div(_blockYear);
+		uint256 tax = blockDelta.mul(blockAmount);
+		uint256 balance = _balances[account].amount.sub(tax);
+		return balance;
 	}
 	
 	function taxReserve() public view returns (uint256) {
-			uint256 blockDelta = block.number.sub(_tax.taxBlock);
-			uint256 yearAmount = _totalSupply.div(100).mul(_blockTax.sub(_devTax));
-			uint256 blockAmount = yearAmount.div(_blockYear);
-			uint256 tax = blockDelta.mul(blockAmount);
-			uint256 balance = _tax.amountTax.add(tax);
-			return balance;
+		uint256 blockDelta = block.number.sub(_tax.taxBlock);
+		uint256 yearAmount = _totalSupply.div(100).mul(_blockTax.sub(_devTax));
+		uint256 blockAmount = yearAmount.div(_blockYear);
+		uint256 tax = blockDelta.mul(blockAmount);
+		uint256 balance = _tax.amountTax.add(tax);
+		return balance;
 	}
 	
 	function devReserve() public view returns (uint256) {
-			uint256 blockDelta = block.number.sub(_tax.taxBlock);
-			uint256 yearAmount = _totalSupply.div(100).mul(_devTax);
-			uint256 blockAmount = yearAmount.div(_blockYear);
-			uint256 dev = blockDelta.mul(blockAmount);
-			uint256 balance = _tax.amountDev.add(dev);
-			return balance;
+		uint256 blockDelta = block.number.sub(_tax.taxBlock);
+		uint256 yearAmount = _totalSupply.div(100).mul(_devTax);
+		uint256 blockAmount = yearAmount.div(_blockYear);
+		uint256 dev = blockDelta.mul(blockAmount);
+		uint256 balance = _tax.amountDev.add(dev);
+		return balance;
 	}
 	
 	/**
@@ -192,23 +192,23 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	
 	/**
 	* @dev Mint and burn functions - controlled by Minter (is custodian)
-    	**/
-    	function mint(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
-            		_mint(account, amount);
-            		return true;
-    	}
-    	function burn(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
-            		_burn(account, amount);
-            		return true;
-    	}
-    	function taxClaim(address receiver, uint256 amount) public returns (bool) {
-            		_taxClaim(receiver, amount);
-            		return true;
-    	}
-    	function devClaim() public returns (bool) {
-            		_devClaim();
-            		return true;
-    	}
+    **/
+    function mint(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
+            _mint(account, amount);
+            return true;
+    }
+    function burn(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
+            _burn(account, amount);
+            return true;
+    }
+    function taxClaim(address receiver, uint256 amount) public returns (bool) {
+            _taxClaim(receiver, amount);
+            return true;
+    }
+    function devClaim() public returns (bool) {
+            _devClaim();
+            return true;
+    }
 
 	/**
 	 * @dev Moves tokens `amount` from `sender` to `recipient`.
@@ -330,11 +330,11 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * @dev claim the dev reserve
 	 */
 	function _devClaim() internal {
-	        	address payable dev = proxy.readAddress()[6];
-	        	uint256 value = _tax.amountDev;
-	        	_tax.amountDev = 0;
-	        	require(msg.sender == dev, "Token: not the developer");
-	        	_balances[dev].amount = balanceOf(dev);
-	        	_balances[dev].amount = _balances[dev].amount.add(value);
+	        address payable dev = proxy.readAddress()[6];
+	        uint256 value = _tax.amountDev;
+	        _tax.amountDev = 0;
+	        require(msg.sender == dev, "Token: not the developer");
+	        _balances[dev].amount = balanceOf(dev);
+	        _balances[dev].amount = _balances[dev].amount.add(value);
 	}
 }  

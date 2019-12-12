@@ -15,6 +15,8 @@ import "./LinkedIPROXY.sol";
 import "./LinkedICUST.sol";
 import "./LinkedITAX.sol";
 
+pragma solidity ^0.5.0;
+
 contract LinkedCOL is Ownable {
     using SafeMath for uint256;
     
@@ -129,10 +131,10 @@ contract LinkedCOL is Ownable {
     *  @dev Transfer collateral position to new user
     */
     function transfer(address recipient, uint256 id) whenNotPaused public returns (bool) {
-		_interestClaim(msg.sender, id);
-		_transfer(msg.sender, recipient, id);
-		emit TransferCP(msg.sender, recipient, id);
-		return true;
+			_interestClaim(msg.sender, id);
+			_transfer(msg.sender, recipient, id);
+			emit TransferCP(msg.sender, recipient, id);
+			return true;
 	}
 
     /**
@@ -165,33 +167,30 @@ contract LinkedCOL is Ownable {
     function withdrawETHCP(uint256 amount, uint id) whenNotPaused payable public returns (bool success) {
             require(CP[msg.sender][id].amountETH.sub(amount) >= 0, "not enough collateral");
             ICUST custodian = ICUST(proxy.readAddress()[2]);
-            if (amount == 0) {
-                amount = CP[msg.sender][id].amountETH;
-            }
             uint256 newAmountETH = CP[msg.sender][id].amountETH.sub(amount);
             uint256 AmountTokens = CP[msg.sender][id].amountToken;
-            uint256 liq = AmountTokens.div(newAmountETH).mul(minCol).div(100);
             uint256 liqGroup = CP[msg.sender][id].liqrange;
             uint256 liqId = CP[msg.sender][id].liqid;
             uint256 lastLigId = _LiqRange[liqGroup];
-            uint256 newliqGroup = liq.div(1000);
-            require(rate > liq, "not enough collateral");
             _interestClaim(msg.sender, id);
-            tldata._supplyCPETH = tldata._supplyCPETH.sub(amount);
             _liqArrayDelete(liqGroup, liqId, lastLigId);
-            CP[msg.sender][id].liquidation = liq;
-            CP[msg.sender][id].amountETH = newAmountETH;
-            CP[msg.sender][id].liqrange = newliqGroup;
-            CP[msg.sender][id].liqid = _LiqRange[newliqGroup];
             if (newAmountETH == 0) {
-                CP[msg.sender][id].closed = true;
+                _closeCP(id, amount, AmountTokens);
                 emit CloseCP(msg.sender, id);
             } else {
+                uint256 liq = AmountTokens.div(newAmountETH).mul(minCol).div(100);
+                uint256 newliqGroup = liq.div(1000);
                 _liqArrayAdd(newliqGroup, id);
+                CP[msg.sender][id].liquidation = liq;
+                CP[msg.sender][id].liqrange = newliqGroup;
+                CP[msg.sender][id].liqid = _LiqRange[newliqGroup];
+                CP[msg.sender][id].amountETH = newAmountETH;
+                tldata._supplyCPETH = tldata._supplyCPETH.sub(amount);
             }
             assert(custodian.transfer(msg.sender, amount));
             return true;
     }
+    
     /**
     *  @dev Burn tokens from existing CP holder 
     */
@@ -200,7 +199,7 @@ contract LinkedCOL is Ownable {
             IERC20 token = IERC20(proxy.readAddress()[0]);
             uint256 newAmountTokens = CP[msg.sender][id].amountToken.sub(amount);
             uint256 AmountETH = CP[msg.sender][id].amountETH;
-            uint256 liq = newAmountTokens.div(AmountETH.mul(minCol).div(100));
+            uint256 liq = newAmountTokens.div(AmountETH).mul(minCol).div(100);
             uint256 liqGroup = CP[msg.sender][id].liqrange;
             uint256 liqId = CP[msg.sender][id].liqid;
             uint256 lastLigId = _LiqRange[liqGroup];
@@ -226,7 +225,7 @@ contract LinkedCOL is Ownable {
             ICUST custodian = ICUST(proxy.readAddress()[2]);
             uint256 newAmountTokens = CP[msg.sender][id].amountToken.add(amount);
             uint256 AmountETH = CP[msg.sender][id].amountETH;
-            uint256 liq = newAmountTokens.div(AmountETH.mul(minCol).div(100));
+            uint256 liq = newAmountTokens.div(AmountETH).mul(minCol).div(100);
             uint256 liqGroup = CP[msg.sender][id].liqrange;
             uint256 liqId = CP[msg.sender][id].liqid;
             uint256 lastLigId = _LiqRange[liqGroup];
@@ -259,30 +258,33 @@ contract LinkedCOL is Ownable {
             uint256 liqGroup = CP[account][id].liqrange;
             uint256 liqId = CP[account][id].liqid;
             uint256 lastLigId = _LiqRange[liqGroup];
-            require(CP[account][id].liquidation.mul(100) > rate.mul(minCol), "above liquidation rate");
-            if (amountTokens.mul(100) >= amountETH.mul(rate.mul(liqPer))) {
+            require(CP[account][id].liquidation >= rate, "above liquidation rate");
+            if (amountETH.mul(rate) >= amountTokens.mul(liqPer).div(100)) {
                 uint256 amountLiquidator = amountTokens.div(rate).mul(liqPer).div(100);
                 uint256 rest = amountETH.sub(amountLiquidator);
-                require(token.balanceOf(msg.sender) >= amountTokens, "not enough tokens");
+                require(token.balanceOf(msg.sender) >= amountTokens, "Collateral: > 110% | not enough tokens");
                 _interestClaim(account, id);
                 _closeCP(id, amountETH, amountTokens);
                 _liqArrayDelete(liqGroup, liqId, lastLigId);
-                assert(custodian.burn(msg.sender, amountTokens));
                 assert(custodian.transfer(msg.sender, amountLiquidator)); 
                 assert(custodian.transfer(account, rest)); 
                 return true;
             } else {
                 uint256 availableToken = amountETH.mul(rate).mul(100).div(liqPer);
-                require(token.balanceOf(msg.sender) >= availableToken, "not enough tokens");
+                require(token.balanceOf(msg.sender) >= availableToken, "Collateral: < 110% | not enough tokens");
+                remFund =  amountTokens.sub(availableToken);
                 _interestClaim(account, id);
                 _closeCP(id, amountETH, amountTokens);
                 _liqArrayDelete(liqGroup, liqId, lastLigId);
-                remFund =  amountTokens.sub(amountTokens);
-                assert(custodian.burn(msg.sender, amountTokens));
                 assert(custodian.transfer(msg.sender, amountETH)); 
-                return true;
+                return false;
             }
+            
     }
+    
+    
+    
+    
     
     /**
     *  @dev Claim interest earned by the CP holder.
@@ -360,9 +362,8 @@ contract LinkedCOL is Ownable {
             require(CP[sender][id].closed == false, "CP is closed");
             require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
-            CP[sender][id].closed = true;
             _LiqInfo[liqRange][liqID].account = recipient;
-            CP[sender][_index] = userCP({
+            CP[sender][id] = userCP({
                 amountETH: 0,
                 amountToken: 0,
                 closed: true,
@@ -371,6 +372,7 @@ contract LinkedCOL is Ownable {
                 liqid: 0,
                 interestBlock: 0
             });
+            index[recipient] += 1;
             CP[recipient][_index] = userCP({
                 amountETH: amountETH,
                 amountToken: amountToken,
