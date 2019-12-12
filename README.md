@@ -10,7 +10,7 @@ The design of linked is:
 - **Collateral contract**: TBA.
 
 ## Benefits
-TKC holders will be able to vote on the variables.
+Token holders will be able to vote on the variables.
 
 The benefit of this implementation is that it is fully collaterized with minimal complexity. Only a token backed by collateral positions. The creators of the collateral position receive interest based on the stability tax payed by the token holders.
 
