@@ -41,6 +41,7 @@ contract LinkedDEFCON is Ownable {
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
             require (_proxy != address(0));
+            initialized = true;
             proxy = IPROX(_proxy);
             return true;
     }

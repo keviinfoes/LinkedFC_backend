@@ -29,8 +29,8 @@ contract LinkedCUS is Ownable {
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
             require (_proxy != address(0));
-            proxy = IPROX(_proxy);
             initialized = true;
+            proxy = IPROX(_proxy);
             return true;
     }
     
