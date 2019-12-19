@@ -74,7 +74,7 @@ contract LinkedDEFCON is Ownable {
     function defconClaimCP(uint256 id) public returns (bool success){
             ICOL collateral = ICOL(proxy.readAddress()[1]);
             ICUST custodian = ICUST(proxy.readAddress()[2]);
-            uint256[3] memory _CPData = collateral.individualCPdata(msg.sender, id);
+            uint256[2] memory _CPData = collateral.individualCPdata(msg.sender, id);
             uint256[3] memory _CPTotalData = collateral.dataTotalCP();
             uint256 amountETH = _CPData[0];
             uint256 amountTotalETH = _CPTotalData[1];
