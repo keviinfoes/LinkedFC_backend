@@ -1,6 +1,7 @@
 /** 
- * Custodian contract for the linked stablecoin.
- * 
+ * 	Custodian contract for the linked stablecoin.
+ * 	The custodian contract holds the ether and 
+ *	minst/burns the tokens.
  */
 
 pragma solidity ^0.5.0;
@@ -29,8 +30,8 @@ contract LinkedCUS is Ownable {
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
             require (_proxy != address(0));
-            proxy = IPROX(_proxy);
             initialized = true;
+            proxy = IPROX(_proxy);
             return true;
     }
     

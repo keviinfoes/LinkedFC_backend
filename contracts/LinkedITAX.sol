@@ -5,5 +5,6 @@ pragma solidity ^0.5.0;
  *
  */
 interface ITAX {
-    function claimInterest(address receiver, uint256 id) external returns (bool);
+    function updateNormRate() external returns (uint256);
+    function viewNormRate() external view returns (uint256);
 }

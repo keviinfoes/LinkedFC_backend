@@ -1,6 +1,6 @@
 /**
-*   Oracle contract for the linked stablecoin.
-*   The contract uses the decentralized oracle chainlink
+*   Simple oracle contract for the linked stablecoin.
+*  
 **/
 
 pragma solidity ^0.5.0;
@@ -15,8 +15,6 @@ contract LinkedORCL is Ownable{
     //Proxy address for system contracts
     IPROX public proxy;
     bool public initialized;
-    //Oracle variables
-    uint256 public currentPrice;
 
     /**
     * Set proxy address
@@ -24,15 +22,15 @@ contract LinkedORCL is Ownable{
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
             require (_proxy != address(0));
-            proxy = IPROX(_proxy);
             initialized = true;
+            proxy = IPROX(_proxy);
             return true;
     }
     
     /**
     * @dev Manualy update the contract to check the exchange contract
     */
-    function UpdateRate(uint newRate) onlyOwner public {
+    function UpdateRate(uint256 newRate) onlyOwner public {
             ICOL collateral = ICOL(proxy.readAddress()[1]);
             assert(collateral.updateRate(newRate));
     }

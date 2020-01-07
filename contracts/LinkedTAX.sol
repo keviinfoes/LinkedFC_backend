@@ -24,41 +24,49 @@ contract LinkedTAX is Ownable {
     //Proxy address for system contracts
     IPROX public proxy;
     bool public initialized;
-    uint256 public _blockInterest = 2; // 2% per year
-    uint256 public _blockYear = 2000000; // ~2 million blocks per year
-
+    //Variables for the normalisation calculation
+    uint256 public normRate;
+	uint256 public baseRate;
+	
     /**
     * @dev Set proxy address
     */
     function initialize(address _proxy) onlyOwner public returns (bool success) {
             require (initialized == false);
             require (_proxy != address(0));
-            proxy = IPROX(_proxy);
             initialized = true;
+            proxy = IPROX(_proxy);
+            baseRate = 1000000006609610000;             // 1.00000000660961 * 10^18 ~= 1.5% per year 
             return true;
     }
     
     /**
-    * @dev balanceOf claim for individuald CP holder
-    */
-    function balanceOfInterest(address claimer, uint256 idCP) public view returns (uint256) {
-            ICOL collateral = ICOL(proxy.readAddress()[1]);
-            uint256[3] memory cpDetails = collateral.individualCPdata(claimer, idCP);
-            uint256 balanceTokens = cpDetails[1];
-            uint256 blockDiff = block.number.sub(cpDetails[2]);
-            uint256 balanceClaim = blockDiff.mul(balanceTokens).div(_blockYear).div(100).mul(_blockInterest);
-            return balanceClaim;
+	* @dev Update the normalisation rate for the stability fee decuction.
+    **/
+    function viewNormRate() public view returns (uint256) {
+            uint256 startBlockNum = proxy.startBlock();
+	        uint256 newBlockNum = block.number;
+	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
+            uint256 tempnormRate = baseRate.rpow(blockDiff, 10**18);            
+            return tempnormRate;
     }
     
     /**
-    * @dev claim interest by CP holders
-    */
-    function claimInterest(address receiver, uint256 id) public returns (bool success) {
-            IERC20 token = IERC20(proxy.readAddress()[0]);
-            uint256 interest = balanceOfInterest(receiver, id);
-            address payable collateral = proxy.readAddress()[1];
-            require(msg.sender == collateral, "Tax: not the collateral contract");
-            assert(token.taxClaim(receiver, interest));
-            return true;
+	* @dev Update the normalisation rate for the stability fee decuction.
+    **/
+    function updateNormRate() public returns (uint256) {
+            _updateNormRate();
+            return normRate;
     }
+    
+    /**
+	* @dev Update the normalisation rate for the stability fee decuction. 
+	* Uses the `safe` rpow for power calculation.
+    **/
+	function _updateNormRate() internal {
+	        uint256 startBlockNum = proxy.startBlock();
+	        uint256 newBlockNum = block.number;
+	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
+            normRate = baseRate.rpow(blockDiff, 10**18); // 10^18 because baserate is in 10^18 representation 
+	}
 }

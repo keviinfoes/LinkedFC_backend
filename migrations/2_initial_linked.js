@@ -5,6 +5,7 @@ var LinkedCUS = artifacts.require("LinkedCUS");
 var LinkedORCL = artifacts.require("LinkedORCL");
 var LinkedTAX = artifacts.require("LinkedTAX");
 var LinkedDEFCON = artifacts.require("LinkedDEFCON");
+var LinkedEXC = artifacts.require("LinkedEXC");
 
 module.exports = function(deployer) {
   deployer.deploy(LinkedPROXY);
@@ -14,4 +15,5 @@ module.exports = function(deployer) {
   deployer.deploy(LinkedORCL);
   deployer.deploy(LinkedTAX);
   deployer.deploy(LinkedDEFCON);
+  deployer.deploy(LinkedEXC);
 };
