@@ -1,7 +1,6 @@
 /** 
  *  Emergency shutdown contract for the linked stablecoin 
  * 
- *  TODO - ADD EMERGENCY CLAIM FOR USERS
  */
 
 pragma solidity ^0.5.0;

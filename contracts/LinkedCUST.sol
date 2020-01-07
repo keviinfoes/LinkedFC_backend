@@ -1,6 +1,7 @@
 /** 
- * Custodian contract for the linked stablecoin.
- * 
+ * 	Custodian contract for the linked stablecoin.
+ * 	The custodian contract holds the ether and 
+ *	minst/burns the tokens.
  */
 
 pragma solidity ^0.5.0;

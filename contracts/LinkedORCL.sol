@@ -1,6 +1,6 @@
 /**
-*   Oracle contract for the linked stablecoin.
-*   The contract uses the decentralized oracle chainlink
+*   Simple oracle contract for the linked stablecoin.
+*  
 **/
 
 pragma solidity ^0.5.0;

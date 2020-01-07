@@ -17,6 +17,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/access/roles/MinterRole.sol";
 import "./LinkedIPROXY.sol";
 import "./LinkedICOL.sol"; 
+import "./LinkedIEXC.sol"; 
 
 contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	using SafeMath for uint256;
@@ -33,7 +34,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	uint256 public baseRate;
 	uint256 public base;
 	//Stability tax variables
-	uint256 public _feeETH = 0 finney; 
+	uint256 public _feeETH = 0 finney;
 
     /**
     * Set proxy address
@@ -108,15 +109,15 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `recipient` cannot be the zero address.
 	 * - the caller must have a balance of at least `amount`.
 	 */
-	function transfer(address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
-			_transfer(msg.sender, recipient, amount);
+	function transfer(address recipient, uint256 _amount) whenNotPaused public payable returns (bool) {
+			_transfer(msg.sender, recipient, _amount);
 			return true;
 	}
 
 	/**
 	 * @dev See `IERC20.allowance`.
 	 */
-	function allowance(address owner, address spender) whenNotPaused public returns (uint256) {
+	function allowance(address owner, address spender) public view returns (uint256) {
 			return _allowances[owner][spender];
 	}
 
@@ -144,7 +145,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - the caller must have allowance for `sender`'s tokens of at least
 	 * `amount`.
 	 */
-	function transferFrom(address sender, address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
+	function transferFrom(address payable sender, address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
 			_transfer(sender, recipient, amount);
 			_approve(sender, msg.sender, _allowances[sender][msg.sender].sub(amount));
 			return true;
@@ -199,6 +200,20 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
     }
     
     /**
+	 * @dev See `IERC20.approve`.
+	 *
+	 * Requirements:
+	 *
+	 * - `spender` cannot be the zero address.
+	*/
+	function approveExchange(uint256 value) whenNotPaused public returns (bool) {
+			IEXC exchange = IEXC(proxy.readAddress()[6]);
+			_transfer(msg.sender, address(exchange), value);
+			assert(exchange.sellTKN(msg.sender, value));
+			return true;
+	}
+    
+    /**
 	* @dev Claim te amount for the developer.
     **/
     function devClaim() public returns (bool success) {
@@ -220,7 +235,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `recipient` cannot be the zero address.
 	 * - `sender` must have a balance of at least `amount`.
 	 */
-	function _transfer(address sender, address recipient, uint256 amount) internal {
+	function _transfer(address payable sender, address recipient, uint256 amount) internal {
 			require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
 			require(msg.value >= _feeETH);
@@ -231,7 +246,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
             uint256 normAmount = amount.mul(normRate).div(base);
 			_balances[sender] = _balances[sender].sub(normAmount);
 			_balances[recipient] = _balances[recipient].add(normAmount);
-			msg.sender.transfer(_changeETH);
+			sender.transfer(_changeETH);
 			emit Transfer(sender, recipient, amount, _feeETH);
 	}
 
@@ -304,15 +319,15 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
             normRate = baseRate.rpow(blockDiff, base); 
 	}
-	
+
 	/**
 	* @dev Update the normalisation rate for the stability fee decuction. 
 	* Uses the `safe` rpow for power calculation.
     **/
 	function _devClaim() internal {
-            uint256 pendingClaim = balanceOfDev();
-            address dev = proxy.readAddress()[1];
             _updateNormRate();
+            uint256 pendingClaim = balanceOfDev();
+            address dev = proxy.readAddress()[7];
             uint256 normAmount = pendingClaim.mul(normRate).div(base);
             _totalSupply = _totalSupply.add(normAmount);
             _balances[dev] = _balances[dev].add(normAmount);
