@@ -5,7 +5,7 @@ The stability is maintained by the below forces:
 1. If the price of the token < 1 USD: the collateral position holders will be incentivised to close their position for the the cheap token price. The buy pressure from closing the collateral positions will change the price upwards to 1 USD. Further note that because the system collateral > total token value, selling for less then 1 USD is irrational behavior.
 2. If the price of the token > 1 USD: ETH holders will be incentivised to open collateral positions and flood the market with new tokens. This sell pressure from the new tokens will change the price downwards to 1 USD.
 
-To test alpha v0.2 visit: [banq.link](banq.link).
+To test alpha v0.2 visit: [banq.link](https://banq.link).
 
 ## Description
 The design of linked is:
