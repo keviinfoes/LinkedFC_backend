@@ -1,9 +1,8 @@
 /** 
-*   Stable coin - named LINKED [LKD]
+*   Stable coin token contract.
 *
 *   Linked FC is a custodial stable coin with the goal of simplifying the implementation.
-*   Current custodial stable coins use complex implementations.
-*   For example by using bonds and other implementation to stabilize the system.
+*   Current custodial stable coins use complex implementations, for example by using additional governance tokens.
 *   
 **/
 
