@@ -1,6 +1,6 @@
 /**
-*   Oracle contract for the linked stablecoin.
-*   The contract uses the decentralized oracle chainlink
+*   Tax contract for the linked stablecoin.
+*   Contains the stability tax data.
 **/
 
 pragma solidity ^0.5.0;
