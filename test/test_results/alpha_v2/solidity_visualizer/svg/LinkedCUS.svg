@@ -1,0 +1,179 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [  <!ENTITY quot "&#34;">  <!ENTITY amp "&#38;">  <!ENTITY apos "&#39;">  <!ENTITY lt "&#60;">  <!ENTITY gt "&#62;">  <!ENTITY nbsp "&#160;">  <!ENTITY iexcl "&#161;">  <!ENTITY cent "&#162;">  <!ENTITY pound "&#163;">  <!ENTITY curren "&#164;">  <!ENTITY yen "&#165;">  <!ENTITY brvbar "&#166;">  <!ENTITY sect "&#167;">  <!ENTITY uml "&#168;">  <!ENTITY copy "&#169;">  <!ENTITY ordf "&#170;">  <!ENTITY laquo "&#171;">  <!ENTITY not "&#172;">  <!ENTITY shy "&#173;">  <!ENTITY reg "&#174;">  <!ENTITY macr "&#175;">  <!ENTITY deg "&#176;">  <!ENTITY plusmn "&#177;">  <!ENTITY sup2 "&#178;">  <!ENTITY sup3 "&#179;">  <!ENTITY acute "&#180;">  <!ENTITY micro "&#181;">  <!ENTITY para "&#182;">  <!ENTITY middot "&#183;">  <!ENTITY cedil "&#184;">  <!ENTITY sup1 "&#185;">  <!ENTITY ordm "&#186;">  <!ENTITY raquo "&#187;">  <!ENTITY frac14 "&#188;">  <!ENTITY frac12 "&#189;">  <!ENTITY frac34 "&#190;">  <!ENTITY iquest "&#191;">  <!ENTITY Agrave "&#192;">  <!ENTITY Aacute "&#193;">  <!ENTITY Acirc "&#194;">  <!ENTITY Atilde "&#195;">  <!ENTITY Auml "&#196;">  <!ENTITY Aring "&#197;">  <!ENTITY AElig "&#198;">  <!ENTITY Ccedil "&#199;">  <!ENTITY Egrave "&#200;">  <!ENTITY Eacute "&#201;">  <!ENTITY Ecirc "&#202;">  <!ENTITY Euml "&#203;">  <!ENTITY Igrave "&#204;">  <!ENTITY Iacute "&#205;">  <!ENTITY Icirc "&#206;">  <!ENTITY Iuml "&#207;">  <!ENTITY ETH "&#208;">  <!ENTITY Ntilde "&#209;">  <!ENTITY Ograve "&#210;">  <!ENTITY Oacute "&#211;">  <!ENTITY Ocirc "&#212;">  <!ENTITY Otilde "&#213;">  <!ENTITY Ouml "&#214;">  <!ENTITY times "&#215;">  <!ENTITY Oslash "&#216;">  <!ENTITY Ugrave "&#217;">  <!ENTITY Uacute "&#218;">  <!ENTITY Ucirc "&#219;">  <!ENTITY Uuml "&#220;">  <!ENTITY Yacute "&#221;">  <!ENTITY THORN "&#222;">  <!ENTITY szlig "&#223;">  <!ENTITY agrave "&#224;">  <!ENTITY aacute "&#225;">  <!ENTITY acirc "&#226;">  <!ENTITY atilde "&#227;">  <!ENTITY auml "&#228;">  <!ENTITY aring "&#229;">  <!ENTITY aelig "&#230;">  <!ENTITY ccedil "&#231;">  <!ENTITY egrave "&#232;">  <!ENTITY eacute "&#233;">  <!ENTITY ecirc "&#234;">  <!ENTITY euml "&#235;">  <!ENTITY igrave "&#236;">  <!ENTITY iacute "&#237;">  <!ENTITY icirc "&#238;">  <!ENTITY iuml "&#239;">  <!ENTITY eth "&#240;">  <!ENTITY ntilde "&#241;">  <!ENTITY ograve "&#242;">  <!ENTITY oacute "&#243;">  <!ENTITY ocirc "&#244;">  <!ENTITY otilde "&#245;">  <!ENTITY ouml "&#246;">  <!ENTITY divide "&#247;">  <!ENTITY oslash "&#248;">  <!ENTITY ugrave "&#249;">  <!ENTITY uacute "&#250;">  <!ENTITY ucirc "&#251;">  <!ENTITY uuml "&#252;">  <!ENTITY yacute "&#253;">  <!ENTITY thorn "&#254;">  <!ENTITY yuml "&#255;">  <!ENTITY OElig "&#338;">  <!ENTITY oelig "&#339;">  <!ENTITY Scaron "&#352;">  <!ENTITY scaron "&#353;">  <!ENTITY Yuml "&#376;">  <!ENTITY fnof "&#402;">  <!ENTITY circ "&#710;">  <!ENTITY tilde "&#732;">  <!ENTITY Alpha "&#913;">  <!ENTITY Beta "&#914;">  <!ENTITY Gamma "&#915;">  <!ENTITY Delta "&#916;">  <!ENTITY Epsilon "&#917;">  <!ENTITY Zeta "&#918;">  <!ENTITY Eta "&#919;">  <!ENTITY Theta "&#920;">  <!ENTITY Iota "&#921;">  <!ENTITY Kappa "&#922;">  <!ENTITY Lambda "&#923;">  <!ENTITY Mu "&#924;">  <!ENTITY Nu "&#925;">  <!ENTITY Xi "&#926;">  <!ENTITY Omicron "&#927;">  <!ENTITY Pi "&#928;">  <!ENTITY Rho "&#929;">  <!ENTITY Sigma "&#931;">  <!ENTITY Tau "&#932;">  <!ENTITY Upsilon "&#933;">  <!ENTITY Phi "&#934;">  <!ENTITY Chi "&#935;">  <!ENTITY Psi "&#936;">  <!ENTITY Omega "&#937;">  <!ENTITY alpha "&#945;">  <!ENTITY beta "&#946;">  <!ENTITY gamma "&#947;">  <!ENTITY delta "&#948;">  <!ENTITY epsilon "&#949;">  <!ENTITY zeta "&#950;">  <!ENTITY eta "&#951;">  <!ENTITY theta "&#952;">  <!ENTITY iota "&#953;">  <!ENTITY kappa "&#954;">  <!ENTITY lambda "&#955;">  <!ENTITY mu "&#956;">  <!ENTITY nu "&#957;">  <!ENTITY xi "&#958;">  <!ENTITY omicron "&#959;">  <!ENTITY pi "&#960;">  <!ENTITY rho "&#961;">  <!ENTITY sigmaf "&#962;">  <!ENTITY sigma "&#963;">  <!ENTITY tau "&#964;">  <!ENTITY upsilon "&#965;">  <!ENTITY phi "&#966;">  <!ENTITY chi "&#967;">  <!ENTITY psi "&#968;">  <!ENTITY omega "&#969;">  <!ENTITY thetasym "&#977;">  <!ENTITY upsih "&#978;">  <!ENTITY piv "&#982;">  <!ENTITY ensp "&#8194;">  <!ENTITY emsp "&#8195;">  <!ENTITY thinsp "&#8201;">  <!ENTITY zwnj "&#8204;">  <!ENTITY zwj "&#8205;">  <!ENTITY lrm "&#8206;">  <!ENTITY rlm "&#8207;">  <!ENTITY ndash "&#8211;">  <!ENTITY mdash "&#8212;">  <!ENTITY lsquo "&#8216;">  <!ENTITY rsquo "&#8217;">  <!ENTITY sbquo "&#8218;">  <!ENTITY ldquo "&#8220;">  <!ENTITY rdquo "&#8221;">  <!ENTITY bdquo "&#8222;">  <!ENTITY dagger "&#8224;">  <!ENTITY Dagger "&#8225;">  <!ENTITY bull "&#8226;">  <!ENTITY hellip "&#8230;">  <!ENTITY permil "&#8240;">  <!ENTITY prime "&#8242;">  <!ENTITY Prime "&#8243;">  <!ENTITY lsaquo "&#8249;">  <!ENTITY rsaquo "&#8250;">  <!ENTITY oline "&#8254;">  <!ENTITY frasl "&#8260;">  <!ENTITY euro "&#8364;">  <!ENTITY image "&#8465;">  <!ENTITY weierp "&#8472;">  <!ENTITY real "&#8476;">  <!ENTITY trade "&#8482;">  <!ENTITY alefsym "&#8501;">  <!ENTITY larr "&#8592;">  <!ENTITY uarr "&#8593;">  <!ENTITY rarr "&#8594;">  <!ENTITY darr "&#8595;">  <!ENTITY harr "&#8596;">  <!ENTITY crarr "&#8629;">  <!ENTITY lArr "&#8656;">  <!ENTITY uArr "&#8657;">  <!ENTITY rArr "&#8658;">  <!ENTITY dArr "&#8659;">  <!ENTITY hArr "&#8660;">  <!ENTITY forall "&#8704;">  <!ENTITY part "&#8706;">  <!ENTITY exist "&#8707;">  <!ENTITY empty "&#8709;">  <!ENTITY nabla "&#8711;">  <!ENTITY isin "&#8712;">  <!ENTITY notin "&#8713;">  <!ENTITY ni "&#8715;">  <!ENTITY prod "&#8719;">  <!ENTITY sum "&#8721;">  <!ENTITY minus "&#8722;">  <!ENTITY lowast "&#8727;">  <!ENTITY radic "&#8730;">  <!ENTITY prop "&#8733;">  <!ENTITY infin "&#8734;">  <!ENTITY ang "&#8736;">  <!ENTITY and "&#8743;">  <!ENTITY or "&#8744;">  <!ENTITY cap "&#8745;">  <!ENTITY cup "&#8746;">  <!ENTITY int "&#8747;">  <!ENTITY there4 "&#8756;">  <!ENTITY sim "&#8764;">  <!ENTITY cong "&#8773;">  <!ENTITY asymp "&#8776;">  <!ENTITY ne "&#8800;">  <!ENTITY equiv "&#8801;">  <!ENTITY le "&#8804;">  <!ENTITY ge "&#8805;">  <!ENTITY sub "&#8834;">  <!ENTITY sup "&#8835;">  <!ENTITY nsub "&#8836;">  <!ENTITY sube "&#8838;">  <!ENTITY supe "&#8839;">  <!ENTITY oplus "&#8853;">  <!ENTITY otimes "&#8855;">  <!ENTITY perp "&#8869;">  <!ENTITY sdot "&#8901;">  <!ENTITY lceil "&#8968;">  <!ENTITY rceil "&#8969;">  <!ENTITY lfloor "&#8970;">  <!ENTITY rfloor "&#8971;">  <!ENTITY lang "&#9001;">  <!ENTITY rang "&#9002;">  <!ENTITY loz "&#9674;">  <!ENTITY spades "&#9824;">  <!ENTITY clubs "&#9827;">  <!ENTITY hearts "&#9829;">  <!ENTITY diams "&#9830;"> ]><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0.00 0.00 362.33 628.00">
+<g id="graph0" class="graph" transform="translate(4,624) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-624 358.3262,-624 358.3262,4 -4,4" style=""></polygon>
+<g id="clust1" class="cluster">
+<title style="">clusterLinkedCUS</title>
+<path fill="#445773" stroke="#445773" d="M20,-58C20,-58 179.7379,-58 179.7379,-58 185.7379,-58 191.7379,-64 191.7379,-70 191.7379,-70 191.7379,-463 191.7379,-463 191.7379,-469 185.7379,-475 179.7379,-475 179.7379,-475 20,-475 20,-475 14,-475 8,-469 8,-463 8,-463 8,-70 8,-70 8,-64 14,-58 20,-58" style=""></path>
+<text text-anchor="middle" x="99.8689" y="-458.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LinkedCUS</text>
+</g>
+<g id="clust2" class="cluster">
+<title style="">clusterIPROX</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M223.7379,-232C223.7379,-232 334.3262,-232 334.3262,-232 340.3262,-232 346.3262,-238 346.3262,-244 346.3262,-244 346.3262,-351 346.3262,-351 346.3262,-357 340.3262,-363 334.3262,-363 334.3262,-363 223.7379,-363 223.7379,-363 217.7379,-363 211.7379,-357 211.7379,-351 211.7379,-351 211.7379,-244 211.7379,-244 211.7379,-238 217.7379,-232 223.7379,-232" style=""></path>
+<text text-anchor="middle" x="279.032" y="-346.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IPROX</text>
+</g>
+<g id="clust3" class="cluster">
+<title style="">clusterIERC20</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M254.2876,-93C254.2876,-93 303.7765,-93 303.7765,-93 309.7765,-93 315.7765,-99 315.7765,-105 315.7765,-105 315.7765,-212 315.7765,-212 315.7765,-218 309.7765,-224 303.7765,-224 303.7765,-224 254.2876,-224 254.2876,-224 248.2876,-224 242.2876,-218 242.2876,-212 242.2876,-212 242.2876,-105 242.2876,-105 242.2876,-99 248.2876,-93 254.2876,-93" style=""></path>
+<text text-anchor="middle" x="279.032" y="-207.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IERC20</text>
+</g>
+<g id="clust4" class="cluster">
+<title style="">clusterreceiver</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M242.51,-8C242.51,-8 315.5541,-8 315.5541,-8 321.5541,-8 327.5541,-14 327.5541,-20 327.5541,-20 327.5541,-73 327.5541,-73 327.5541,-79 321.5541,-85 315.5541,-85 315.5541,-85 242.51,-85 242.51,-85 236.51,-85 230.51,-79 230.51,-73 230.51,-73 230.51,-20 230.51,-20 230.51,-14 236.51,-8 242.51,-8" style=""></path>
+<text text-anchor="middle" x="279.032" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">receiver</text>
+</g>
+<g id="clust5" class="cluster">
+<title style="">cluster_01</title>
+<polygon fill="#2e3e56" stroke="#000000" points="26.8689,-483 26.8689,-612 314.032,-612 314.032,-483 26.8689,-483" style=""></polygon>
+<text text-anchor="middle" x="170.4505" y="-595.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Legend</text>
+</g>
+<!-- LinkedCUS.&lt;Fallback&gt; -->
+<g id="node1" class="node" data-name="LinkedCUS.&lt;Fallback&gt;">
+
+<ellipse fill="#ffbdb9" stroke="#a52a2a" stroke-width="3" cx="99.8689" cy="-424" rx="51.2988" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-419.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&lt;Fallback&gt;</text>
+</g>
+<!-- LinkedCUS.initialize -->
+<g id="node2" class="node" data-name="LinkedCUS.initialize">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-370" rx="40.5924" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-365.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">initialize</text>
+</g>
+<!-- LinkedCUS.whenNotPaused -->
+<g id="node3" class="node" data-name="LinkedCUS.whenNotPaused">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="175.55070005814542,-306.22693263888885 175.55070005814542,-317.77306736111115 131.21735593719342,-325.9375 68.52053899887058,-325.9375 24.18709997232652,-317.77306736111115 24.18709997232652,-306.22693263888885 68.52053899887058,-298.0625 131.21735593719342,-298.0625 175.55070005814542,-306.22693263888885 " style=""></polygon>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="179.5444994618231,-303.3127872159091 179.5444994618231,-320.6872127840909 131.72054904154518,-329.9375 68.01735039259181,-329.9375 20.193399972313873,-320.6872127840909 20.193399972313873,-303.3127872159091 68.01735039259181,-294.0625 131.72054904154518,-294.0625 179.5444994618231,-303.3127872159091 " style=""></polygon>
+<text text-anchor="middle" x="99.8689" y="-307.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">whenNotPaused</text>
+</g>
+<!-- IPROX.checkPause -->
+<g id="node8" class="node" data-name="IPROX.checkPause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="279.032" cy="-312" rx="52.0964" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="279.032" y="-307.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">checkPause</text>
+</g>
+<!-- LinkedCUS.whenNotPaused&#45;&gt;IPROX.checkPause -->
+<g id="edge1" class="edge" data-name="LinkedCUS.whenNotPaused->IPROX.checkPause">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M183.6802,-312C193.4449,-312 203.3014,-312 212.783,-312" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="212.9024,-315.5001 222.9024,-312 212.9024,-308.5001 212.9024,-315.5001" style=""></polygon>
+</g>
+<!-- LinkedCUS.onlyCollateral -->
+<g id="node4" class="node" data-name="LinkedCUS.onlyCollateral">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="167.7845999607285,-244.22693263888888 167.7845999607285,-255.77306736111112 128.00046166819655,-263.9375 71.7373439634759,-263.9375 31.95330002686998,-255.77306736111112 31.95330002686998,-244.22693263888888 71.7373439634759,-236.0625 128.00046166819655,-236.0625 167.7845999607285,-244.22693263888888 " style=""></polygon>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="171.79750044049854,-241.37670994318182 171.79750044049854,-258.6232900568182 128.5586160622475,-267.9375 71.17927903157793,-267.9375 27.94029999934741,-258.6232900568182 27.94029999934741,-241.37670994318182 71.17927903157793,-232.0625 128.5586160622475,-232.0625 171.79750044049854,-241.37670994318182 " style=""></polygon>
+<text text-anchor="middle" x="99.8689" y="-245.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">onlyCollateral</text>
+</g>
+<!-- IPROX.readAddress -->
+<g id="node9" class="node" data-name="IPROX.readAddress">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="279.032" cy="-258" rx="55.0266" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="279.032" y="-253.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">readAddress</text>
+</g>
+<!-- LinkedCUS.onlyCollateral&#45;&gt;IPROX.readAddress -->
+<g id="edge2" class="edge" data-name="LinkedCUS.onlyCollateral->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M175.8502,-253.3927C187.2413,-253.9014 198.9328,-254.4234 210.1646,-254.9249" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="210.1824,-258.4291 220.3286,-255.3788 210.4947,-251.4361 210.1824,-258.4291" style=""></polygon>
+</g>
+<!-- LinkedCUS.mint -->
+<g id="node5" class="node" data-name="LinkedCUS.mint">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-192" rx="24.9285" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-187.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mint</text>
+</g>
+<!-- LinkedCUS.mint&#45;&gt;IPROX.readAddress -->
+<g id="edge3" class="edge" data-name="LinkedCUS.mint->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M126.7174,-198.8475C145.2069,-203.8158 170.222,-211.0398 191.7379,-219 200.8797,-222.3822 202.842,-224.0155 211.7379,-228 219.625,-231.5327 228.0363,-235.2902 236.1456,-238.9079" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="234.9184,-242.1929 245.477,-243.0687 237.7691,-235.7996 234.9184,-242.1929" style=""></polygon>
+</g>
+<!-- IERC20.mint -->
+<g id="node10" class="node" data-name="IERC20.mint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="279.032" cy="-173" rx="24.9285" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="279.032" y="-168.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mint</text>
+</g>
+<!-- LinkedCUS.mint&#45;&gt;IERC20.mint -->
+<g id="edge4" class="edge" data-name="LinkedCUS.mint->IERC20.mint">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M128.2579,-188.9894C158.5712,-185.7747 206.7916,-180.661 240.5152,-177.0847" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="240.9048,-180.5631 250.4799,-176.0279 240.1665,-173.6021 240.9048,-180.5631" style=""></polygon>
+</g>
+<!-- LinkedCUS.burn -->
+<g id="node6" class="node" data-name="LinkedCUS.burn">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-138" rx="24.9129" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-133.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">burn</text>
+</g>
+<!-- LinkedCUS.burn&#45;&gt;IPROX.readAddress -->
+<g id="edge5" class="edge" data-name="LinkedCUS.burn->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M128.688,-139.5251C148.8178,-142.0794 174.9857,-148.605 191.7379,-165 212.7332,-185.5477 192.1599,-206.0976 211.7379,-228 216.1014,-232.8816 221.4104,-237.0105 227.1123,-240.4925" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="225.8522,-243.789 236.3165,-245.4469 229.17,-237.6252 225.8522,-243.789" style=""></polygon>
+</g>
+<!-- IERC20.burn -->
+<g id="node11" class="node" data-name="IERC20.burn">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="279.032" cy="-119" rx="24.9129" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="279.032" y="-114.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">burn</text>
+</g>
+<!-- LinkedCUS.burn&#45;&gt;IERC20.burn -->
+<g id="edge6" class="edge" data-name="LinkedCUS.burn->IERC20.burn">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M128.2579,-134.9894C158.5712,-131.7747 206.7916,-126.661 240.5152,-123.0847" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="240.9048,-126.5631 250.4799,-122.0279 240.1665,-119.6021 240.9048,-126.5631" style=""></polygon>
+</g>
+<!-- LinkedCUS.transfer -->
+<g id="node7" class="node" data-name="LinkedCUS.transfer">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-84" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-79.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- receiver.transfer -->
+<g id="node12" class="node" data-name="receiver.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="279.032" cy="-34" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="279.032" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedCUS.transfer&#45;&gt;receiver.transfer -->
+<g id="edge7" class="edge" data-name="LinkedCUS.transfer->receiver.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M134.4134,-74.3595C163.0409,-66.3703 203.9116,-54.9643 234.9057,-46.3146" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="235.9025,-49.6702 244.5936,-43.6109 234.0208,-42.9278 235.9025,-49.6702" style=""></polygon>
+</g>
+<!-- key -->
+<g id="node13" class="node" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="160.80640001869202,-574.9375 38.93140001869202,-574.9375 38.93140001869202,-495.0625 160.80640001869202,-495.0625 160.80640001869202,-574.9375 " style=""></polygon>
+<text text-anchor="start" x="84.5049" y="-560.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Internal Call</text>
+<text text-anchor="start" x="80.6129" y="-540.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">External Call</text>
+<text text-anchor="start" x="58.0743" y="-520.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Defined Contract</text>
+<text text-anchor="start" x="44.4716" y="-500.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node14" class="node" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="301.9695019469079,-574.9375 256.09449965102596,-574.9375 256.09449965102596,-495.0625 301.9695019469079,-495.0625 301.9695019469079,-574.9375 " style=""></polygon>
+<text text-anchor="start" x="266.7911" y="-560.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="266.7911" y="-540.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#445773" stroke="transparent" points="269.094503754752,-519.0625 269.094503754752,-530.9375 288.969503754752,-530.9375 288.969503754752,-519.0625 269.094503754752,-519.0625 " style=""></polygon>
+<text text-anchor="start" x="266.7911" y="-520.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#e8726d" points="271.09450438054404,-501.0625 271.09450438054404,-508.9375 286.96950438054404,-508.9375 286.96950438054404,-501.0625 271.09450438054404,-501.0625 " style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge8" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.8689,-565C201.3735,-565 214.977,-565 254.8947,-565" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="255.0321,-568.5001 265.032,-565 255.032,-561.5001 255.0321,-568.5001" style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge9" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M156.8689,-545C201.3735,-545 214.977,-545 254.8947,-545" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="255.0321,-548.5001 265.032,-545 255.032,-541.5001 255.0321,-548.5001" style=""></polygon>
+</g>
+</g>
+</svg>

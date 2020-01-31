@@ -1,20 +1,20 @@
+pragma solidity 0.5.11;
+
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+import "./IPROXY.sol";
+import "./ICOL.sol"; 
+import "./ITAX.sol";
+
 /** 
  *  Exchange contract for the linked stablecoin.
  *
  *  The exchange takes the oracle price input for ETH in USD. Then fixes the price between the
  *  stablecoin and Ether on 1 stablecoin for 1 USD (in ETH).
  * 
-**/
-
-pragma solidity ^0.5.0;
-
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/ownership/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-import "./LinkedICOL.sol";
-import "./LinkedIPROXY.sol";
-
+ */
 contract LinkedEXC is Ownable {
     using SafeMath for uint256;
  
@@ -22,28 +22,26 @@ contract LinkedEXC is Ownable {
     IPROX public proxy;
     bool public initialized;
     //Exchange variables
-    uint256 base;
     mapping (address => uint256) private _claimsTKN;
     mapping (address => uint256) private _claimsETH;
 
     /**
-    * @dev Fallback function. Makes the contract payable.
-    */
+     * @dev Fallback function. Makes the contract payable.
+     */
     function() external payable {}
 
     /**
-    * Set proxy address
-    */
-    function initialize(address _proxy) onlyOwner public returns (bool success) {
+     * Set proxy address
+     */
+    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
             require (initialized == false);
-            require (_proxy != address(0));
+            require (proxyAddress != address(0));
             initialized = true;
-            proxy = IPROX(_proxy);
-            base = 10**18;
+            proxy = IPROX(proxyAddress);
             return true;
     }
     
-    function totalReserve() public view returns (uint256[2] memory) {
+    function totalReserve() external view returns (uint256[2] memory) {
 	        IERC20 token = IERC20(proxy.readAddress()[0]);
 	        uint256 ethReserve = address(this).balance;
 	        uint256 tokenReserve = token.balanceOf(address(this));
@@ -51,78 +49,82 @@ contract LinkedEXC is Ownable {
 	        return _totalReserve;
 	}
     
-    function claimOfTKN(address account) public view returns (uint256) {
-		    return _claimsTKN[account];
+    function claimOfTKN(address account) external view returns (uint256) {
+		ITAX tax = ITAX(proxy.readAddress()[4]);
+            	uint256 normRateFee = tax.viewNormRateFee();
+            	uint256 tempClaim = _claimsTKN[account].mul(proxy.base()).div(normRateFee);
+		return tempClaim;
 	}
-	function claimOfETH(address account) public view returns (uint256) {
-		    return _claimsETH[account];
+
+    function claimOfETH(address account) external view returns (uint256) {
+		return _claimsETH[account];
 	}
 
     /**
-    * Read the current ETH price rate
-    */
+     * Read the current ETH price rate
+     */
     function rate() public view returns (uint256) {
-            ICOL collateral = ICOL(proxy.readAddress()[1]);   
-            return collateral.rate();
+            return proxy.rate();
     }
     
     /**
-    * Deposit tokens (sell) and receive a claim for buying ETH  
-    */
-    function sellTKN(address receiver, uint256 amount) public returns (bool) {
+     * Deposit tokens (sell) and receive a claim for buying ETH  
+     */
+    function sellTKN(address receiver, uint256 amount) external returns (bool) {
             _sellTKN(receiver, amount);
             return true;
     }
     
     /**
-    * Withraw tokens (buy)) with a claim after deposit of ETH
-    */
-    function buyTKN(uint256 amount) public payable returns (bool) {
+     * Withraw tokens (buy)) with a claim after deposit of ETH
+     */
+    function buyTKN(uint256 amount) external payable returns (bool) {
             _buyTKN(amount);
             return true;
     }
     
     /**
-    * Deposit ETH (sell) and receive a claim for buying tokens
-    */
-    function sellETH() public payable returns (bool) {
+     * Deposit ETH (sell) and receive a claim for buying tokens
+     */
+    function sellETH() external payable returns (bool) {
             _sellETH();
             return true;
     }
     
     /**
-    * Withraw ETH (buy) with a claim after deposit of tokens
-    */
-    function buyETH(uint256 amount) public returns (bool) {
+     * Withraw ETH (buy) with a claim after deposit of tokens
+     */
+    function buyETH(uint256 amount) external returns (bool) {
             _buyETH(amount);
             return true;
     }
     
     /**
-    * Remove token claim to retreive tokens
-    */
-    function removeClaimTKN(uint256 amount) public returns (bool) {
+     * Remove token claim to retreive tokens
+     */
+    function removeClaimTKN(uint256 amount) external returns (bool) {
             _removeClaimTKN(amount);
             return true;
     }
     
     /**
-    * Remove ETH claim to retreive ETH
-    */
-    function removeClaimETH(uint256 amount) public returns (bool) {
+     * Remove ETH claim to retreive ETH
+     */
+    function removeClaimETH(uint256 amount) external returns (bool) {
             _removeClaimETH(amount);
             return true;
     }
     
     /**
-    *  @dev Internal functions called by the above functions.
-    */
+     *  @dev Internal functions called by the above functions.
+     */
     function _sellTKN(address receiver, uint256 amount) internal {
             IERC20 token = IERC20(proxy.readAddress()[0]);
+            ITAX tax = ITAX(proxy.readAddress()[4]);
             require(msg.sender == address(token), "Exchange: not the token contract");
-            uint256 normRate = token.updateNormRate();
+            uint256 normRateFee = tax.viewNormRateFee();
             //normalise amount in claim
-            _claimsTKN[receiver] = _claimsTKN[receiver].add(amount.mul(normRate).div(base));
+            _claimsTKN[receiver] = _claimsTKN[receiver].add(amount.mul(normRateFee).div(proxy.base()));
     }
     
     function _sellETH() internal {
@@ -140,19 +142,20 @@ contract LinkedEXC is Ownable {
     }
 
     function _buyETH(uint256 amount) internal {
-            IERC20 token = IERC20(proxy.readAddress()[0]);
-            uint256 normRate = token.updateNormRate();
+            ITAX tax = ITAX(proxy.readAddress()[4]);
+            uint256 normRateFee = tax.viewNormRateFee();
             uint256 rateUSD = rate();
             uint256 _amountTKN = amount.mul(rateUSD);
             require(amount <= address(this).balance, "Exchange: not enough ether in reserve");
-            _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(_amountTKN.mul(normRate).div(base));
+            _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(_amountTKN.mul(normRateFee).div(proxy.base()));
             msg.sender.transfer(amount);
     }
     
     function _removeClaimTKN(uint256 amount) internal {
             IERC20 token = IERC20(proxy.readAddress()[0]);
-            uint256 normRate = token.updateNormRate();
-            _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(amount.mul(normRate).div(base));
+            ITAX tax = ITAX(proxy.readAddress()[4]);
+            uint256 normRateFee = tax.viewNormRateFee();
+            _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(amount.mul(normRateFee).div(proxy.base()));
             assert(token.transfer(msg.sender, amount));
     }
     

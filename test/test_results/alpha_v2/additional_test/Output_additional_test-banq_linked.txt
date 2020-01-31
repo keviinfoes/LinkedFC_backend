@@ -1,0 +1,64 @@
+Truffle additional_test result:
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+
+  Contract: LinkedPROXY
+    Initialize
+      ✓ Proxy contract initialized (203ms)
+      ✓ Other contracts initialized (113ms)
+      ✓ Read address check
+    Oracle
+      ✓ Change oracle (103ms)
+    Pause contracts
+      ✓ Pause contract check (252ms)
+
+  Contract: LinkedCOL
+    Open CP
+      ✓ Open Collateral Position account 0 (418ms)
+      ✓ Open Collateral Position account 1 (411ms)
+      ✓ Transfer Collateral Position account 0 -> 1 (272ms)
+    Change CP
+      ✓ Deposit ETH Collateral Position (246ms)
+      ✓ Deposit Token Collateral Position (433ms)
+      ✓ Withdraw ETH Collateral Position (308ms)
+      ✓ Withdraw Token Collateral Position (350ms)
+    Close CP
+      ✓ Close Collateral Position (762ms)
+
+  Contract: LinkedCUS
+    Custodian Collateral
+      ✓ Received ETH (302ms)
+
+  Contract: LinkedORCL
+    Update price
+      ✓ Simple price update (75ms)
+
+  Contract: LinkedTAX
+    Stability calculations
+      ✓ StabilityReward per block < normRate (568ms)
+      ✓ StabilityFee per block < normRate (509ms)
+
+  Contract: LinkedEXC
+    Deposit
+      ✓ ETH deposit (72ms)
+      ✓ Tokens deposit (663ms)
+    Withdraw
+      ✓ Remove claim ETH withdraw (78ms)
+      ✓ Remove claim Tokens (7178ms)
+      ✓ Withdraw ETH (878ms)
+      ✓ Withdraw tokens (393ms)
+
+  Contract: LinkedTKN
+    totalSupply()
+      ✓ should have initial supply of 0
+      ✓ should return the correct supply after transaction
+    balanceOf(_owner)
+      ✓ should have correct initial balances
+      ✓ should return the correct balances after transaction
+
+
+  27 passing (20s)

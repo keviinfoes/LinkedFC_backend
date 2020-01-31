@@ -1,17 +1,16 @@
-/** 
-*   Stable coin Linked - proxy contracts.
-*   contians the reference to the different contracts in 
-*   the linked system.
-*   
-**/
-
-pragma solidity ^0.5.0;
+pragma solidity 0.5.11;
 
 import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/lifecycle/Pausable.sol";
 
+/** 
+ *   Stable coin Linked - proxy contracts.
+ *   contains the reference to the different contracts in 
+ *   the linked system.  
+ */
 contract LinkedPROXY is Ownable, Pausable {
     
+    //System address variables
     address payable public token;
     address payable public collateral;
     address payable public custodian;
@@ -20,41 +19,47 @@ contract LinkedPROXY is Ownable, Pausable {
     address payable public defcon;
     address payable public exchange;
     address payable public dev;
+    //Initiation variables 
     bool public initialized;
+    uint256 public startBlock;
+    //Prime variables
+    uint256 public rate;
+    uint256 public base;
     bool public defconActive;
     
-    uint256 public startBlock;
+    event UpdateRate(uint256 Rate);
     
-    function initialize(address payable _token,
-                        address payable _collateral,
-                        address payable _custodian,
-                        address payable _oracle,
-                        address payable _tax,
-                        address payable _defcon,
-                        address payable _exchange,
-                        address payable _dev) 
-        onlyOwner public returns (bool succes) {
+    function initialize(address payable tokenAddress,
+                        address payable collateralAddress,
+                        address payable custodianAddress,
+                        address payable oracleAddress,
+                        address payable taxAddress,
+                        address payable defconAddress,
+                        address payable exchangeAddress,
+                        address payable devAddress) 
+        onlyOwner external returns (bool succes) {
             require(initialized != true);
-            token = _token;
-            collateral = _collateral;
-            custodian = _custodian;
-            oracle = _oracle;
-            tax = _tax;
-            defcon = _defcon;
-            exchange = _exchange;
-            dev = _dev;
+            token = tokenAddress;
+            collateral = collateralAddress;
+            custodian = custodianAddress;
+            oracle = oracleAddress;
+            tax = taxAddress;
+            defcon = defconAddress;
+            exchange = exchangeAddress;
+            dev = devAddress;
             initialized = true;
             startBlock = block.number;
+            base = 10**18;
             return true;                
     }
     
-    function changeOracle(address payable _oracle) 
-        onlyOwner public returns (bool success) {
-            oracle = _oracle;
+    function changeOracle(address payable oracleAddress) 
+        onlyOwner external returns (bool success) {
+            oracle = oracleAddress;
             return true;
     }
     
-    function readAddress() public view returns (address payable[8] memory){
+    function readAddress() external view returns (address payable[8] memory){
             address payable[8] memory _address;
             _address[0] = token;
             _address[1] = collateral;
@@ -67,11 +72,24 @@ contract LinkedPROXY is Ownable, Pausable {
             return _address; 
     }
     
-    function checkPause() public view returns (bool) {
+    function checkPause() external view returns (bool) {
             return paused();
     }
     
-    function activateDefcon() onlyOwner public returns (bool) {
+    /**
+     *  @dev Updates the rate for a peg to 1 USD based on the oracle contract.
+     */
+    function updateRate(uint256 newRate) whenNotPaused external returns (bool success) {
+            require(msg.sender == oracle, "Proxy: not the oracle address");
+            rate = newRate;
+            emit UpdateRate(newRate);
+            return true;
+    }
+    
+    /**
+     *  @dev Activate defcon for emergency shutdown.
+     */
+    function activateDefcon() onlyOwner external returns (bool) {
             defconActive = true;
             return defconActive;
     }

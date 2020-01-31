@@ -1,0 +1,18 @@
+Test instructions:
+
+1. Slither solidity static analysis framework:
+	- cdm: cd [back-end contracts main map]
+	- cmd: slither . 				-> for detail check
+	- cmd: slither . --print human-summary  	-> for the human summary
+
+2. Solidity visualizer:
+	- open visual studio code
+	- open project - select sub map code 
+	- top of individual contract select option (example graph)
+
+3. Additional tests:
+ 	- cmd: cd [back-end contracts main map]
+	- cmd: truffle test
+	- [Adjust tests in test file for contract]
+
+	

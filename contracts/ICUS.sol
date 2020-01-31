@@ -1,14 +1,10 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.5.11;
 
 /**
  * @dev Interface of the Custodian contract transfer function 
  *
  */
-interface ICUST {
-    
-    /**
-     * @dev Interface functions for the custodian contract
-     */
+interface ICUS {
     function transfer(address recipient, uint256 amount) external returns (bool);
     function mint(address payable receiver, uint256 amount) external returns (bool);
     function burn(address payable receiver, uint256 amount) external returns (bool);
