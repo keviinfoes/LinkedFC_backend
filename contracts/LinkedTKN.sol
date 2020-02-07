@@ -188,7 +188,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	function depositExchange(uint256 value) whenNotPaused external returns (bool) {
 			IEXC exchange = IEXC(proxy.readAddress()[6]);
 			_transfer(msg.sender, address(exchange), value);
-			assert(exchange.sellTKN(msg.sender, value));
+			assert(exchange.depositTKN(msg.sender, value));
 			return true;
 	}
     
