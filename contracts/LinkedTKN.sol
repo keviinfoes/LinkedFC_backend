@@ -1,12 +1,4 @@
-/** 
-*   Stable coin token contract.
-*
-*   Linked FC is a custodial stable coin with the goal of simplifying the implementation.
-*   Current custodial stable coins use complex implementations, for example by using additional governance tokens.
-*   
-**/
-
-pragma solidity ^0.5.0;
+pragma solidity 0.5.11;
 
 import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
@@ -14,45 +6,47 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/access/roles/MinterRole.sol";
-import "./LinkedIPROXY.sol";
-import "./LinkedICOL.sol"; 
-import "./LinkedIEXC.sol"; 
+import "./IPROXY.sol";
+import "./ICOL.sol";
+import "./ITAX.sol"; 
+import "./IEXC.sol"; 
 
+/** 
+ *   Stable coin token contract. 
+ *   Linked is a custodial stable coin with the goal of simplifying the implementation. 
+ */
 contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	using SafeMath for uint256;
 
     //Proxy address for system contracts
     IPROX public proxy;
+    ITAX public tax;
     bool public initialized;
 	//Supply variables
 	mapping (address => uint256) private _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
-    uint256 public _totalSupply;
-	//Variables for the normalisation calculation
-	uint256 public normRate;
-	uint256 public baseRate;
-	uint256 public base;
-	//Stability tax variables
-	uint256 public _feeETH = 0 finney;
+    uint256 public totalSupply;
+	//Additional transfer fee variable
+	uint256 constant public FEE_ETH = 0 finney;
 
     /**
-    * Set proxy address
-    */
-    function initialize(address _proxy) onlyOwner public returns (bool success) {
+     * Set proxy address
+     */
+    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
             require (initialized == false);
-            require (_proxy != address(0));
+            require (proxyAddress != address(0));
             initialized = true;
-            proxy = IPROX(_proxy);
+            proxy = IPROX(proxyAddress);
             address _custodian = proxy.readAddress()[2];
             addMinter(_custodian);
-            baseRate = 1000000008791120000;             // 1.00000000879112 * 10^18 ~= 2% per year 
-            base = 10**18;
+            address taxAddress = proxy.readAddress()[4];
+            tax = ITAX(taxAddress);
             return true;
     }
     
     modifier whenNotPaused() {
-        require(!proxy.checkPause(), "Pausable: paused");
-        _;
+            require(!proxy.checkPause(), "Pausable: paused");
+            _;
     }
     
     /**
@@ -63,43 +57,29 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	/**
 	 * @dev View supply variables
 	 */
-	function totalSupply() public view returns (uint256) {
-			uint256 startBlockNum = proxy.startBlock();
-	        uint256 newBlockNum = block.number;
-	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
-            uint256 tempNormRate = baseRate.rpow(blockDiff, base);
-			uint256 total = _totalSupply.mul(base).div(tempNormRate);
+	function gettotalSupply() public view returns (uint256) {
+			uint256 normRateFee = tax.viewNormRateFee();
+			uint256 total = totalSupply.mul(proxy.base()).div(normRateFee);
 			return total;
 	}
     
 	/**
 	 * @dev show balance of the address.
 	 */
-	function balanceOf(address account) public view returns (uint256) {
-		    uint256 startBlockNum = proxy.startBlock();
-	        uint256 newBlockNum = block.number;
-	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
-            uint256 tempNormRate = baseRate.rpow(blockDiff, base);
-		    uint256 balance = _balances[account].mul(base).div(tempNormRate);
+	function balanceOf(address account) external view returns (uint256) {
+		    uint256 normRateFee = tax.viewNormRateFee();
+		    uint256 balance = _balances[account].mul(proxy.base()).div(normRateFee);
 		    return balance;
 	}
 	function balanceOfDev() public view returns (uint256) {
 	        ICOL collateral = ICOL(proxy.readAddress()[1]);
             uint256[3] memory _totalCP = collateral.dataTotalCP();
             uint256 _totalTokensCP = _totalCP[2];
-            uint256 _totalTokens = totalSupply();
+            uint256 _totalTokens = gettotalSupply();
             uint256 diffTotal = _totalTokensCP.sub(_totalTokens);
             return diffTotal;
 	}
 	
-	/**
-	* @dev Update the normalisation rate for the stability fee decuction.
-    **/
-    function updateNormRate() public returns (uint256) {
-            _updateNormRate();
-            return normRate;
-    }
-    
 	/**
 	 * @dev See `IERC20.transfer`.
 	 *
@@ -108,16 +88,16 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `recipient` cannot be the zero address.
 	 * - the caller must have a balance of at least `amount`.
 	 */
-	function transfer(address recipient, uint256 _amount) whenNotPaused public payable returns (bool) {
-			_transfer(msg.sender, recipient, _amount);
+	function transfer(address recipient, uint256 amount) whenNotPaused external payable returns (bool) {
+			_transfer(msg.sender, recipient, amount);
 			return true;
 	}
 
 	/**
 	 * @dev See `IERC20.allowance`.
 	 */
-	function allowance(address owner, address spender) public view returns (uint256) {
-			return _allowances[owner][spender];
+	function allowance(address ownerAddress, address spender) external view returns (uint256) {
+			return _allowances[ownerAddress][spender];
 	}
 
 	/**
@@ -127,7 +107,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 *
 	 * - `spender` cannot be the zero address.
 	 */
-	function approve(address spender, uint256 value) whenNotPaused public returns (bool) {
+	function approve(address spender, uint256 value) whenNotPaused external returns (bool) {
 			_approve(msg.sender, spender, value);
 			return true;
 	}
@@ -144,9 +124,9 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - the caller must have allowance for `sender`'s tokens of at least
 	 * `amount`.
 	 */
-	function transferFrom(address payable sender, address recipient, uint256 amount) whenNotPaused public payable returns (bool) {
-			_transfer(sender, recipient, amount);
+	function transferFrom(address payable sender, address recipient, uint256 amount) whenNotPaused external payable returns (bool) {
 			_approve(sender, msg.sender, _allowances[sender][msg.sender].sub(amount));
+			_transfer(sender, recipient, amount);
 			return true;
 	}
 
@@ -162,7 +142,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 *
 	 * - `spender` cannot be the zero address.
 	 */
-	function increaseAllowance(address spender, uint256 addedValue) whenNotPaused public returns (bool) {
+	function increaseAllowance(address spender, uint256 addedValue) whenNotPaused external returns (bool) {
 			_approve(msg.sender, spender, _allowances[msg.sender][spender].add(addedValue));
 			return true;
 	}
@@ -181,19 +161,19 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `spender` must have allowance for the caller of at least
 	 * `subtractedValue`.
 	 */
-	function decreaseAllowance(address spender, uint256 subtractedValue) whenNotPaused public returns (bool) {
+	function decreaseAllowance(address spender, uint256 subtractedValue) whenNotPaused external returns (bool) {
 			_approve(msg.sender, spender, _allowances[msg.sender][spender].sub(subtractedValue));
 			return true;
 	}
 	
 	/**
-	* @dev Mint and burn functions - controlled by Minter (is custodian)
-    **/
-    function mint(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
+	 * @dev Mint and burn functions - controlled by Minter (is custodian)
+     */
+    function mint(address account, uint256 amount) whenNotPaused onlyMinter external returns (bool) {
             _mint(account, amount);
             return true;
     }
-    function burn(address account, uint256 amount) whenNotPaused onlyMinter public returns (bool) {
+    function burn(address account, uint256 amount) whenNotPaused onlyMinter external returns (bool) {
             _burn(account, amount);
             return true;
     }
@@ -204,18 +184,18 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * Requirements:
 	 *
 	 * - `spender` cannot be the zero address.
-	*/
-	function approveExchange(uint256 value) whenNotPaused public returns (bool) {
+	 */
+	function depositExchange(uint256 value) whenNotPaused external returns (bool) {
 			IEXC exchange = IEXC(proxy.readAddress()[6]);
 			_transfer(msg.sender, address(exchange), value);
-			assert(exchange.sellTKN(msg.sender, value));
+			assert(exchange.depositTKN(msg.sender, value));
 			return true;
 	}
     
     /**
-	* @dev Claim te amount for the developer.
-    **/
-    function devClaim() public returns (bool success) {
+	 * @dev Claim te amount for the developer.
+     */
+    function devClaim() external returns (bool success) {
             _devClaim();
             return true;
     }
@@ -237,16 +217,16 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	function _transfer(address payable sender, address recipient, uint256 amount) internal {
 			require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
-			require(msg.value >= _feeETH);
+			require(msg.value >= FEE_ETH);
 			address payable _custodian = proxy.readAddress()[2];
-			uint256 _changeETH = msg.value.sub(_feeETH);
-            _custodian.transfer(_feeETH);
-            _updateNormRate();
-            uint256 normAmount = amount.mul(normRate).div(base);
+			uint256 _changeETH = msg.value.sub(FEE_ETH);
+            uint256 normRateFee = tax.viewNormRateFee();
+			uint256 normAmount = amount.mul(normRateFee).div(proxy.base());
 			_balances[sender] = _balances[sender].sub(normAmount);
 			_balances[recipient] = _balances[recipient].add(normAmount);
+			emit Transfer(sender, recipient, amount, FEE_ETH);
+			_custodian.transfer(FEE_ETH);
 			sender.transfer(_changeETH);
-			emit Transfer(sender, recipient, amount, _feeETH);
 	}
 
 	/** 
@@ -261,14 +241,14 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 */
 	function _mint(address account, uint256 amount) internal {
 			require(account != address(0), "ERC20: mint to the zero address");
-            _updateNormRate();
-            uint256 normAmount = amount.mul(normRate).div(base);
-			_totalSupply = _totalSupply.add(normAmount);
+            uint256 normRateFee = tax.viewNormRateFee();
+            uint256 normAmount = amount.mul(normRateFee).div(proxy.base());
+			totalSupply = totalSupply.add(normAmount);
 			_balances[account] = _balances[account].add(normAmount);
 			emit Transfer(address(0), account, amount, 0);
 	}
 
-	 /**
+	/**
 	 * @dev Destoys `normalised amount` tokens from `account`, reducing the
 	 * total supply.
 	 *
@@ -281,9 +261,9 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 */
 	function _burn(address account, uint256 value) internal {
 			require(account != address(0), "ERC20: burn from the zero address");
-		    _updateNormRate();
-            uint256 normAmount = value.mul(normRate).div(base);
-			_totalSupply = _totalSupply.sub(normAmount);
+		    uint256 normRateFee = tax.viewNormRateFee();
+            uint256 normAmount = value.mul(normRateFee).div(proxy.base());
+			totalSupply = totalSupply.sub(normAmount);
 			_balances[account] = _balances[account].sub(normAmount);
 			emit Transfer(account, address(0), value, 0);
 	}
@@ -301,34 +281,23 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `owner` cannot be the zero address.
 	 * - `spender` cannot be the zero address.
 	 */
-	function _approve(address owner, address spender, uint256 value) internal {
-			require(owner != address(0), "ERC20: approve from the zero address");
+	function _approve(address ownerAddress, address spender, uint256 value) internal {
+			require(ownerAddress != address(0), "ERC20: approve from the zero address");
 			require(spender != address(0), "ERC20: approve to the zero address");
-			_allowances[owner][spender] = value;
-			emit Approval(owner, spender, value);
-	}
-	
-	/**
-	* @dev Update the normalisation rate for the stability fee decuction. 
-	* Uses the `safe` rpow for power calculation.
-    **/
-	function _updateNormRate() internal {
-	        uint256 startBlockNum = proxy.startBlock();
-	        uint256 newBlockNum = block.number;
-	        uint256 blockDiff = newBlockNum.sub(startBlockNum);
-            normRate = baseRate.rpow(blockDiff, base); 
+			_allowances[ownerAddress][spender] = value;
+			emit Approval(ownerAddress, spender, value);
 	}
 
 	/**
-	* @dev Update the normalisation rate for the stability fee decuction. 
-	* Uses the `safe` rpow for power calculation.
-    **/
+	 * @dev Update the normalisation rate for the stability fee decuction. 
+	 * Uses the `safe` rpow for power calculation.
+     	 */
 	function _devClaim() internal {
-            _updateNormRate();
+            uint256 normRateFee = tax.viewNormRateFee();
             uint256 pendingClaim = balanceOfDev();
             address dev = proxy.readAddress()[7];
-            uint256 normAmount = pendingClaim.mul(normRate).div(base);
-            _totalSupply = _totalSupply.add(normAmount);
+            uint256 normAmount = pendingClaim.mul(normRateFee).div(proxy.base());
+            totalSupply = totalSupply.add(normAmount);
             _balances[dev] = _balances[dev].add(normAmount);
 	}
-} 
+}

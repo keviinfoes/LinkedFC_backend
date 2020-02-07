@@ -1,0 +1,13 @@
+SLITHER Alpha v2.0 - DETAILED REPORT
+
+INFO:Detectors:
+SafeMath.rpow(uint256,uint256,uint256) (@openzeppelin/contracts/math/SafeMath.sol#118-140) uses assembly
+	- INLINE ASM None (@openzeppelin/contracts/math/SafeMath.sol#119-139)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+INFO:Detectors:
+LinkedTAX.initialize(address) (LinkedTAX.sol#28-36) uses literals with too many digits:
+	- baseRateReward = 1000000006609610000 (LinkedTAX.sol#33)
+LinkedTAX.initialize(address) (LinkedTAX.sol#28-36) uses literals with too many digits:
+	- baseRateFee = 1000000008791120000 (LinkedTAX.sol#34)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+INFO:Slither:. analyzed (22 contracts with 41 detectors), 3 result(s) found

@@ -1,37 +1,35 @@
-/**
-*   Simple oracle contract for the linked stablecoin.
-*  
-**/
-
-pragma solidity ^0.5.0;
+pragma solidity 0.5.11;
 
 import "@openzeppelin/contracts/ownership/Ownable.sol";
 
-import "./LinkedICOL.sol";
-import "./LinkedIPROXY.sol";
+import "./ICOL.sol"; 
+import "./IPROXY.sol";
 
-contract LinkedORCL is Ownable{
+/**
+ *   Simple oracle contract for the linked stablecoin.
+ *  
+ */
+contract LinkedORCL is Ownable {
 
     //Proxy address for system contracts
     IPROX public proxy;
     bool public initialized;
 
     /**
-    * Set proxy address
-    */
-    function initialize(address _proxy) onlyOwner public returns (bool success) {
+     * Set proxy address
+     */
+    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
             require (initialized == false);
-            require (_proxy != address(0));
+            require (proxyAddress != address(0));
             initialized = true;
-            proxy = IPROX(_proxy);
+            proxy = IPROX(proxyAddress);
             return true;
     }
     
     /**
-    * @dev Manualy update the contract to check the exchange contract
-    */
-    function UpdateRate(uint256 newRate) onlyOwner public {
-            ICOL collateral = ICOL(proxy.readAddress()[1]);
-            assert(collateral.updateRate(newRate));
+     * @dev Manualy update the contract to check the exchange contract
+     */
+    function updateRate(uint256 newRate) onlyOwner external {
+            assert(proxy.updateRate(newRate));
     }
 }

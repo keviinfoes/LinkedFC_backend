@@ -1,0 +1,89 @@
+SLITHER Alpha v2.0
+
+INFO:Printers:
+Compiled with 2
+Number of lines: 1297 (+ 548 in dependencies)
+Number of contracts: 15 (+ 8 in dependencies) 
+
+Number of optimization issues: 0
+Number of informational issues: 3
+Number of low issues: 0
+Number of medium issues: 0
+Number of high issues: 0
+
+ERCs: ERC20
+
+Contract IEXC
+	Complex code? No
+	Number of functions: 1
+
+Contract LinkedCUS
+	Complex code? No
+	Number of functions: 11
+
+Contract Roles
+	Complex code? No
+	Number of functions: 3
+
+Contract LinkedCOL
+	Complex code? No
+	Number of functions: 24
+
+Contract LinkedDEFCON
+	Complex code? No
+	Number of functions: 10
+
+Contract LinkedPROXY
+	Complex code? No
+	Number of functions: 21
+
+Contract ITAX
+	Complex code? No
+	Number of functions: 2
+
+Contract ICOL
+	Complex code? No
+	Number of functions: 4
+
+Contract LinkedTKN
+	Complex code? No
+	Number of functions: 49
+	ERCs: ERC20
+	ERC20 info:
+		 Can be paused? : No
+		 Minting restriction? : No
+		 ERC20 race condition mitigation: No
+
+Contract IPROX
+	Complex code? No
+	Number of functions: 4
+
+Contract SafeMath
+	Complex code? No
+	Number of functions: 6
+
+Contract LinkedEXC
+	Complex code? No
+	Number of functions: 24
+
+Contract ICUS
+	Complex code? No
+	Number of functions: 3
+
+Contract LinkedTAX
+	Complex code? No
+	Number of functions: 10
+
+Contract LinkedORCL
+	Complex code? No
+	Number of functions: 8
+
+Contract IORCL
+	Complex code? No
+	Number of functions: 1
+
+Contract Migrations
+	Complex code? No
+	Number of functions: 3
+
+INFO:Slither:. analyzed (23 contracts)

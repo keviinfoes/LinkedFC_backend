@@ -1,0 +1,783 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [  <!ENTITY quot "&#34;">  <!ENTITY amp "&#38;">  <!ENTITY apos "&#39;">  <!ENTITY lt "&#60;">  <!ENTITY gt "&#62;">  <!ENTITY nbsp "&#160;">  <!ENTITY iexcl "&#161;">  <!ENTITY cent "&#162;">  <!ENTITY pound "&#163;">  <!ENTITY curren "&#164;">  <!ENTITY yen "&#165;">  <!ENTITY brvbar "&#166;">  <!ENTITY sect "&#167;">  <!ENTITY uml "&#168;">  <!ENTITY copy "&#169;">  <!ENTITY ordf "&#170;">  <!ENTITY laquo "&#171;">  <!ENTITY not "&#172;">  <!ENTITY shy "&#173;">  <!ENTITY reg "&#174;">  <!ENTITY macr "&#175;">  <!ENTITY deg "&#176;">  <!ENTITY plusmn "&#177;">  <!ENTITY sup2 "&#178;">  <!ENTITY sup3 "&#179;">  <!ENTITY acute "&#180;">  <!ENTITY micro "&#181;">  <!ENTITY para "&#182;">  <!ENTITY middot "&#183;">  <!ENTITY cedil "&#184;">  <!ENTITY sup1 "&#185;">  <!ENTITY ordm "&#186;">  <!ENTITY raquo "&#187;">  <!ENTITY frac14 "&#188;">  <!ENTITY frac12 "&#189;">  <!ENTITY frac34 "&#190;">  <!ENTITY iquest "&#191;">  <!ENTITY Agrave "&#192;">  <!ENTITY Aacute "&#193;">  <!ENTITY Acirc "&#194;">  <!ENTITY Atilde "&#195;">  <!ENTITY Auml "&#196;">  <!ENTITY Aring "&#197;">  <!ENTITY AElig "&#198;">  <!ENTITY Ccedil "&#199;">  <!ENTITY Egrave "&#200;">  <!ENTITY Eacute "&#201;">  <!ENTITY Ecirc "&#202;">  <!ENTITY Euml "&#203;">  <!ENTITY Igrave "&#204;">  <!ENTITY Iacute "&#205;">  <!ENTITY Icirc "&#206;">  <!ENTITY Iuml "&#207;">  <!ENTITY ETH "&#208;">  <!ENTITY Ntilde "&#209;">  <!ENTITY Ograve "&#210;">  <!ENTITY Oacute "&#211;">  <!ENTITY Ocirc "&#212;">  <!ENTITY Otilde "&#213;">  <!ENTITY Ouml "&#214;">  <!ENTITY times "&#215;">  <!ENTITY Oslash "&#216;">  <!ENTITY Ugrave "&#217;">  <!ENTITY Uacute "&#218;">  <!ENTITY Ucirc "&#219;">  <!ENTITY Uuml "&#220;">  <!ENTITY Yacute "&#221;">  <!ENTITY THORN "&#222;">  <!ENTITY szlig "&#223;">  <!ENTITY agrave "&#224;">  <!ENTITY aacute "&#225;">  <!ENTITY acirc "&#226;">  <!ENTITY atilde "&#227;">  <!ENTITY auml "&#228;">  <!ENTITY aring "&#229;">  <!ENTITY aelig "&#230;">  <!ENTITY ccedil "&#231;">  <!ENTITY egrave "&#232;">  <!ENTITY eacute "&#233;">  <!ENTITY ecirc "&#234;">  <!ENTITY euml "&#235;">  <!ENTITY igrave "&#236;">  <!ENTITY iacute "&#237;">  <!ENTITY icirc "&#238;">  <!ENTITY iuml "&#239;">  <!ENTITY eth "&#240;">  <!ENTITY ntilde "&#241;">  <!ENTITY ograve "&#242;">  <!ENTITY oacute "&#243;">  <!ENTITY ocirc "&#244;">  <!ENTITY otilde "&#245;">  <!ENTITY ouml "&#246;">  <!ENTITY divide "&#247;">  <!ENTITY oslash "&#248;">  <!ENTITY ugrave "&#249;">  <!ENTITY uacute "&#250;">  <!ENTITY ucirc "&#251;">  <!ENTITY uuml "&#252;">  <!ENTITY yacute "&#253;">  <!ENTITY thorn "&#254;">  <!ENTITY yuml "&#255;">  <!ENTITY OElig "&#338;">  <!ENTITY oelig "&#339;">  <!ENTITY Scaron "&#352;">  <!ENTITY scaron "&#353;">  <!ENTITY Yuml "&#376;">  <!ENTITY fnof "&#402;">  <!ENTITY circ "&#710;">  <!ENTITY tilde "&#732;">  <!ENTITY Alpha "&#913;">  <!ENTITY Beta "&#914;">  <!ENTITY Gamma "&#915;">  <!ENTITY Delta "&#916;">  <!ENTITY Epsilon "&#917;">  <!ENTITY Zeta "&#918;">  <!ENTITY Eta "&#919;">  <!ENTITY Theta "&#920;">  <!ENTITY Iota "&#921;">  <!ENTITY Kappa "&#922;">  <!ENTITY Lambda "&#923;">  <!ENTITY Mu "&#924;">  <!ENTITY Nu "&#925;">  <!ENTITY Xi "&#926;">  <!ENTITY Omicron "&#927;">  <!ENTITY Pi "&#928;">  <!ENTITY Rho "&#929;">  <!ENTITY Sigma "&#931;">  <!ENTITY Tau "&#932;">  <!ENTITY Upsilon "&#933;">  <!ENTITY Phi "&#934;">  <!ENTITY Chi "&#935;">  <!ENTITY Psi "&#936;">  <!ENTITY Omega "&#937;">  <!ENTITY alpha "&#945;">  <!ENTITY beta "&#946;">  <!ENTITY gamma "&#947;">  <!ENTITY delta "&#948;">  <!ENTITY epsilon "&#949;">  <!ENTITY zeta "&#950;">  <!ENTITY eta "&#951;">  <!ENTITY theta "&#952;">  <!ENTITY iota "&#953;">  <!ENTITY kappa "&#954;">  <!ENTITY lambda "&#955;">  <!ENTITY mu "&#956;">  <!ENTITY nu "&#957;">  <!ENTITY xi "&#958;">  <!ENTITY omicron "&#959;">  <!ENTITY pi "&#960;">  <!ENTITY rho "&#961;">  <!ENTITY sigmaf "&#962;">  <!ENTITY sigma "&#963;">  <!ENTITY tau "&#964;">  <!ENTITY upsilon "&#965;">  <!ENTITY phi "&#966;">  <!ENTITY chi "&#967;">  <!ENTITY psi "&#968;">  <!ENTITY omega "&#969;">  <!ENTITY thetasym "&#977;">  <!ENTITY upsih "&#978;">  <!ENTITY piv "&#982;">  <!ENTITY ensp "&#8194;">  <!ENTITY emsp "&#8195;">  <!ENTITY thinsp "&#8201;">  <!ENTITY zwnj "&#8204;">  <!ENTITY zwj "&#8205;">  <!ENTITY lrm "&#8206;">  <!ENTITY rlm "&#8207;">  <!ENTITY ndash "&#8211;">  <!ENTITY mdash "&#8212;">  <!ENTITY lsquo "&#8216;">  <!ENTITY rsquo "&#8217;">  <!ENTITY sbquo "&#8218;">  <!ENTITY ldquo "&#8220;">  <!ENTITY rdquo "&#8221;">  <!ENTITY bdquo "&#8222;">  <!ENTITY dagger "&#8224;">  <!ENTITY Dagger "&#8225;">  <!ENTITY bull "&#8226;">  <!ENTITY hellip "&#8230;">  <!ENTITY permil "&#8240;">  <!ENTITY prime "&#8242;">  <!ENTITY Prime "&#8243;">  <!ENTITY lsaquo "&#8249;">  <!ENTITY rsaquo "&#8250;">  <!ENTITY oline "&#8254;">  <!ENTITY frasl "&#8260;">  <!ENTITY euro "&#8364;">  <!ENTITY image "&#8465;">  <!ENTITY weierp "&#8472;">  <!ENTITY real "&#8476;">  <!ENTITY trade "&#8482;">  <!ENTITY alefsym "&#8501;">  <!ENTITY larr "&#8592;">  <!ENTITY uarr "&#8593;">  <!ENTITY rarr "&#8594;">  <!ENTITY darr "&#8595;">  <!ENTITY harr "&#8596;">  <!ENTITY crarr "&#8629;">  <!ENTITY lArr "&#8656;">  <!ENTITY uArr "&#8657;">  <!ENTITY rArr "&#8658;">  <!ENTITY dArr "&#8659;">  <!ENTITY hArr "&#8660;">  <!ENTITY forall "&#8704;">  <!ENTITY part "&#8706;">  <!ENTITY exist "&#8707;">  <!ENTITY empty "&#8709;">  <!ENTITY nabla "&#8711;">  <!ENTITY isin "&#8712;">  <!ENTITY notin "&#8713;">  <!ENTITY ni "&#8715;">  <!ENTITY prod "&#8719;">  <!ENTITY sum "&#8721;">  <!ENTITY minus "&#8722;">  <!ENTITY lowast "&#8727;">  <!ENTITY radic "&#8730;">  <!ENTITY prop "&#8733;">  <!ENTITY infin "&#8734;">  <!ENTITY ang "&#8736;">  <!ENTITY and "&#8743;">  <!ENTITY or "&#8744;">  <!ENTITY cap "&#8745;">  <!ENTITY cup "&#8746;">  <!ENTITY int "&#8747;">  <!ENTITY there4 "&#8756;">  <!ENTITY sim "&#8764;">  <!ENTITY cong "&#8773;">  <!ENTITY asymp "&#8776;">  <!ENTITY ne "&#8800;">  <!ENTITY equiv "&#8801;">  <!ENTITY le "&#8804;">  <!ENTITY ge "&#8805;">  <!ENTITY sub "&#8834;">  <!ENTITY sup "&#8835;">  <!ENTITY nsub "&#8836;">  <!ENTITY sube "&#8838;">  <!ENTITY supe "&#8839;">  <!ENTITY oplus "&#8853;">  <!ENTITY otimes "&#8855;">  <!ENTITY perp "&#8869;">  <!ENTITY sdot "&#8901;">  <!ENTITY lceil "&#8968;">  <!ENTITY rceil "&#8969;">  <!ENTITY lfloor "&#8970;">  <!ENTITY rfloor "&#8971;">  <!ENTITY lang "&#9001;">  <!ENTITY rang "&#9002;">  <!ENTITY loz "&#9674;">  <!ENTITY spades "&#9824;">  <!ENTITY clubs "&#9827;">  <!ENTITY hearts "&#9829;">  <!ENTITY diams "&#9830;"> ]><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0.00 0.00 785.27 1927.00">
+<g id="graph0" class="graph" transform="translate(4,1923) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-1923 781.2657,-1923 781.2657,4 -4,4" style=""></polygon>
+<g id="clust1" class="cluster">
+<title style="">clusterLinkedCOL</title>
+<path fill="#445773" stroke="#445773" d="M20,-564C20,-564 726.6937,-564 726.6937,-564 732.6937,-564 738.6937,-570 738.6937,-576 738.6937,-576 738.6937,-961 738.6937,-961 738.6937,-967 732.6937,-973 726.6937,-973 726.6937,-973 20,-973 20,-973 14,-973 8,-967 8,-961 8,-961 8,-576 8,-576 8,-570 14,-564 20,-564" style=""></path>
+<text text-anchor="middle" x="373.3469" y="-956.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LinkedCOL</text>
+</g>
+<g id="clust2" class="cluster">
+<title style="">clusterIPROX</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M628.9684,-981C628.9684,-981 739.5568,-981 739.5568,-981 745.5568,-981 751.5568,-987 751.5568,-993 751.5568,-993 751.5568,-1100 751.5568,-1100 751.5568,-1106 745.5568,-1112 739.5568,-1112 739.5568,-1112 628.9684,-1112 628.9684,-1112 622.9684,-1112 616.9684,-1106 616.9684,-1100 616.9684,-1100 616.9684,-993 616.9684,-993 616.9684,-987 622.9684,-981 628.9684,-981" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-1095.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IPROX</text>
+</g>
+<g id="clust3" class="cluster">
+<title style="">clusterITAX</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M611.2595,-8C611.2595,-8 757.2657,-8 757.2657,-8 763.2657,-8 769.2657,-14 769.2657,-20 769.2657,-20 769.2657,-127 769.2657,-127 769.2657,-133 763.2657,-139 757.2657,-139 757.2657,-139 611.2595,-139 611.2595,-139 605.2595,-139 599.2595,-133 599.2595,-127 599.2595,-127 599.2595,-20 599.2595,-20 599.2595,-14 605.2595,-8 611.2595,-8" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-122.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">ITAX</text>
+</g>
+<g id="clust4" class="cluster">
+<title style="">clusteramount</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M661.2626,-425C661.2626,-425 707.2626,-425 707.2626,-425 713.2626,-425 719.2626,-431 719.2626,-437 719.2626,-437 719.2626,-544 719.2626,-544 719.2626,-550 713.2626,-556 707.2626,-556 707.2626,-556 661.2626,-556 661.2626,-556 655.2626,-556 649.2626,-550 649.2626,-544 649.2626,-544 649.2626,-437 649.2626,-437 649.2626,-431 655.2626,-425 661.2626,-425" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-539.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">amount</text>
+</g>
+<g id="clust5" class="cluster">
+<title style="">clusternormAmount</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M464.4837,-1497C464.4837,-1497 531.4837,-1497 531.4837,-1497 537.4837,-1497 543.4837,-1503 543.4837,-1509 543.4837,-1509 543.4837,-1562 543.4837,-1562 543.4837,-1568 537.4837,-1574 531.4837,-1574 531.4837,-1574 464.4837,-1574 464.4837,-1574 458.4837,-1574 452.4837,-1568 452.4837,-1562 452.4837,-1562 452.4837,-1509 452.4837,-1509 452.4837,-1503 458.4837,-1497 464.4837,-1497" style=""></path>
+<text text-anchor="middle" x="497.9837" y="-1557.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">normAmount</text>
+</g>
+<g id="clust6" class="cluster">
+<title style="">clusterliq</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M474.4837,-1358C474.4837,-1358 520.4837,-1358 520.4837,-1358 526.4837,-1358 532.4837,-1364 532.4837,-1370 532.4837,-1370 532.4837,-1477 532.4837,-1477 532.4837,-1483 526.4837,-1489 520.4837,-1489 520.4837,-1489 474.4837,-1489 474.4837,-1489 468.4837,-1489 462.4837,-1483 462.4837,-1477 462.4837,-1477 462.4837,-1370 462.4837,-1370 462.4837,-1364 468.4837,-1358 474.4837,-1358" style=""></path>
+<text text-anchor="middle" x="497.4837" y="-1472.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">liq</text>
+</g>
+<g id="clust7" class="cluster">
+<title style="">clustercustodian</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M647.7405,-340C647.7405,-340 720.7846,-340 720.7846,-340 726.7846,-340 732.7846,-346 732.7846,-352 732.7846,-352 732.7846,-405 732.7846,-405 732.7846,-411 726.7846,-417 720.7846,-417 720.7846,-417 647.7405,-417 647.7405,-417 641.7405,-417 635.7405,-411 635.7405,-405 635.7405,-405 635.7405,-352 635.7405,-352 635.7405,-346 641.7405,-340 647.7405,-340" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-400.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">custodian</text>
+</g>
+<g id="clust8" class="cluster">
+<title style="">clusterICUS</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M647.7405,-147C647.7405,-147 720.7846,-147 720.7846,-147 726.7846,-147 732.7846,-153 732.7846,-159 732.7846,-159 732.7846,-320 732.7846,-320 732.7846,-326 726.7846,-332 720.7846,-332 720.7846,-332 647.7405,-332 647.7405,-332 641.7405,-332 635.7405,-326 635.7405,-320 635.7405,-320 635.7405,-159 635.7405,-159 635.7405,-153 641.7405,-147 647.7405,-147" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-315.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">ICUS</text>
+</g>
+<g id="clust9" class="cluster">
+<title style="">clusternewAmountTokens</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M446.4837,-1273C446.4837,-1273 548.4837,-1273 548.4837,-1273 554.4837,-1273 560.4837,-1279 560.4837,-1285 560.4837,-1285 560.4837,-1338 560.4837,-1338 560.4837,-1344 554.4837,-1350 548.4837,-1350 548.4837,-1350 446.4837,-1350 446.4837,-1350 440.4837,-1350 434.4837,-1344 434.4837,-1338 434.4837,-1338 434.4837,-1285 434.4837,-1285 434.4837,-1279 440.4837,-1273 446.4837,-1273" style=""></path>
+<text text-anchor="middle" x="497.4837" y="-1333.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">newAmountTokens</text>
+</g>
+<g id="clust10" class="cluster">
+<title style="">clusterIERC20</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M637.5524,-1575C637.5524,-1575 730.9727,-1575 730.9727,-1575 736.9727,-1575 742.9727,-1581 742.9727,-1587 742.9727,-1587 742.9727,-1640 742.9727,-1640 742.9727,-1646 736.9727,-1652 730.9727,-1652 730.9727,-1652 637.5524,-1652 637.5524,-1652 631.5524,-1652 625.5524,-1646 625.5524,-1640 625.5524,-1640 625.5524,-1587 625.5524,-1587 625.5524,-1581 631.5524,-1575 637.5524,-1575" style=""></path>
+<text text-anchor="middle" x="684.2626" y="-1635.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IERC20</text>
+</g>
+<g id="clust11" class="cluster">
+<title style="">clusteramountTokens</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M460.4837,-1080C460.4837,-1080 535.4837,-1080 535.4837,-1080 541.4837,-1080 547.4837,-1086 547.4837,-1092 547.4837,-1092 547.4837,-1253 547.4837,-1253 547.4837,-1259 541.4837,-1265 535.4837,-1265 535.4837,-1265 460.4837,-1265 460.4837,-1265 454.4837,-1265 448.4837,-1259 448.4837,-1253 448.4837,-1253 448.4837,-1092 448.4837,-1092 448.4837,-1086 454.4837,-1080 460.4837,-1080" style=""></path>
+<text text-anchor="middle" x="497.9837" y="-1248.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">amountTokens</text>
+</g>
+<g id="clust12" class="cluster">
+<title style="">cluster_01</title>
+<polygon fill="#2e3e56" stroke="#000000" points="26.8689,-1782 26.8689,-1911 338.7229,-1911 338.7229,-1782 26.8689,-1782" style=""></polygon>
+<text text-anchor="middle" x="182.7959" y="-1894.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Legend</text>
+</g>
+<!-- LinkedCOL.initialize -->
+<g id="node1" class="node" data-name="LinkedCOL.initialize">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-868" rx="40.5924" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-863.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">initialize</text>
+</g>
+<!-- IPROX.readAddress -->
+<g id="node22" class="node" data-name="IPROX.readAddress">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-1007" rx="55.0266" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-1002.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">readAddress</text>
+</g>
+<!-- LinkedCOL.initialize&#45;&gt;IPROX.readAddress -->
+<g id="edge1" class="edge" data-name="LinkedCOL.initialize->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M142.7028,-873.8535C157.2808,-877.7444 172.6701,-884.2208 183.7379,-895 241.3616,-951.121 358.0773,-1531.4954 423.708,-1578 477.2154,-1615.9143 523.7117,-1623.1634 571.2595,-1578 615.1429,-1536.3172 562.2786,-1081.9127 599.2595,-1034 604.6899,-1026.9644 611.9584,-1021.7263 619.9677,-1017.8335" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="621.3647,-1021.0434 629.2668,-1013.9859 618.6883,-1014.5752 621.3647,-1021.0434" style=""></polygon>
+</g>
+<!-- LinkedCOL.whenNotPaused -->
+<g id="node2" class="node" data-name="LinkedCOL.whenNotPaused">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="175.55070005814542,-750.2269326388889 175.55070005814542,-761.7730673611111 131.21735593719342,-769.9375 68.52053899887058,-769.9375 24.18709997232652,-761.7730673611111 24.18709997232652,-750.2269326388889 68.52053899887058,-742.0625 131.21735593719342,-742.0625 175.55070005814542,-750.2269326388889 " style=""></polygon>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="179.5444994618231,-747.312787215909 179.5444994618231,-764.687212784091 131.72054904154518,-773.9375 68.01735039259181,-773.9375 20.193399972313873,-764.687212784091 20.193399972313873,-747.312787215909 68.01735039259181,-738.0625 131.72054904154518,-738.0625 179.5444994618231,-747.312787215909 " style=""></polygon>
+<text text-anchor="middle" x="99.8689" y="-751.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">whenNotPaused</text>
+</g>
+<!-- IPROX.checkPause -->
+<g id="node23" class="node" data-name="IPROX.checkPause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-1061" rx="52.0964" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-1056.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">checkPause</text>
+</g>
+<!-- LinkedCOL.whenNotPaused&#45;&gt;IPROX.checkPause -->
+<g id="edge2" class="edge" data-name="LinkedCOL.whenNotPaused->IPROX.checkPause">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M163.4032,-771.4273C171.0493,-775.4693 178.1228,-780.5683 183.7379,-787 232.2444,-842.5618 200.3404,-877.84 219.7379,-949 297.028,-1232.5411 185.999,-1405.1886 423.708,-1578 476.7508,-1616.5615 520.177,-1619.1231 571.2595,-1578 648.8632,-1515.5263 676.0811,-1187.8708 682.5885,-1089.1654" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="686.0896,-1089.2589 683.2346,-1079.056 679.1038,-1088.8124 686.0896,-1089.2589" style=""></polygon>
+</g>
+<!-- LinkedCOL.&lt;Fallback&gt; -->
+<g id="node3" class="node" data-name="LinkedCOL.&lt;Fallback&gt;">
+
+<ellipse fill="#ffbdb9" stroke="#a52a2a" stroke-width="3" cx="99.8689" cy="-814" rx="51.2988" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-809.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&lt;Fallback&gt;</text>
+</g>
+<!-- LinkedCOL.updateRate -->
+<g id="node4" class="node" data-name="LinkedCOL.updateRate">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-922" rx="50.3902" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-917.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">updateRate</text>
+</g>
+<!-- LinkedCOL.updateRate&#45;&gt;IPROX.readAddress -->
+<g id="edge3" class="edge" data-name="LinkedCOL.updateRate->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M101.2741,-940.233C110.1167,-1052.6472 159.6378,-1648.4506 219.7379,-1700 279.0308,-1750.8571 514.875,-1754.0638 571.2595,-1700 624.7202,-1648.7396 554.2813,-1092.8442 599.2595,-1034 604.6567,-1026.9389 611.9069,-1021.6868 619.9078,-1017.7876" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="621.3035,-1020.9979 629.2013,-1013.9357 618.6233,-1014.5313 621.3035,-1020.9979" style=""></polygon>
+</g>
+<!-- LinkedCOL.individualCPdata -->
+<g id="node5" class="node" data-name="LinkedCOL.individualCPdata">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-644" rx="74.1263" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-639.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">individualCPdata</text>
+</g>
+<!-- ITAX.viewNormRate -->
+<g id="node24" class="node" data-name="ITAX.viewNormRate">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-34" rx="65.9991" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">viewNormRate</text>
+</g>
+<!-- LinkedCOL.individualCPdata&#45;&gt;ITAX.viewNormRate -->
+<g id="edge4" class="edge" data-name="LinkedCOL.individualCPdata->ITAX.viewNormRate">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M156.6295,-631.5843C166.2534,-627.8901 175.7143,-623.1275 183.7379,-617 186.1625,-615.1483 421.8266,-251.4017 423.708,-249 494.206,-159.0048 502.6198,-122.0728 599.2595,-61 606.3154,-56.5409 614.1689,-52.7625 622.1711,-49.5759" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="623.4227,-52.8448 631.5945,-46.1016 621.0011,-46.277 623.4227,-52.8448" style=""></polygon>
+</g>
+<!-- LinkedCOL.dataTotalCP -->
+<g id="node6" class="node" data-name="LinkedCOL.dataTotalCP">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-590" rx="55.0632" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-585.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">dataTotalCP</text>
+</g>
+<!-- LinkedCOL.dataTotalCP&#45;&gt;ITAX.viewNormRate -->
+<g id="edge5" class="edge" data-name="LinkedCOL.dataTotalCP->ITAX.viewNormRate">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M102.3917,-571.9106C113.1548,-497.2538 157.5399,-214.1536 219.7379,-153 323.4359,-51.0431 501.9031,-32.8205 604.8184,-31.531" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="604.8691,-35.0309 614.8426,-31.4561 604.8167,-28.031 604.8691,-35.0309" style=""></polygon>
+</g>
+<!-- LinkedCOL.openCP -->
+<g id="node7" class="node" data-name="LinkedCOL.openCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-806" rx="37.6721" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-801.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">openCP</text>
+</g>
+<!-- LinkedCOL._getCPdata -->
+<g id="node14" class="node" data-name="LinkedCOL._getCPdata">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-610" rx="51.5534" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-605.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_getCPdata</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge6" class="edge" data-name="LinkedCOL.openCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M344.1235,-801.4515C359.6677,-797.7468 376.3845,-791.0574 387.708,-779 432.279,-731.5401 380.0898,-685.337 423.708,-637 428.4351,-631.7614 434.2646,-627.5375 440.5579,-624.1321" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="442.4563,-627.1084 450.0357,-619.7055 439.4941,-620.766 442.4563,-627.1084" style=""></polygon>
+</g>
+<!-- LinkedCOL._liqArrayAdd -->
+<g id="node15" class="node" data-name="LinkedCOL._liqArrayAdd">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-664" rx="61.348600000000005" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-659.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_liqArrayAdd</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;LinkedCOL._liqArrayAdd -->
+<g id="edge10" class="edge" data-name="LinkedCOL.openCP->LinkedCOL._liqArrayAdd">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M343.7342,-800.5205C359.036,-796.6748 375.6811,-790.1317 387.708,-779 418.7202,-750.296 393.2728,-720.3152 423.708,-691 428.0502,-686.8176 433.0925,-683.2745 438.4636,-680.2747" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="440.31,-683.2675 447.7477,-675.7221 437.2281,-676.9824 440.31,-683.2675" style=""></polygon>
+</g>
+<!-- LinkedCOL._openCP -->
+<g id="node17" class="node" data-name="LinkedCOL._openCP">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-772" rx="42.3288" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-767.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_openCP</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;LinkedCOL._openCP -->
+<g id="edge11" class="edge" data-name="LinkedCOL.openCP->LinkedCOL._openCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M342.4676,-799.2013C371.8653,-794.0428 412.596,-786.8956 444.9294,-781.2219" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="445.8626,-784.6117 455.1071,-779.436 444.6527,-777.7171 445.8626,-784.6117" style=""></polygon>
+</g>
+<!-- amount.mul -->
+<g id="node26" class="node" data-name="amount.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-451" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-446.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;amount.mul -->
+<g id="edge7" class="edge" data-name="LinkedCOL.openCP->amount.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.7717,-802.0291C360.4151,-798.4129 377.031,-791.6335 387.708,-779 459.885,-693.5974 350.8221,-614.7983 423.708,-530 480.2693,-464.1943 589.6926,-452.1425 647.08,-450.5904" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="647.2288,-454.0884 657.1654,-450.4122 647.1051,-447.0895 647.2288,-454.0884" style=""></polygon>
+</g>
+<!-- normAmount.div -->
+<g id="node28" class="node" data-name="normAmount.div">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1523" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1518.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">div</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;normAmount.div -->
+<g id="edge8" class="edge" data-name="LinkedCOL.openCP->normAmount.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.9096,-809.4091C360.7713,-812.9255 377.5106,-819.7823 387.708,-833 477.4308,-949.2967 338.4183,-1373.4141 423.708,-1493 432.4297,-1505.2288 447.0342,-1512.4812 460.9582,-1516.7786" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.3196,-1520.2303 470.883,-1519.4144 462.1164,-1513.4648 460.3196,-1520.2303" style=""></polygon>
+</g>
+<!-- liq.div -->
+<g id="node29" class="node" data-name="liq.div">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1384" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1379.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">div</text>
+</g>
+<!-- LinkedCOL.openCP&#45;&gt;liq.div -->
+<g id="edge9" class="edge" data-name="LinkedCOL.openCP->liq.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.8151,-809.4826C360.6616,-813.0108 377.415,-819.8566 387.708,-833 459.2623,-924.37 355.6374,-1260.0059 423.708,-1354 432.5181,-1366.1653 447.1359,-1373.4081 461.0461,-1377.7155" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.3922,-1381.1634 470.9566,-1380.3615 462.1979,-1374.4003 460.3922,-1381.1634" style=""></polygon>
+</g>
+<!-- LinkedCOL.transfer -->
+<g id="node8" class="node" data-name="LinkedCOL.transfer">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="99.8689" cy="-698" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="99.8689" y="-693.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedCOL._transfer -->
+<g id="node19" class="node" data-name="LinkedCOL._transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="303.7229" cy="-590" rx="41.139" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-585.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_transfer</text>
+</g>
+<!-- LinkedCOL.transfer&#45;&gt;LinkedCOL._transfer -->
+<g id="edge12" class="edge" data-name="LinkedCOL.transfer->LinkedCOL._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M137.9135,-691.4596C153.2565,-687.4391 170.4356,-681.0522 183.7379,-671 206.7505,-653.6099 196.7217,-634.3855 219.7379,-617 229.381,-609.7159 241.0586,-604.3571 252.6002,-600.4286" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="253.6965,-603.7532 262.2156,-597.4543 251.6279,-597.0658 253.6965,-603.7532" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositETHCP -->
+<g id="node9" class="node" data-name="LinkedCOL.depositETHCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-698" rx="65.458" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-693.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">depositETHCP</text>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge13" class="edge" data-name="LinkedCOL.depositETHCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M354.5949,-685.6617C365.9136,-681.8359 377.5564,-677.0019 387.708,-671 406.6525,-659.7995 404.99,-648.5751 423.708,-637 430.6355,-632.7161 438.3457,-628.9615 446.0964,-625.7225" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="447.4891,-628.936 455.5208,-622.0264 444.9332,-622.4192 447.4891,-628.936" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;LinkedCOL._liqArrayAdd -->
+<g id="edge17" class="edge" data-name="LinkedCOL.depositETHCP->LinkedCOL._liqArrayAdd">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M361.3329,-687.8909C383.6829,-683.9691 409.3893,-679.4583 432.403,-675.42" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="433.1788,-678.8374 442.4233,-673.6617 431.9689,-671.9428 433.1788,-678.8374" style=""></polygon>
+</g>
+<!-- LinkedCOL._liqArrayDelete -->
+<g id="node16" class="node" data-name="LinkedCOL._liqArrayDelete">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-718" rx="69.4897" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-713.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_liqArrayDelete</text>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge16" class="edge" data-name="LinkedCOL.depositETHCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M368.5118,-704.6875C384.7287,-706.3614 402.2981,-708.1749 419.0969,-709.9089" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="419.1315,-713.431 429.4381,-710.9763 419.8503,-706.468 419.1315,-713.431" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;IPROX.readAddress -->
+<g id="edge14" class="edge" data-name="LinkedCOL.depositETHCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M362.1486,-708.0272C371.7401,-711.9601 380.7898,-717.4213 387.708,-725 437.1412,-779.1531 372.6993,-833.3283 423.708,-886 470.818,-934.6458 518.1137,-882.0322 571.2595,-924 592.1673,-940.5103 579.0913,-959.5938 599.2595,-977 606.9899,-983.6718 616.3019,-988.8914 625.887,-992.9658" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="624.9247,-996.3457 635.5146,-996.6698 627.4383,-989.8125 624.9247,-996.3457" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;liq.div -->
+<g id="edge15" class="edge" data-name="LinkedCOL.depositETHCP->liq.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M363.6182,-707.3294C372.9444,-711.3377 381.5227,-717.0049 387.708,-725 473.3778,-835.7362 342.2595,-1240.123 423.708,-1354 432.4461,-1366.2171 447.053,-1373.4678 460.9745,-1377.767" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.333,-1381.218 470.8966,-1380.4047 462.1315,-1374.4529 460.333,-1381.218" style=""></polygon>
+</g>
+<!-- custodian.transfer -->
+<g id="node31" class="node" data-name="custodian.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-366" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-361.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedCOL.depositETHCP&#45;&gt;custodian.transfer -->
+<g id="edge18" class="edge" data-name="LinkedCOL.depositETHCP->custodian.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M363.1884,-688.3266C372.5584,-684.3533 381.2626,-678.7869 387.708,-671 470.8033,-570.6094 328.4166,-468.8969 423.708,-380 481.9858,-325.6329 583.2245,-339.3812 640.8486,-353.2984" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="640.1854,-356.7406 650.7377,-355.7923 641.8972,-349.9532 640.1854,-356.7406" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawETHCP -->
+<g id="node10" class="node" data-name="LinkedCOL.withdrawETHCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-752" rx="74.105" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-747.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">withdrawETHCP</text>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge20" class="edge" data-name="LinkedCOL.withdrawETHCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M363.3095,-740.0965C372.2197,-736.3597 380.7392,-731.4501 387.708,-725 418.7202,-696.296 393.2728,-666.3152 423.708,-637 429.0433,-631.861 435.4355,-627.6873 442.1959,-624.3006" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="443.847,-627.3975 451.5783,-620.1534 441.017,-620.9951 443.847,-627.3975" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;LinkedCOL._liqArrayAdd -->
+<g id="edge24" class="edge" data-name="LinkedCOL.withdrawETHCP->LinkedCOL._liqArrayAdd">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M357.2459,-738.7489C367.719,-735.0755 378.3474,-730.5342 387.708,-725 406.6525,-713.7995 404.99,-702.5751 423.708,-691 429.6314,-687.337 436.1269,-684.0611 442.7308,-681.1635" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="444.5043,-684.2193 452.4297,-677.188 441.8494,-677.7423 444.5043,-684.2193" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge21" class="edge" data-name="LinkedCOL.withdrawETHCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M366.0966,-741.055C385.6872,-737.6174 407.4431,-733.7998 427.5232,-730.2763" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="428.2941,-733.6945 437.5387,-728.5188 427.0842,-726.7999 428.2941,-733.6945" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP -->
+<g id="node18" class="node" data-name="LinkedCOL._closeCP">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-826" rx="43.4668" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-821.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_closeCP</text>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;LinkedCOL._closeCP -->
+<g id="edge22" class="edge" data-name="LinkedCOL.withdrawETHCP->LinkedCOL._closeCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M353.172,-766.116C364.6693,-769.8856 376.7474,-774.2483 387.708,-779 404.5011,-786.2803 407.063,-791.3871 423.708,-799 432.6374,-803.0841 442.3791,-807.0064 451.77,-810.5349" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="450.7869,-813.9023 461.3806,-814.0598 453.1974,-807.3304 450.7869,-813.9023" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;IPROX.readAddress -->
+<g id="edge19" class="edge" data-name="LinkedCOL.withdrawETHCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M364.9966,-763.4388C373.4871,-767.2359 381.4337,-772.2859 387.708,-779 433.0447,-827.5146 376.9602,-876.8435 423.708,-924 471.3832,-972.092 508.1714,-937.3899 571.2595,-962 584.4119,-967.1306 586.3433,-971.3009 599.2595,-977 610.2215,-981.8369 622.2297,-986.4639 633.6778,-990.574" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="632.5324,-993.8813 643.1272,-993.8982 634.8554,-987.278 632.5324,-993.8813" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;liq.div -->
+<g id="edge23" class="edge" data-name="LinkedCOL.withdrawETHCP->liq.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M366.9399,-762.8875C374.9598,-766.7683 382.2536,-771.9886 387.708,-779 466.319,-880.0518 348.9494,-1250.0658 423.708,-1354 432.4788,-1366.1937 447.0906,-1373.4408 461.007,-1377.7437" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.3599,-1381.1933 470.9238,-1380.3852 462.1616,-1374.4291 460.3599,-1381.1933" style=""></polygon>
+</g>
+<!-- ICUS.transfer -->
+<g id="node32" class="node" data-name="ICUS.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-173" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-168.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedCOL.withdrawETHCP&#45;&gt;ICUS.transfer -->
+<g id="edge25" class="edge" data-name="LinkedCOL.withdrawETHCP->ICUS.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M366.087,-740.9593C374.3287,-737.1055 381.9133,-731.9337 387.708,-725 465.3411,-632.107 380.1856,-567.9681 423.708,-455 473.1736,-326.6054 488.7087,-281.9179 599.2595,-200 610.1646,-191.9193 623.5677,-186.2069 636.4797,-182.1882" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="637.5397,-185.5257 646.2082,-179.4341 635.633,-178.7904 637.5397,-185.5257" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP -->
+<g id="node11" class="node" data-name="LinkedCOL.depositTokenCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-922" rx="71.2609" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-917.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">depositTokenCP</text>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge28" class="edge" data-name="LinkedCOL.depositTokenCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M357.2501,-909.2791C368.86,-904.1503 379.9652,-896.9871 387.708,-887 456.4886,-798.2819 352.9915,-724.1829 423.708,-637 428.153,-631.52 433.8144,-627.1522 440.019,-623.6709" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="441.9062,-626.6482 449.4198,-619.1784 438.8879,-620.3323 441.9062,-626.6482" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;LinkedCOL._liqArrayAdd -->
+<g id="edge35" class="edge" data-name="LinkedCOL.depositTokenCP->LinkedCOL._liqArrayAdd">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M356.9786,-909.0644C368.5968,-903.9421 379.7738,-896.8357 387.708,-887 443.3161,-818.0647 366.5962,-758.6948 423.708,-691 427.3909,-686.6347 431.8429,-682.975 436.7139,-679.907" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="438.7026,-682.8119 445.8585,-674.9989 435.3922,-676.6441 438.7026,-682.8119" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge34" class="edge" data-name="LinkedCOL.depositTokenCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M356.0838,-908.8727C367.8694,-903.7459 379.3473,-896.6855 387.708,-887 430.2518,-837.7147 380.0898,-793.337 423.708,-745 426.9632,-741.3927 430.7411,-738.2664 434.8332,-735.5573" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="436.6489,-738.5511 443.6073,-730.5617 433.1853,-732.468 436.6489,-738.5511" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;IPROX.readAddress -->
+<g id="edge26" class="edge" data-name="LinkedCOL.depositTokenCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M324.6948,-939.6112C346.6306,-960.9025 383.4303,-994.87 423.708,-1009 487.4239,-1031.3525 565.3311,-1023.9279 619.2702,-1015.614" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="620.0648,-1019.0317 629.3903,-1014.0032 618.9644,-1012.1187 620.0648,-1019.0317" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;IPROX.readAddress -->
+<g id="edge27" class="edge" data-name="LinkedCOL.depositTokenCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M314.2999,-940.2336C333.4049,-965.9376 376.13,-1010.3089 423.708,-1027 496.5549,-1052.5558 587.9519,-1039.1884 640.8708,-1024.7512" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="641.9614,-1028.0796 650.6078,-1021.9566 640.0303,-1021.3512 641.9614,-1028.0796" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;amount.mul -->
+<g id="edge29" class="edge" data-name="LinkedCOL.depositTokenCP->amount.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M357.8639,-909.2226C369.3094,-904.1026 380.1866,-896.9577 387.708,-887 469.7113,-778.4345 342.1768,-691.9205 423.708,-583 466.4381,-525.9153 516.409,-565.5627 571.2595,-520 588.5167,-505.6649 581.3344,-491.4908 599.2595,-478 613.2646,-467.4595 631.5052,-460.9614 647.4968,-456.9917" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="648.6176,-460.3277 657.6136,-454.7311 647.091,-453.4961 648.6176,-460.3277" style=""></polygon>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;liq.div -->
+<g id="edge31" class="edge" data-name="LinkedCOL.depositTokenCP->liq.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M306.6296,-940.4155C318.644,-1014.489 366.4936,-1289.7769 423.708,-1354 433.5514,-1365.0492 448.0586,-1372.1032 461.6098,-1376.5713" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.6472,-1379.9363 471.2278,-1379.3879 462.6146,-1373.2184 460.6472,-1379.9363" style=""></polygon>
+</g>
+<!-- liq.mul -->
+<g id="node30" class="node" data-name="liq.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1438" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1433.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;liq.mul -->
+<g id="edge33" class="edge" data-name="LinkedCOL.depositTokenCP->liq.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M305.8826,-940.124C315.7084,-1019.8012 358.5437,-1338.2263 423.708,-1411 433.2784,-1421.688 447.4396,-1428.1512 460.8032,-1432.0571" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.2253,-1435.5209 470.7777,-1434.573 461.9374,-1428.7335 460.2253,-1435.5209" style=""></polygon>
+</g>
+<!-- ICUS.burn -->
+<g id="node33" class="node" data-name="ICUS.burn">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-281" rx="24.9129" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-276.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">burn</text>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;ICUS.burn -->
+<g id="edge36" class="edge" data-name="LinkedCOL.depositTokenCP->ICUS.burn">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M358.0079,-909.3302C369.4483,-904.2064 380.287,-897.0327 387.708,-887 436.4398,-821.1174 370.4005,-582.2384 423.708,-520 467.7595,-468.5682 524.8969,-531.3587 571.2595,-482 616.4945,-433.8417 562.3357,-390.7911 599.2595,-336 611.6395,-317.6293 632.432,-304.0165 650.3534,-294.9293" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="651.9007,-298.069 659.4036,-290.5886 648.8734,-291.7574 651.9007,-298.069" style=""></polygon>
+</g>
+<!-- newAmountTokens.div -->
+<g id="node35" class="node" data-name="newAmountTokens.div">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1299" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1294.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">div</text>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;newAmountTokens.div -->
+<g id="edge30" class="edge" data-name="LinkedCOL.depositTokenCP->newAmountTokens.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M304.8663,-940.1377C309.3635,-996.5005 330.5145,-1170.7014 423.708,-1269 433.7144,-1279.5546 447.9533,-1286.5005 461.2572,-1291.0214" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.5774,-1294.4726 471.1628,-1294.0255 462.609,-1287.7739 460.5774,-1294.4726" style=""></polygon>
+</g>
+<!-- IERC20.balanceOf -->
+<g id="node36" class="node" data-name="IERC20.balanceOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-1601" rx="46.8586" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-1596.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">balanceOf</text>
+</g>
+<!-- LinkedCOL.depositTokenCP&#45;&gt;IERC20.balanceOf -->
+<g id="edge32" class="edge" data-name="LinkedCOL.depositTokenCP->IERC20.balanceOf">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M305.4362,-940.1407C315.5864,-1045.734 369.2486,-1578.059 423.708,-1624 486.2147,-1676.7296 589.713,-1643.8932 645.6016,-1619.7803" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="647.0817,-1622.9528 654.8061,-1615.7013 644.2455,-1616.553 647.0817,-1622.9528" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP -->
+<g id="node12" class="node" data-name="LinkedCOL.withdrawTokenCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-644" rx="79.9076" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-639.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">withdrawTokenCP</text>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge38" class="edge" data-name="LinkedCOL.withdrawTokenCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M368.7815,-632.5839C391.3768,-628.619 416.5702,-624.1982 438.6349,-620.3264" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="439.2874,-623.7655 448.532,-618.5898 438.0775,-616.8708 439.2874,-623.7655" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;LinkedCOL._liqArrayAdd -->
+<g id="edge43" class="edge" data-name="LinkedCOL.withdrawTokenCP->LinkedCOL._liqArrayAdd">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M379.4684,-651.8185C394.7328,-653.394 410.7331,-655.0456 425.8515,-656.6061" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="425.8508,-660.1246 436.1574,-657.6699 426.5696,-653.1616 425.8508,-660.1246" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge42" class="edge" data-name="LinkedCOL.withdrawTokenCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M354.5011,-658.5536C365.5967,-662.2217 377.169,-666.431 387.708,-671 404.5011,-678.2803 407.063,-683.3871 423.708,-691 430.3593,-694.0421 437.4612,-696.9945 444.5332,-699.7612" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="443.5221,-703.1213 454.1131,-703.4099 446.0137,-696.5797 443.5221,-703.1213" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;IPROX.readAddress -->
+<g id="edge37" class="edge" data-name="LinkedCOL.withdrawTokenCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M366.966,-655.9606C374.7771,-659.6996 382.0043,-664.5946 387.708,-671 442.5425,-732.5807 366.1286,-793.9777 423.708,-853 470.6329,-901.1009 521.9157,-840.3838 571.2595,-886 602.3318,-914.725 569.9541,-946.4744 599.2595,-977 606.1687,-984.1969 614.9081,-989.6698 624.1377,-993.831" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="622.8964,-997.1041 633.481,-997.5703 625.4973,-990.6052 622.8964,-997.1041" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;amount.mul -->
+<g id="edge39" class="edge" data-name="LinkedCOL.withdrawTokenCP->amount.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M367.6455,-632.0658C375.2569,-628.3185 382.2476,-623.4142 387.708,-617 456.7705,-535.8737 342.9126,-449.4494 423.708,-380 473.4391,-337.2525 513.2687,-349.3798 571.2595,-380 590.7725,-390.3032 581.7661,-407.5503 599.2595,-421 613.5406,-431.9799 632.1649,-439.1511 648.3392,-443.7189" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="647.4738,-447.1102 658.0326,-446.2372 649.234,-440.3351 647.4738,-447.1102" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;liq.div -->
+<g id="edge41" class="edge" data-name="LinkedCOL.withdrawTokenCP->liq.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M368.6488,-655.663C376.008,-659.4575 382.6621,-664.4472 387.708,-671 480.4381,-791.4227 335.5681,-1230.1781 423.708,-1354 432.4185,-1366.2368 447.0213,-1373.4904 460.9471,-1377.7866" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.3104,-1381.2387 470.8736,-1380.4211 462.1061,-1374.4729 460.3104,-1381.2387" style=""></polygon>
+</g>
+<!-- ICUS.mint -->
+<g id="node34" class="node" data-name="ICUS.mint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-227" rx="24.9285" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-222.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mint</text>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;ICUS.mint -->
+<g id="edge44" class="edge" data-name="LinkedCOL.withdrawTokenCP->ICUS.mint">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M367.748,-632.1523C375.3439,-628.392 382.303,-623.461 387.708,-617 464.8212,-524.8207 355.4376,-447.9071 423.708,-349 475.7692,-273.576 587.0507,-243.5976 645.9182,-232.6658" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="646.6921,-236.0834 655.9307,-230.897 645.4742,-229.1902 646.6921,-236.0834" style=""></polygon>
+</g>
+<!-- LinkedCOL.withdrawTokenCP&#45;&gt;newAmountTokens.div -->
+<g id="edge40" class="edge" data-name="LinkedCOL.withdrawTokenCP->newAmountTokens.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M368.6031,-655.6983C375.9694,-659.4873 382.6376,-664.4661 387.708,-671 469.3253,-776.1764 346.1002,-1160.8312 423.708,-1269 432.4641,-1281.2042 447.0738,-1288.4529 460.9924,-1292.7541" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.3479,-1296.2044 470.9116,-1295.3939 462.1481,-1289.4398 460.3479,-1296.2044" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP -->
+<g id="node13" class="node" data-name="LinkedCOL.liquidateCP">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="303.7229" cy="-860" rx="52.7149" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="303.7229" y="-855.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">liquidateCP</text>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge47" class="edge" data-name="LinkedCOL.liquidateCP->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M355.8914,-852.6136C367.825,-848.5973 379.4203,-842.4361 387.708,-833 446.155,-766.4546 366.5962,-704.6948 423.708,-637 428.258,-631.6069 433.982,-627.2908 440.2196,-623.8368" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="442.1114,-626.8135 449.649,-619.368 439.1135,-620.4879 442.1114,-626.8135" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge52" class="edge" data-name="LinkedCOL.liquidateCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M342.024,-846.6742C357.785,-842.1576 375.2315,-835.5478 387.708,-824 418.7202,-795.296 393.2728,-765.3152 423.708,-736 424.5184,-735.2194 425.3532,-734.4611 426.21,-733.7247" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="428.4559,-736.4179 434.4491,-727.6811 424.3157,-730.7736 428.4559,-736.4179" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;LinkedCOL._liqArrayDelete -->
+<g id="edge58" class="edge" data-name="LinkedCOL.liquidateCP->LinkedCOL._liqArrayDelete">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M360.2783,-858.1417C370.2762,-854.4486 379.9523,-849.1784 387.708,-842 418.7202,-813.296 393.2728,-783.3152 423.708,-754 431.2267,-746.758 440.8443,-741.4329 450.6336,-737.2853" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="451.9536,-740.5274 460.0089,-733.6454 449.4201,-734.002 451.9536,-740.5274" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;LinkedCOL._closeCP -->
+<g id="edge51" class="edge" data-name="LinkedCOL.liquidateCP->LinkedCOL._closeCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M344.3415,-847.258C372.0581,-841.1248 409.1766,-834.4065 439.9283,-829.8702" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="440.6854,-833.2977 450.0903,-828.4195 439.696,-826.368 440.6854,-833.2977" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;LinkedCOL._closeCP -->
+<g id="edge57" class="edge" data-name="LinkedCOL.liquidateCP->LinkedCOL._closeCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M359.247,-856.4276C388.4289,-852.1757 423.7737,-845.8653 451.4188,-839.9289" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="452.2193,-843.3365 461.2297,-837.7632 450.7103,-836.5011 452.2193,-843.3365" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;IPROX.readAddress -->
+<g id="edge45" class="edge" data-name="LinkedCOL.liquidateCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M356.7038,-866.8556C367.797,-871.578 378.8127,-877.9379 387.708,-886 412.7554,-908.7012 396.2819,-933.2382 423.708,-953 479.368,-993.1057 558.8388,-1001.7215 615.3508,-1003.7364" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="615.525,-1007.243 625.6247,-1004.0419 615.7332,-1000.2461 615.525,-1007.243" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;IPROX.readAddress -->
+<g id="edge46" class="edge" data-name="LinkedCOL.liquidateCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M334.4793,-875.1914C351.7302,-881.6718 372.7264,-890.4218 387.708,-904 412.7554,-926.7012 396.2819,-951.2382 423.708,-971 482.6112,-1013.4426 568.1808,-1020.6186 624.9861,-1017.7819" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="625.4826,-1021.2578 635.2453,-1017.1419 625.0467,-1014.2714 625.4826,-1021.2578" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;ICUS.transfer -->
+<g id="edge53" class="edge" data-name="LinkedCOL.liquidateCP->ICUS.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M330.3083,-843.946C349.3301,-838.4471 373.9199,-832.0165 387.708,-815 437.0706,-754.0793 387.5545,-533.5768 423.708,-464 463.7374,-386.9641 528.2702,-411.4241 571.2595,-336 605.7075,-275.5613 553.3075,-234.2295 599.2595,-182 611.2022,-168.4258 629.9346,-161.6173 646.7783,-159.9346" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="647.0896,-163.4252 656.9442,-159.5347 646.8143,-156.4306 647.0896,-163.4252" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;ICUS.transfer -->
+<g id="edge54" class="edge" data-name="LinkedCOL.liquidateCP->ICUS.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M356.4198,-853.0594C368.3433,-849.0346 379.8015,-842.7577 387.708,-833 437.0706,-772.0793 387.5545,-551.5768 423.708,-482 463.7374,-404.9641 528.2702,-429.4241 571.2595,-354 605.7075,-293.5613 553.3075,-252.2295 599.2595,-200 608.3064,-189.7172 621.2496,-183.3168 634.3164,-179.3436" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="635.4736,-182.6591 644.2704,-176.7542 633.7113,-175.8846 635.4736,-182.6591" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;ICUS.transfer -->
+<g id="edge59" class="edge" data-name="LinkedCOL.liquidateCP->ICUS.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M341.9995,-873.2728C358.5455,-871.523 376.6197,-864.6846 387.708,-851 437.0706,-790.0793 387.5545,-569.5768 423.708,-500 463.7374,-422.9641 528.2702,-447.4241 571.2595,-372 605.7075,-311.5613 553.3075,-270.2295 599.2595,-218 612.4631,-202.9926 633.9658,-196.255 652.04,-190.9548" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="653.0553,-194.3044 661.654,-188.1147 651.0721,-187.5912 653.0553,-194.3044" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;IERC20.balanceOf -->
+<g id="edge50" class="edge" data-name="LinkedCOL.liquidateCP->IERC20.balanceOf">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M359.2018,-864.0721C370.306,-868.934 380.6973,-876.0606 387.708,-886 431.5101,-948.1007 370.931,-1514.3217 423.708,-1569 475.0603,-1622.2023 566.4983,-1617.0305 626.2533,-1608.5349" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="626.9176,-1611.9746 636.2919,-1607.0377 625.885,-1605.0512 626.9176,-1611.9746" style=""></polygon>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;IERC20.balanceOf -->
+<g id="edge55" class="edge" data-name="LinkedCOL.liquidateCP->IERC20.balanceOf">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M339.9657,-873.9532C357.3262,-879.7077 376.6912,-888.381 387.708,-904 431.5101,-966.1007 370.931,-1532.3217 423.708,-1587 479.9375,-1645.2553 584.2286,-1633.5215 642.3601,-1617.9906" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="643.6469,-1621.2637 652.3114,-1615.1663 641.7357,-1614.5296 643.6469,-1621.2637" style=""></polygon>
+</g>
+<!-- amountTokens.mul -->
+<g id="node37" class="node" data-name="amountTokens.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1214" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1209.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;amountTokens.mul -->
+<g id="edge48" class="edge" data-name="LinkedCOL.liquidateCP->amountTokens.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M351.2677,-870.1004C365.022,-875.3127 378.7301,-883.1732 387.708,-895 466.7701,-999.1511 342.3729,-1084.6141 423.708,-1187 432.7876,-1198.4295 447.1697,-1205.0215 460.8338,-1208.8231" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.0332,-1212.2303 470.5705,-1211.1274 461.6453,-1205.4184 460.0332,-1212.2303" style=""></polygon>
+</g>
+<!-- amountTokens.div -->
+<g id="node38" class="node" data-name="amountTokens.div">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1160" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1155.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">div</text>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;amountTokens.div -->
+<g id="edge49" class="edge" data-name="LinkedCOL.liquidateCP->amountTokens.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M351.0737,-870.2498C364.8176,-875.4701 378.5686,-883.2975 387.708,-895 453.5558,-979.3149 356.0205,-1050.1547 423.708,-1133 432.8539,-1144.1941 447.072,-1150.7472 460.5948,-1154.5834" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="460.1631,-1158.0794 470.7048,-1157.0192 461.8028,-1151.2742 460.1631,-1158.0794" style=""></polygon>
+</g>
+<!-- amountTokens.sub -->
+<g id="node39" class="node" data-name="amountTokens.sub">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="497.4837" cy="-1106" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="497.4837" y="-1101.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sub</text>
+</g>
+<!-- LinkedCOL.liquidateCP&#45;&gt;amountTokens.sub -->
+<g id="edge56" class="edge" data-name="LinkedCOL.liquidateCP->amountTokens.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M349.7161,-870.853C363.5503,-876.119 377.6969,-883.821 387.708,-895 425.7072,-937.4324 396.8401,-967.7749 423.708,-1018 437.0822,-1043.0009 458.3657,-1067.3829 474.643,-1084.1176" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="472.1919,-1086.6165 481.7231,-1091.2432 477.1575,-1081.6826 472.1919,-1086.6165" style=""></polygon>
+</g>
+<!-- ITAX.updateNormRate -->
+<g id="node25" class="node" data-name="ITAX.updateNormRate">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-88" rx="72.9437" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-83.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">updateNormRate</text>
+</g>
+<!-- LinkedCOL._getCPdata&#45;&gt;ITAX.updateNormRate -->
+<g id="edge60" class="edge" data-name="LinkedCOL._getCPdata->ITAX.updateNormRate">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M499.5566,-592.0012C508.6252,-515.6389 546.7131,-218.9004 599.2595,-143 609.0364,-128.8778 623.7347,-117.5231 638.1728,-108.8808" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="640.0959,-111.8144 647.0826,-103.8497 636.654,-105.719 640.0959,-111.8144" style=""></polygon>
+</g>
+<!-- LinkedCOL.totalData -->
+<g id="node20" class="node" data-name="LinkedCOL.totalData">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-799" rx="42.2999" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-794.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">totalData</text>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;LinkedCOL.totalData -->
+<g id="edge64" class="edge" data-name="LinkedCOL._openCP->LinkedCOL.totalData">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M541.2751,-778.3303C567.9718,-782.1895 602.2862,-787.1498 630.6077,-791.2439" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="630.3477,-794.7426 640.7456,-792.7094 631.3492,-787.8146 630.3477,-794.7426" style=""></polygon>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;IPROX.readAddress -->
+<g id="edge61" class="edge" data-name="LinkedCOL._openCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M543.9411,-771.9219C554.2826,-775.6286 564.2443,-781.4654 571.2595,-790 622.1118,-851.8665 548.0506,-906.4282 599.2595,-968 608.1977,-978.7471 621.2467,-985.6468 634.4498,-990.4578" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="633.4413,-993.8105 644.0343,-993.617 635.6326,-987.1624 633.4413,-993.8105" style=""></polygon>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;IPROX.readAddress -->
+<g id="edge62" class="edge" data-name="LinkedCOL._openCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M530.9077,-784.7063C545.4004,-789.2039 561.2997,-795.883 571.2595,-808 622.1118,-869.8665 548.0506,-924.4282 599.2595,-986 604.0065,-991.7077 609.9131,-996.3302 616.3864,-1000.0165" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="614.9882,-1003.2287 625.5092,-1004.4768 618.0628,-996.9401 614.9882,-1003.2287" style=""></polygon>
+</g>
+<!-- amount.div -->
+<g id="node27" class="node" data-name="amount.div">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-505" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-500.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">div</text>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;amount.div -->
+<g id="edge63" class="edge" data-name="LinkedCOL._openCP->amount.div">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M540.1332,-764.7874C551.8139,-760.8009 563.4062,-754.6111 571.2595,-745 623.8773,-680.6049 554.1495,-629.8602 599.2595,-560 611.52,-541.0126 632.9097,-527.2233 651.1643,-518.2007" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="652.7745,-521.3117 660.3595,-513.9146 649.8171,-514.9671 652.7745,-521.3117" style=""></polygon>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;custodian.transfer -->
+<g id="edge65" class="edge" data-name="LinkedCOL._openCP->custodian.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M540.5215,-765.0945C552.2155,-761.1185 563.7177,-754.8574 571.2595,-745 615.1725,-687.6035 562.0196,-482.9347 599.2595,-421 609.5002,-403.9684 627.2755,-391.2528 643.9327,-382.363" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="645.6419,-385.4215 653.0167,-377.8147 642.5079,-379.1622 645.6419,-385.4215" style=""></polygon>
+</g>
+<!-- LinkedCOL._openCP&#45;&gt;ICUS.mint -->
+<g id="edge66" class="edge" data-name="LinkedCOL._openCP->ICUS.mint">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M540.7021,-765.2306C552.4023,-761.2593 563.8626,-754.9666 571.2595,-745 636.3912,-657.2401 532.2441,-340.3301 599.2595,-254 610.1889,-239.9206 628.4756,-233.0438 645.2936,-229.7389" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="646.1731,-233.1429 655.4964,-228.1103 645.0697,-226.2304 646.1731,-233.1429" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;LinkedCOL.totalData -->
+<g id="edge70" class="edge" data-name="LinkedCOL._closeCP->LinkedCOL.totalData">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M542.2219,-819.5328C568.7509,-815.6979 602.5467,-810.8125 630.5169,-806.7693" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="631.1375,-810.216 640.5339,-805.3212 630.136,-803.288 631.1375,-810.216" style=""></polygon>
+</g>
+<!-- LinkedCOL.userCP -->
+<g id="node21" class="node" data-name="LinkedCOL.userCP">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="684.2626" cy="-590" rx="34.7988" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="684.2626" y="-585.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">userCP</text>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;LinkedCOL.userCP -->
+<g id="edge71" class="edge" data-name="LinkedCOL._closeCP->LinkedCOL.userCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M538.6033,-816.7929C550.0994,-812.7499 561.9744,-807.0291 571.2595,-799 629.0305,-749.0437 662.3474,-662.0199 676.363,-617.6808" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="679.7824,-618.4677 679.3643,-607.8811 673.0893,-616.4178 679.7824,-618.4677" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;IPROX.readAddress -->
+<g id="edge67" class="edge" data-name="LinkedCOL._closeCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M543.9904,-829.7022C554.2047,-834.0927 564.0957,-840.431 571.2595,-849 606.1085,-890.685 562.9736,-927.5595 599.2595,-968 608.6788,-978.4978 622.0013,-985.3223 635.3112,-990.1515" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="634.3514,-993.5204 644.9447,-993.3392 636.5505,-986.8748 634.3514,-993.5204" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;IPROX.readAddress -->
+<g id="edge68" class="edge" data-name="LinkedCOL._closeCP->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M527.2437,-840.1332C542.4995,-845.7952 560.1557,-853.7181 571.2595,-867 606.1085,-908.685 562.9736,-945.5595 599.2595,-986 604.1455,-991.4455 610.0818,-995.9025 616.5217,-999.4958" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="615.0384,-1002.6662 625.5644,-1003.872 618.0877,-996.3653 615.0384,-1002.6662" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;ICUS.burn -->
+<g id="edge72" class="edge" data-name="LinkedCOL._closeCP->ICUS.burn">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M541.4518,-818.9495C552.8823,-814.9647 564.0085,-808.7352 571.2595,-799 632.8316,-716.3337 547.2882,-425.0159 599.2595,-336 610.5044,-316.7399 631.484,-303.0607 649.7861,-294.1617" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="651.4001,-297.2725 659.0472,-289.9395 648.4963,-290.9032 651.4001,-297.2725" style=""></polygon>
+</g>
+<!-- LinkedCOL._closeCP&#45;&gt;IERC20.balanceOf -->
+<g id="edge69" class="edge" data-name="LinkedCOL._closeCP->IERC20.balanceOf">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M503.3222,-844.0645C516.4538,-885.0415 548.9131,-988.2956 571.2595,-1076 619.188,-1264.1084 663.9034,-1493.5087 678.9289,-1572.6065" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="675.5501,-1573.5757 680.8493,-1582.7501 682.428,-1572.2736 675.5501,-1573.5757" style=""></polygon>
+</g>
+<!-- LinkedCOL._transfer&#45;&gt;LinkedCOL._getCPdata -->
+<g id="edge73" class="edge" data-name="LinkedCOL._transfer->LinkedCOL._getCPdata">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M347.6902,-594.5383C373.2471,-597.1763 405.8905,-600.5457 434.1767,-603.4654" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="434.0731,-606.9733 444.3796,-604.5186 434.7918,-600.0103 434.0731,-606.9733" style=""></polygon>
+</g>
+<!-- LinkedCOL._transfer&#45;&gt;LinkedCOL.userCP -->
+<g id="edge74" class="edge" data-name="LinkedCOL._transfer->LinkedCOL.userCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M340.7239,-579.5593C364.4305,-576.6803 395.8635,-574.8115 423.708,-574 489.2586,-572.0895 505.7124,-571.9718 571.2595,-574 594.5593,-574.721 620.5228,-576.2762 641.6817,-578.6328" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="641.2987,-582.1119 651.6501,-579.8539 642.1499,-575.1639 641.2987,-582.1119" style=""></polygon>
+</g>
+<!-- LinkedCOL._transfer&#45;&gt;LinkedCOL.userCP -->
+<g id="edge75" class="edge" data-name="LinkedCOL._transfer->LinkedCOL.userCP">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M347.5769,-594.8765C370.2853,-594.3396 398.4706,-592.7356 423.708,-592 489.2586,-590.0895 505.7124,-589.9718 571.2595,-592 592.6745,-592.6626 616.3396,-594.03 636.4563,-594.6872" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="636.5321,-598.1904 646.6219,-594.9586 636.719,-591.1929 636.5321,-598.1904" style=""></polygon>
+</g>
+<!-- key -->
+<g id="node40" class="node" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="160.80640001869202,-1873.9375 38.93140001869202,-1873.9375 38.93140001869202,-1794.0625 160.80640001869202,-1794.0625 160.80640001869202,-1873.9375 " style=""></polygon>
+<text text-anchor="start" x="84.5049" y="-1859.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Internal Call</text>
+<text text-anchor="start" x="80.6129" y="-1839.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">External Call</text>
+<text text-anchor="start" x="58.0743" y="-1819.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Defined Contract</text>
+<text text-anchor="start" x="44.4716" y="-1799.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node41" class="node" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="326.6604000587746,-1873.9375 280.7854000587746,-1873.9375 280.7854000587746,-1794.0625 326.6604000587746,-1794.0625 326.6604000587746,-1873.9375 " style=""></polygon>
+<text text-anchor="start" x="291.482" y="-1859.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="291.482" y="-1839.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#445773" stroke="transparent" points="293.785400113351,-1818.0625 293.785400113351,-1829.9375 313.660400113351,-1829.9375 313.660400113351,-1818.0625 293.785400113351,-1818.0625 " style=""></polygon>
+<text text-anchor="start" x="291.482" y="-1819.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#e8726d" points="295.78540013224284,-1800.0625 295.78540013224284,-1807.9375 311.66040013224284,-1807.9375 311.66040013224284,-1800.0625 295.78540013224284,-1800.0625 " style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge76" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.8689,-1864C212.3401,-1864 228.7268,-1864 279.4651,-1864" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="279.723,-1867.5001 289.7229,-1864 279.7229,-1860.5001 279.723,-1867.5001" style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge77" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M156.8689,-1844C212.3401,-1844 228.7268,-1844 279.4651,-1844" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="279.723,-1847.5001 289.7229,-1844 279.7229,-1840.5001 279.723,-1847.5001" style=""></polygon>
+</g>
+</g>
+</svg>

@@ -1,0 +1,625 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [  <!ENTITY quot "&#34;">  <!ENTITY amp "&#38;">  <!ENTITY apos "&#39;">  <!ENTITY lt "&#60;">  <!ENTITY gt "&#62;">  <!ENTITY nbsp "&#160;">  <!ENTITY iexcl "&#161;">  <!ENTITY cent "&#162;">  <!ENTITY pound "&#163;">  <!ENTITY curren "&#164;">  <!ENTITY yen "&#165;">  <!ENTITY brvbar "&#166;">  <!ENTITY sect "&#167;">  <!ENTITY uml "&#168;">  <!ENTITY copy "&#169;">  <!ENTITY ordf "&#170;">  <!ENTITY laquo "&#171;">  <!ENTITY not "&#172;">  <!ENTITY shy "&#173;">  <!ENTITY reg "&#174;">  <!ENTITY macr "&#175;">  <!ENTITY deg "&#176;">  <!ENTITY plusmn "&#177;">  <!ENTITY sup2 "&#178;">  <!ENTITY sup3 "&#179;">  <!ENTITY acute "&#180;">  <!ENTITY micro "&#181;">  <!ENTITY para "&#182;">  <!ENTITY middot "&#183;">  <!ENTITY cedil "&#184;">  <!ENTITY sup1 "&#185;">  <!ENTITY ordm "&#186;">  <!ENTITY raquo "&#187;">  <!ENTITY frac14 "&#188;">  <!ENTITY frac12 "&#189;">  <!ENTITY frac34 "&#190;">  <!ENTITY iquest "&#191;">  <!ENTITY Agrave "&#192;">  <!ENTITY Aacute "&#193;">  <!ENTITY Acirc "&#194;">  <!ENTITY Atilde "&#195;">  <!ENTITY Auml "&#196;">  <!ENTITY Aring "&#197;">  <!ENTITY AElig "&#198;">  <!ENTITY Ccedil "&#199;">  <!ENTITY Egrave "&#200;">  <!ENTITY Eacute "&#201;">  <!ENTITY Ecirc "&#202;">  <!ENTITY Euml "&#203;">  <!ENTITY Igrave "&#204;">  <!ENTITY Iacute "&#205;">  <!ENTITY Icirc "&#206;">  <!ENTITY Iuml "&#207;">  <!ENTITY ETH "&#208;">  <!ENTITY Ntilde "&#209;">  <!ENTITY Ograve "&#210;">  <!ENTITY Oacute "&#211;">  <!ENTITY Ocirc "&#212;">  <!ENTITY Otilde "&#213;">  <!ENTITY Ouml "&#214;">  <!ENTITY times "&#215;">  <!ENTITY Oslash "&#216;">  <!ENTITY Ugrave "&#217;">  <!ENTITY Uacute "&#218;">  <!ENTITY Ucirc "&#219;">  <!ENTITY Uuml "&#220;">  <!ENTITY Yacute "&#221;">  <!ENTITY THORN "&#222;">  <!ENTITY szlig "&#223;">  <!ENTITY agrave "&#224;">  <!ENTITY aacute "&#225;">  <!ENTITY acirc "&#226;">  <!ENTITY atilde "&#227;">  <!ENTITY auml "&#228;">  <!ENTITY aring "&#229;">  <!ENTITY aelig "&#230;">  <!ENTITY ccedil "&#231;">  <!ENTITY egrave "&#232;">  <!ENTITY eacute "&#233;">  <!ENTITY ecirc "&#234;">  <!ENTITY euml "&#235;">  <!ENTITY igrave "&#236;">  <!ENTITY iacute "&#237;">  <!ENTITY icirc "&#238;">  <!ENTITY iuml "&#239;">  <!ENTITY eth "&#240;">  <!ENTITY ntilde "&#241;">  <!ENTITY ograve "&#242;">  <!ENTITY oacute "&#243;">  <!ENTITY ocirc "&#244;">  <!ENTITY otilde "&#245;">  <!ENTITY ouml "&#246;">  <!ENTITY divide "&#247;">  <!ENTITY oslash "&#248;">  <!ENTITY ugrave "&#249;">  <!ENTITY uacute "&#250;">  <!ENTITY ucirc "&#251;">  <!ENTITY uuml "&#252;">  <!ENTITY yacute "&#253;">  <!ENTITY thorn "&#254;">  <!ENTITY yuml "&#255;">  <!ENTITY OElig "&#338;">  <!ENTITY oelig "&#339;">  <!ENTITY Scaron "&#352;">  <!ENTITY scaron "&#353;">  <!ENTITY Yuml "&#376;">  <!ENTITY fnof "&#402;">  <!ENTITY circ "&#710;">  <!ENTITY tilde "&#732;">  <!ENTITY Alpha "&#913;">  <!ENTITY Beta "&#914;">  <!ENTITY Gamma "&#915;">  <!ENTITY Delta "&#916;">  <!ENTITY Epsilon "&#917;">  <!ENTITY Zeta "&#918;">  <!ENTITY Eta "&#919;">  <!ENTITY Theta "&#920;">  <!ENTITY Iota "&#921;">  <!ENTITY Kappa "&#922;">  <!ENTITY Lambda "&#923;">  <!ENTITY Mu "&#924;">  <!ENTITY Nu "&#925;">  <!ENTITY Xi "&#926;">  <!ENTITY Omicron "&#927;">  <!ENTITY Pi "&#928;">  <!ENTITY Rho "&#929;">  <!ENTITY Sigma "&#931;">  <!ENTITY Tau "&#932;">  <!ENTITY Upsilon "&#933;">  <!ENTITY Phi "&#934;">  <!ENTITY Chi "&#935;">  <!ENTITY Psi "&#936;">  <!ENTITY Omega "&#937;">  <!ENTITY alpha "&#945;">  <!ENTITY beta "&#946;">  <!ENTITY gamma "&#947;">  <!ENTITY delta "&#948;">  <!ENTITY epsilon "&#949;">  <!ENTITY zeta "&#950;">  <!ENTITY eta "&#951;">  <!ENTITY theta "&#952;">  <!ENTITY iota "&#953;">  <!ENTITY kappa "&#954;">  <!ENTITY lambda "&#955;">  <!ENTITY mu "&#956;">  <!ENTITY nu "&#957;">  <!ENTITY xi "&#958;">  <!ENTITY omicron "&#959;">  <!ENTITY pi "&#960;">  <!ENTITY rho "&#961;">  <!ENTITY sigmaf "&#962;">  <!ENTITY sigma "&#963;">  <!ENTITY tau "&#964;">  <!ENTITY upsilon "&#965;">  <!ENTITY phi "&#966;">  <!ENTITY chi "&#967;">  <!ENTITY psi "&#968;">  <!ENTITY omega "&#969;">  <!ENTITY thetasym "&#977;">  <!ENTITY upsih "&#978;">  <!ENTITY piv "&#982;">  <!ENTITY ensp "&#8194;">  <!ENTITY emsp "&#8195;">  <!ENTITY thinsp "&#8201;">  <!ENTITY zwnj "&#8204;">  <!ENTITY zwj "&#8205;">  <!ENTITY lrm "&#8206;">  <!ENTITY rlm "&#8207;">  <!ENTITY ndash "&#8211;">  <!ENTITY mdash "&#8212;">  <!ENTITY lsquo "&#8216;">  <!ENTITY rsquo "&#8217;">  <!ENTITY sbquo "&#8218;">  <!ENTITY ldquo "&#8220;">  <!ENTITY rdquo "&#8221;">  <!ENTITY bdquo "&#8222;">  <!ENTITY dagger "&#8224;">  <!ENTITY Dagger "&#8225;">  <!ENTITY bull "&#8226;">  <!ENTITY hellip "&#8230;">  <!ENTITY permil "&#8240;">  <!ENTITY prime "&#8242;">  <!ENTITY Prime "&#8243;">  <!ENTITY lsaquo "&#8249;">  <!ENTITY rsaquo "&#8250;">  <!ENTITY oline "&#8254;">  <!ENTITY frasl "&#8260;">  <!ENTITY euro "&#8364;">  <!ENTITY image "&#8465;">  <!ENTITY weierp "&#8472;">  <!ENTITY real "&#8476;">  <!ENTITY trade "&#8482;">  <!ENTITY alefsym "&#8501;">  <!ENTITY larr "&#8592;">  <!ENTITY uarr "&#8593;">  <!ENTITY rarr "&#8594;">  <!ENTITY darr "&#8595;">  <!ENTITY harr "&#8596;">  <!ENTITY crarr "&#8629;">  <!ENTITY lArr "&#8656;">  <!ENTITY uArr "&#8657;">  <!ENTITY rArr "&#8658;">  <!ENTITY dArr "&#8659;">  <!ENTITY hArr "&#8660;">  <!ENTITY forall "&#8704;">  <!ENTITY part "&#8706;">  <!ENTITY exist "&#8707;">  <!ENTITY empty "&#8709;">  <!ENTITY nabla "&#8711;">  <!ENTITY isin "&#8712;">  <!ENTITY notin "&#8713;">  <!ENTITY ni "&#8715;">  <!ENTITY prod "&#8719;">  <!ENTITY sum "&#8721;">  <!ENTITY minus "&#8722;">  <!ENTITY lowast "&#8727;">  <!ENTITY radic "&#8730;">  <!ENTITY prop "&#8733;">  <!ENTITY infin "&#8734;">  <!ENTITY ang "&#8736;">  <!ENTITY and "&#8743;">  <!ENTITY or "&#8744;">  <!ENTITY cap "&#8745;">  <!ENTITY cup "&#8746;">  <!ENTITY int "&#8747;">  <!ENTITY there4 "&#8756;">  <!ENTITY sim "&#8764;">  <!ENTITY cong "&#8773;">  <!ENTITY asymp "&#8776;">  <!ENTITY ne "&#8800;">  <!ENTITY equiv "&#8801;">  <!ENTITY le "&#8804;">  <!ENTITY ge "&#8805;">  <!ENTITY sub "&#8834;">  <!ENTITY sup "&#8835;">  <!ENTITY nsub "&#8836;">  <!ENTITY sube "&#8838;">  <!ENTITY supe "&#8839;">  <!ENTITY oplus "&#8853;">  <!ENTITY otimes "&#8855;">  <!ENTITY perp "&#8869;">  <!ENTITY sdot "&#8901;">  <!ENTITY lceil "&#8968;">  <!ENTITY rceil "&#8969;">  <!ENTITY lfloor "&#8970;">  <!ENTITY rfloor "&#8971;">  <!ENTITY lang "&#9001;">  <!ENTITY rang "&#9002;">  <!ENTITY loz "&#9674;">  <!ENTITY spades "&#9824;">  <!ENTITY clubs "&#9827;">  <!ENTITY hearts "&#9829;">  <!ENTITY diams "&#9830;"> ]><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0.00 0.00 911.07 1602.00">
+<g id="graph0" class="graph" transform="translate(4,1598) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-1598 907.0749,-1598 907.0749,4 -4,4" style=""></polygon>
+<g id="clust1" class="cluster">
+<title style="">clusterLinkedTKN</title>
+<path fill="#445773" stroke="#445773" d="M20,-662C20,-662 724.7426,-662 724.7426,-662 730.7426,-662 736.7426,-668 736.7426,-674 736.7426,-674 736.7426,-1437 736.7426,-1437 736.7426,-1443 730.7426,-1449 724.7426,-1449 724.7426,-1449 20,-1449 20,-1449 14,-1449 8,-1443 8,-1437 8,-1437 8,-674 8,-674 8,-668 14,-662 20,-662" style=""></path>
+<text text-anchor="middle" x="372.3713" y="-1432.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LinkedTKN</text>
+</g>
+<g id="clust2" class="cluster">
+<title style="">clusterIPROX</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M772.4866,-828C772.4866,-828 883.0749,-828 883.0749,-828 889.0749,-828 895.0749,-834 895.0749,-840 895.0749,-840 895.0749,-1001 895.0749,-1001 895.0749,-1007 889.0749,-1013 883.0749,-1013 883.0749,-1013 772.4866,-1013 772.4866,-1013 766.4866,-1013 760.4866,-1007 760.4866,-1001 760.4866,-1001 760.4866,-840 760.4866,-840 760.4866,-834 766.4866,-828 772.4866,-828" style=""></path>
+<text text-anchor="middle" x="827.7808" y="-996.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IPROX</text>
+</g>
+<g id="clust3" class="cluster">
+<title style="">clusternewBlockNum</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M789.7808,-408C789.7808,-408 865.7808,-408 865.7808,-408 871.7808,-408 877.7808,-414 877.7808,-420 877.7808,-420 877.7808,-473 877.7808,-473 877.7808,-479 871.7808,-485 865.7808,-485 865.7808,-485 789.7808,-485 789.7808,-485 783.7808,-485 777.7808,-479 777.7808,-473 777.7808,-473 777.7808,-420 777.7808,-420 777.7808,-414 783.7808,-408 789.7808,-408" style=""></path>
+<text text-anchor="middle" x="827.7808" y="-468.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">newBlockNum</text>
+</g>
+<g id="clust4" class="cluster">
+<title style="">clusterbaseRate</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M800.9012,-670C800.9012,-670 854.6604,-670 854.6604,-670 860.6604,-670 866.6604,-676 866.6604,-682 866.6604,-682 866.6604,-735 866.6604,-735 866.6604,-741 860.6604,-747 854.6604,-747 854.6604,-747 800.9012,-747 800.9012,-747 794.9012,-747 788.9012,-741 788.9012,-735 788.9012,-735 788.9012,-682 788.9012,-682 788.9012,-676 794.9012,-670 800.9012,-670" style=""></path>
+<text text-anchor="middle" x="827.7808" y="-730.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">baseRate</text>
+</g>
+<g id="clust5" class="cluster">
+<title style="">cluster_totalSupply</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M796.7808,-126C796.7808,-126 859.7808,-126 859.7808,-126 865.7808,-126 871.7808,-132 871.7808,-138 871.7808,-138 871.7808,-299 871.7808,-299 871.7808,-305 865.7808,-311 859.7808,-311 859.7808,-311 796.7808,-311 796.7808,-311 790.7808,-311 784.7808,-305 784.7808,-299 784.7808,-299 784.7808,-138 784.7808,-138 784.7808,-132 790.7808,-126 796.7808,-126" style=""></path>
+<text text-anchor="middle" x="828.2808" y="-294.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">_totalSupply</text>
+</g>
+<g id="clust6" class="cluster">
+<title style="">clusterICOL</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M617.8615,-577C617.8615,-577 728.4866,-577 728.4866,-577 734.4866,-577 740.4866,-583 740.4866,-589 740.4866,-589 740.4866,-642 740.4866,-642 740.4866,-648 734.4866,-654 728.4866,-654 728.4866,-654 617.8615,-654 617.8615,-654 611.8615,-654 605.8615,-648 605.8615,-642 605.8615,-642 605.8615,-589 605.8615,-589 605.8615,-583 611.8615,-577 617.8615,-577" style=""></path>
+<text text-anchor="middle" x="673.174" y="-637.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">ICOL</text>
+</g>
+<g id="clust7" class="cluster">
+<title style="">cluster_totalTokensCP</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M632.174,-492C632.174,-492 714.174,-492 714.174,-492 720.174,-492 726.174,-498 726.174,-504 726.174,-504 726.174,-557 726.174,-557 726.174,-563 720.174,-569 714.174,-569 714.174,-569 632.174,-569 632.174,-569 626.174,-569 620.174,-563 620.174,-557 620.174,-557 620.174,-504 620.174,-504 620.174,-498 626.174,-492 632.174,-492" style=""></path>
+<text text-anchor="middle" x="673.174" y="-552.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">_totalTokensCP</text>
+</g>
+<g id="clust8" class="cluster">
+<title style="">clusterIEXC</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M260.907,-8C260.907,-8 341.4835,-8 341.4835,-8 347.4835,-8 353.4835,-14 353.4835,-20 353.4835,-20 353.4835,-73 353.4835,-73 353.4835,-79 347.4835,-85 341.4835,-85 341.4835,-85 260.907,-85 260.907,-85 254.907,-85 248.907,-79 248.907,-73 248.907,-73 248.907,-20 248.907,-20 248.907,-14 254.907,-8 260.907,-8" style=""></path>
+<text text-anchor="middle" x="301.1952" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IEXC</text>
+</g>
+<g id="clust9" class="cluster">
+<title style="">cluster_custodian</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M459.5079,-577C459.5079,-577 532.552,-577 532.552,-577 538.552,-577 544.552,-583 544.552,-589 544.552,-589 544.552,-642 544.552,-642 544.552,-648 538.552,-654 532.552,-654 532.552,-654 459.5079,-654 459.5079,-654 453.5079,-654 447.5079,-648 447.5079,-642 447.5079,-642 447.5079,-589 447.5079,-589 447.5079,-583 453.5079,-577 459.5079,-577" style=""></path>
+<text text-anchor="middle" x="496.0299" y="-637.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">_custodian</text>
+</g>
+<g id="clust10" class="cluster">
+<title style="">clusteramount</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M473.0299,-492C473.0299,-492 519.0299,-492 519.0299,-492 525.0299,-492 531.0299,-498 531.0299,-504 531.0299,-504 531.0299,-557 531.0299,-557 531.0299,-563 525.0299,-569 519.0299,-569 519.0299,-569 473.0299,-569 473.0299,-569 467.0299,-569 461.0299,-563 461.0299,-557 461.0299,-557 461.0299,-504 461.0299,-504 461.0299,-498 467.0299,-492 473.0299,-492" style=""></path>
+<text text-anchor="middle" x="496.0299" y="-552.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">amount</text>
+</g>
+<g id="clust11" class="cluster">
+<title style="">clustersender</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M459.5079,-407C459.5079,-407 532.552,-407 532.552,-407 538.552,-407 544.552,-413 544.552,-419 544.552,-419 544.552,-472 544.552,-472 544.552,-478 538.552,-484 532.552,-484 532.552,-484 459.5079,-484 459.5079,-484 453.5079,-484 447.5079,-478 447.5079,-472 447.5079,-472 447.5079,-419 447.5079,-419 447.5079,-413 453.5079,-407 459.5079,-407" style=""></path>
+<text text-anchor="middle" x="496.0299" y="-467.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">sender</text>
+</g>
+<g id="clust12" class="cluster">
+<title style="">clustervalue</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M473.0299,-322C473.0299,-322 519.0299,-322 519.0299,-322 525.0299,-322 531.0299,-328 531.0299,-334 531.0299,-334 531.0299,-387 531.0299,-387 531.0299,-393 525.0299,-399 519.0299,-399 519.0299,-399 473.0299,-399 473.0299,-399 467.0299,-399 461.0299,-393 461.0299,-387 461.0299,-387 461.0299,-334 461.0299,-334 461.0299,-328 467.0299,-322 473.0299,-322" style=""></path>
+<text text-anchor="middle" x="496.0299" y="-382.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">value</text>
+</g>
+<g id="clust13" class="cluster">
+<title style="">clusterpendingClaim</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M461.0299,-237C461.0299,-237 532.0299,-237 532.0299,-237 538.0299,-237 544.0299,-243 544.0299,-249 544.0299,-249 544.0299,-302 544.0299,-302 544.0299,-308 538.0299,-314 532.0299,-314 532.0299,-314 461.0299,-314 461.0299,-314 455.0299,-314 449.0299,-308 449.0299,-302 449.0299,-302 449.0299,-249 449.0299,-249 449.0299,-243 455.0299,-237 461.0299,-237" style=""></path>
+<text text-anchor="middle" x="496.5299" y="-297.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">pendingClaim</text>
+</g>
+<g id="clust14" class="cluster">
+<title style="">cluster_01</title>
+<polygon fill="#2e3e56" stroke="#000000" points="29.0961,-1457 29.0961,-1586 336.1952,-1586 336.1952,-1457 29.0961,-1457" style=""></polygon>
+<text text-anchor="middle" x="182.6457" y="-1569.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Legend</text>
+</g>
+<!-- LinkedTKN.initialize -->
+<g id="node1" class="node" data-name="LinkedTKN.initialize">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-1336" rx="40.5924" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1331.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">initialize</text>
+</g>
+<!-- LinkedTKN.addMinter -->
+<g id="node24" class="node" data-name="LinkedTKN.addMinter">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-1020" rx="46.9617" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-1015.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">addMinter</text>
+</g>
+<!-- LinkedTKN.initialize&#45;&gt;LinkedTKN.addMinter -->
+<g id="edge2" class="edge" data-name="LinkedTKN.initialize->LinkedTKN.addMinter">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M144.9562,-1330.393C160.1561,-1326.5308 176.3971,-1320.0097 188.1922,-1309 208.3734,-1290.1625 268.6841,-1116.2103 291.923,-1047.619" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="295.3136,-1048.5181 295.1984,-1037.9238 288.6818,-1046.2776 295.3136,-1048.5181" style=""></polygon>
+</g>
+<!-- IPROX.readAddress -->
+<g id="node25" class="node" data-name="IPROX.readAddress">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-908" rx="55.0266" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-903.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">readAddress</text>
+</g>
+<!-- LinkedTKN.initialize&#45;&gt;IPROX.readAddress -->
+<g id="edge1" class="edge" data-name="LinkedTKN.initialize->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M146.9817,-1334.2981C236.6821,-1328.8727 441.1892,-1306.1518 577.8615,-1211 681.2036,-1139.0528 678.0282,-1088.3386 740.4866,-979 751.1414,-960.3478 744.9588,-949.8432 760.4866,-935 764.5814,-931.0857 769.3159,-927.7132 774.3388,-924.8131" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="776.2934,-927.7454 783.6154,-920.0879 773.1162,-921.508 776.2934,-927.7454" style=""></polygon>
+</g>
+<!-- LinkedTKN.whenNotPaused -->
+<g id="node2" class="node" data-name="LinkedTKN.whenNotPaused">
+
+<polygon fill="#edad56" stroke="#1bc6a6" stroke-width="3" points="177.77789935527002,-1388.226932638889 177.77789935527002,-1399.773067361111 133.44446055640537,-1407.9375 70.74764394006922,-1407.9375 26.41430004679617,-1399.773067361111 26.41430004679617,-1388.226932638889 70.74764394006922,-1380.0625 133.44446055640537,-1380.0625 177.77789935527002,-1388.226932638889 " style=""></polygon>
+<polygon fill="none" stroke="#1bc6a6" stroke-width="3" points="181.77160022015653,-1385.312787215909 181.77160022015653,-1402.687212784091 133.94764957771085,-1411.9375 70.24445063282216,-1411.9375 22.42049999037648,-1402.687212784091 22.42049999037648,-1385.312787215909 70.24445063282216,-1376.0625 133.94764957771085,-1376.0625 181.77160022015653,-1385.312787215909 " style=""></polygon>
+<text text-anchor="middle" x="102.0961" y="-1389.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">whenNotPaused</text>
+</g>
+<!-- IPROX.checkPause -->
+<g id="node26" class="node" data-name="IPROX.checkPause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-962" rx="52.0964" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-957.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">checkPause</text>
+</g>
+<!-- LinkedTKN.whenNotPaused&#45;&gt;IPROX.checkPause -->
+<g id="edge3" class="edge" data-name="LinkedTKN.whenNotPaused->IPROX.checkPause">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M185.9552,-1385.0443C285.6582,-1371.3067 454.104,-1338.1183 577.8615,-1262 693.2338,-1191.0391 780.7574,-1048.0908 813.6204,-988.758" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="816.6949,-990.4305 818.4212,-979.9772 810.553,-987.0723 816.6949,-990.4305" style=""></polygon>
+</g>
+<!-- LinkedTKN.&lt;Fallback&gt; -->
+<g id="node3" class="node" data-name="LinkedTKN.&lt;Fallback&gt;">
+
+<ellipse fill="#ffbdb9" stroke="#a52a2a" stroke-width="3" cx="102.0961" cy="-1282" rx="51.2988" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1277.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&lt;Fallback&gt;</text>
+</g>
+<!-- LinkedTKN.totalSupply -->
+<g id="node4" class="node" data-name="LinkedTKN.totalSupply">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="673.174" cy="-696" rx="51.5747" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="673.174" y="-691.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">totalSupply</text>
+</g>
+<!-- IPROX.startBlock -->
+<g id="node27" class="node" data-name="IPROX.startBlock">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-854" rx="46.8955" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-849.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">startBlock</text>
+</g>
+<!-- LinkedTKN.totalSupply&#45;&gt;IPROX.startBlock -->
+<g id="edge4" class="edge" data-name="LinkedTKN.totalSupply->IPROX.startBlock">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M704.7892,-710.8119C716.7132,-717.2639 729.9333,-725.527 740.4866,-735 770.7142,-762.1336 796.9802,-801.2964 812.5994,-827.1846" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="809.7551,-829.2509 817.8597,-836.0749 815.7796,-825.6862 809.7551,-829.2509" style=""></polygon>
+</g>
+<!-- newBlockNum.sub -->
+<g id="node28" class="node" data-name="newBlockNum.sub">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-434" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-429.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sub</text>
+</g>
+<!-- LinkedTKN.totalSupply&#45;&gt;newBlockNum.sub -->
+<g id="edge5" class="edge" data-name="LinkedTKN.totalSupply->newBlockNum.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M708.253,-681.9803C719.7456,-675.9958 731.784,-668.0385 740.4866,-658 791.2343,-599.4618 814.2837,-508.0484 823.1217,-462.2093" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="826.6136,-462.572 824.9803,-452.1039 819.7291,-461.3058 826.6136,-462.572" style=""></polygon>
+</g>
+<!-- baseRate.rpow -->
+<g id="node29" class="node" data-name="baseRate.rpow">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-696" rx="26.6972" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-691.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">rpow</text>
+</g>
+<!-- LinkedTKN.totalSupply&#45;&gt;baseRate.rpow -->
+<g id="edge6" class="edge" data-name="LinkedTKN.totalSupply->baseRate.rpow">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M728.9906,-696C748.0789,-696 769.0658,-696 786.7684,-696" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="786.7726,-699.5001 796.7726,-696 786.7726,-692.5001 786.7726,-699.5001" style=""></polygon>
+</g>
+<!-- _totalSupply.mul -->
+<g id="node30" class="node" data-name="_totalSupply.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-260" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-255.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedTKN.totalSupply&#45;&gt;_totalSupply.mul -->
+<g id="edge7" class="edge" data-name="LinkedTKN.totalSupply->_totalSupply.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M711.0705,-682.7524C722.3615,-676.9213 733.5592,-668.862 740.4866,-658 770.9314,-610.2628 746.0474,-458.747 760.4866,-404 771.9938,-360.3696 796.2556,-313.7264 812.2837,-285.7196" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="815.3719,-287.3714 817.3734,-276.9673 809.3207,-283.8524 815.3719,-287.3714" style=""></polygon>
+</g>
+<!-- LinkedTKN.balanceOf -->
+<g id="node5" class="node" data-name="LinkedTKN.balanceOf">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-1228" rx="46.8586" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1223.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">balanceOf</text>
+</g>
+<!-- LinkedTKN.balanceOf&#45;&gt;IPROX.startBlock -->
+<g id="edge8" class="edge" data-name="LinkedTKN.balanceOf->IPROX.startBlock">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M153.1663,-1226.9258C290.2974,-1222.8978 661.5267,-1204.0985 740.4866,-1118 776.2101,-1079.0467 729.062,-923.4974 760.4866,-881 764.3668,-875.7525 769.4353,-871.5231 775.0516,-868.1146" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="776.9344,-871.0826 784.2362,-863.4058 773.7408,-864.8535 776.9344,-871.0826" style=""></polygon>
+</g>
+<!-- LinkedTKN.balanceOf&#45;&gt;newBlockNum.sub -->
+<g id="edge9" class="edge" data-name="LinkedTKN.balanceOf->newBlockNum.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M150.9527,-1223.1492C165.0588,-1219.2857 179.0858,-1212.5716 188.1922,-1201 225.38,-1153.7447 209.7707,-719.3783 224.1922,-661 274.1056,-458.9493 239.7114,-346.4467 414.1983,-233 556.0146,-140.7949 746.4013,-338.9196 807.8042,-409.9382" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="805.4843,-412.6111 814.641,-417.9409 810.8065,-408.0642 805.4843,-412.6111" style=""></polygon>
+</g>
+<!-- LinkedTKN.balanceOf&#45;&gt;baseRate.rpow -->
+<g id="edge10" class="edge" data-name="LinkedTKN.balanceOf->baseRate.rpow">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M144.4901,-1218.037C158.8207,-1213.81 174.6189,-1208.1723 188.1922,-1201 457.8799,-1058.4934 726.9506,-797.8446 805.1671,-719.1184" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="807.9979,-721.2336 812.5428,-711.6631 803.0216,-716.3105 807.9979,-721.2336" style=""></polygon>
+</g>
+<!-- LinkedTKN.balanceOfDev -->
+<g id="node6" class="node" data-name="LinkedTKN.balanceOfDev">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="496.0299" cy="-796" rx="62.531499999999994" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-791.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">balanceOfDev</text>
+</g>
+<!-- LinkedTKN.balanceOfDev&#45;&gt;LinkedTKN.totalSupply -->
+<g id="edge13" class="edge" data-name="LinkedTKN.balanceOfDev->LinkedTKN.totalSupply">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M543.8777,-783.1912C555.3205,-779.3255 567.28,-774.5918 577.8615,-769 603.111,-755.6569 628.6355,-735.6853 646.9078,-720.0028" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="649.5373,-722.3532 654.7658,-713.1384 644.932,-717.0814 649.5373,-722.3532" style=""></polygon>
+</g>
+<!-- LinkedTKN.balanceOfDev&#45;&gt;IPROX.readAddress -->
+<g id="edge11" class="edge" data-name="LinkedTKN.balanceOfDev->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M562.7143,-797.194C615.2135,-801.1327 688.0311,-813.5235 740.4866,-850 753.9481,-859.3609 747.8378,-870.567 760.4866,-881 765.0902,-884.7972 770.2965,-888.114 775.7244,-890.998" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="774.4713,-894.2788 785.001,-895.4515 777.5008,-887.9683 774.4713,-894.2788" style=""></polygon>
+</g>
+<!-- ICOL.dataTotalCP -->
+<g id="node33" class="node" data-name="ICOL.dataTotalCP">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="673.174" cy="-603" rx="55.0632" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="673.174" y="-598.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">dataTotalCP</text>
+</g>
+<!-- LinkedTKN.balanceOfDev&#45;&gt;ICOL.dataTotalCP -->
+<g id="edge12" class="edge" data-name="LinkedTKN.balanceOfDev->ICOL.dataTotalCP">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M551.9732,-785.9219C561.6416,-781.9999 570.8283,-776.5557 577.8615,-769 612.5274,-731.7587 578.5596,-700.9331 605.8615,-658 613.9418,-645.2934 625.9494,-634.1365 637.5952,-625.2516" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="639.9085,-627.8975 645.9498,-619.1939 635.7995,-622.2304 639.9085,-627.8975" style=""></polygon>
+</g>
+<!-- _totalTokensCP.sub -->
+<g id="node34" class="node" data-name="_totalTokensCP.sub">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="673.174" cy="-518" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="673.174" y="-513.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sub</text>
+</g>
+<!-- LinkedTKN.balanceOfDev&#45;&gt;_totalTokensCP.sub -->
+<g id="edge14" class="edge" data-name="LinkedTKN.balanceOfDev->_totalTokensCP.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M553.0422,-786.3234C562.4965,-782.3618 571.3313,-776.8003 577.8615,-769 634.3474,-701.5274 562.6117,-649.6333 605.8615,-573 614.6232,-557.4753 629.6309,-544.5674 643.255,-535.1667" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="645.469,-537.9012 651.9286,-529.5033 641.6419,-532.04 645.469,-537.9012" style=""></polygon>
+</g>
+<!-- LinkedTKN.updateNormRate -->
+<g id="node7" class="node" data-name="LinkedTKN.updateNormRate">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="301.1952" cy="-962" rx="72.9437" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-957.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">updateNormRate</text>
+</g>
+<!-- LinkedTKN._updateNormRate -->
+<g id="node22" class="node" data-name="LinkedTKN._updateNormRate">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-742" rx="77.601" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-737.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_updateNormRate</text>
+</g>
+<!-- LinkedTKN.updateNormRate&#45;&gt;LinkedTKN._updateNormRate -->
+<g id="edge15" class="edge" data-name="LinkedTKN.updateNormRate->LinkedTKN._updateNormRate">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M357.9826,-949.7698C365.5916,-946.0751 372.6647,-941.2642 378.1983,-935 428.1788,-878.4216 363.6956,-825.1126 414.1983,-769 417.6746,-765.1376 421.7139,-761.8263 426.0996,-758.9876" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="427.8659,-762.0103 434.9035,-754.0906 424.4631,-755.8929 427.8659,-762.0103" style=""></polygon>
+</g>
+<!-- LinkedTKN.transfer -->
+<g id="node8" class="node" data-name="LinkedTKN.transfer">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="102.0961" cy="-1174" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1169.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedTKN._transfer -->
+<g id="node18" class="node" data-name="LinkedTKN._transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-908" rx="41.139" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-903.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_transfer</text>
+</g>
+<!-- LinkedTKN.transfer&#45;&gt;LinkedTKN._transfer -->
+<g id="edge16" class="edge" data-name="LinkedTKN.transfer->LinkedTKN._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M142.2229,-1170.5292C158.7342,-1167.0388 176.6556,-1160.2185 188.1922,-1147 251.0345,-1074.9954 162.5592,-1008.0425 224.1922,-935 230.7015,-927.2857 239.5523,-921.7739 248.937,-917.8364" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="250.2204,-921.0941 258.4327,-914.4002 247.8384,-914.5118 250.2204,-921.0941" style=""></polygon>
+</g>
+<!-- LinkedTKN.allowance -->
+<g id="node9" class="node" data-name="LinkedTKN.allowance">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-1120" rx="46.2961" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1115.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">allowance</text>
+</g>
+<!-- LinkedTKN.approve -->
+<g id="node10" class="node" data-name="LinkedTKN.approve">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-958" rx="38.2152" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-953.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">approve</text>
+</g>
+<!-- LinkedTKN._approve -->
+<g id="node21" class="node" data-name="LinkedTKN._approve">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-854" rx="42.8717" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-849.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_approve</text>
+</g>
+<!-- LinkedTKN.approve&#45;&gt;LinkedTKN._approve -->
+<g id="edge17" class="edge" data-name="LinkedTKN.approve->LinkedTKN._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M141.3978,-951.2916C157.0089,-947.2562 174.4754,-940.9033 188.1922,-931 210.3934,-914.9709 202.2612,-897.397 224.1922,-881 232.191,-875.0195 241.6242,-870.2852 251.095,-866.5644" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="252.301,-869.8502 260.5267,-863.1728 249.9323,-863.2632 252.301,-869.8502" style=""></polygon>
+</g>
+<!-- LinkedTKN.transferFrom -->
+<g id="node11" class="node" data-name="LinkedTKN.transferFrom">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="102.0961" cy="-1012" rx="57.3291" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1007.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transferFrom</text>
+</g>
+<!-- LinkedTKN.transferFrom&#45;&gt;LinkedTKN._transfer -->
+<g id="edge18" class="edge" data-name="LinkedTKN.transferFrom->LinkedTKN._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M153.3664,-1001.8113C165.5078,-997.8578 177.9046,-992.4275 188.1922,-985 210.3934,-968.9709 202.2612,-951.397 224.1922,-935 232.3612,-928.8922 242.0263,-924.0843 251.6996,-920.3283" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="253.0672,-923.5569 261.3206,-916.9137 250.7259,-916.96 253.0672,-923.5569" style=""></polygon>
+</g>
+<!-- LinkedTKN.transferFrom&#45;&gt;LinkedTKN._approve -->
+<g id="edge19" class="edge" data-name="LinkedTKN.transferFrom->LinkedTKN._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.3709,-1003.3381C168.0095,-999.3438 179.4263,-993.5122 188.1922,-985 223.2829,-950.9245 189.6745,-915.6558 224.1922,-881 231.0184,-874.1464 239.6813,-869.028 248.7155,-865.2068" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="250.0519,-868.4441 258.2031,-861.6759 247.6103,-861.8837 250.0519,-868.4441" style=""></polygon>
+</g>
+<!-- LinkedTKN.increaseAllowance -->
+<g id="node12" class="node" data-name="LinkedTKN.increaseAllowance">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-904" rx="80.4235" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-899.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">increaseAllowance</text>
+</g>
+<!-- LinkedTKN.increaseAllowance&#45;&gt;LinkedTKN._approve -->
+<g id="edge20" class="edge" data-name="LinkedTKN.increaseAllowance->LinkedTKN._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.7641,-890.2711C186.5248,-882.7973 223.0539,-873.6237 251.9291,-866.3723" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="252.9534,-869.7238 261.7997,-863.8934 251.2484,-862.9346 252.9534,-869.7238" style=""></polygon>
+</g>
+<!-- LinkedTKN.decreaseAllowance -->
+<g id="node13" class="node" data-name="LinkedTKN.decreaseAllowance">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-850" rx="82.1298" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-845.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">decreaseAllowance</text>
+</g>
+<!-- LinkedTKN.decreaseAllowance&#45;&gt;LinkedTKN._approve -->
+<g id="edge21" class="edge" data-name="LinkedTKN.decreaseAllowance->LinkedTKN._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M187.9767,-851.7254C206.9802,-852.1072 226.6611,-852.5026 244.1781,-852.8545" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="244.152,-856.3546 254.2203,-853.0563 244.2927,-849.356 244.152,-856.3546" style=""></polygon>
+</g>
+<!-- LinkedTKN.mint -->
+<g id="node14" class="node" data-name="LinkedTKN.mint">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-742" rx="24.9285" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-737.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mint</text>
+</g>
+<!-- LinkedTKN._mint -->
+<g id="node19" class="node" data-name="LinkedTKN._mint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-742" rx="29.5835" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-737.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_mint</text>
+</g>
+<!-- LinkedTKN.mint&#45;&gt;LinkedTKN._mint -->
+<g id="edge22" class="edge" data-name="LinkedTKN.mint->LinkedTKN._mint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M131.0468,-742C164.1705,-742 218.779,-742 257.1781,-742" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="257.5475,-745.5001 267.5475,-742 257.5475,-738.5001 257.5475,-745.5001" style=""></polygon>
+</g>
+<!-- LinkedTKN.burn -->
+<g id="node15" class="node" data-name="LinkedTKN.burn">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-688" rx="24.9129" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-683.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">burn</text>
+</g>
+<!-- LinkedTKN._burn -->
+<g id="node20" class="node" data-name="LinkedTKN._burn">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-688" rx="29.567999999999998" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-683.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_burn</text>
+</g>
+<!-- LinkedTKN.burn&#45;&gt;LinkedTKN._burn -->
+<g id="edge23" class="edge" data-name="LinkedTKN.burn->LinkedTKN._burn">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M131.0468,-688C164.1705,-688 218.779,-688 257.1781,-688" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="257.5475,-691.5001 267.5475,-688 257.5475,-684.5001 257.5475,-691.5001" style=""></polygon>
+</g>
+<!-- LinkedTKN.approveExchange -->
+<g id="node16" class="node" data-name="LinkedTKN.approveExchange">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-1066" rx="76.3623" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-1061.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">approveExchange</text>
+</g>
+<!-- LinkedTKN.approveExchange&#45;&gt;LinkedTKN._transfer -->
+<g id="edge25" class="edge" data-name="LinkedTKN.approveExchange->LinkedTKN._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M163.924,-1054.4559C172.8602,-1050.6745 181.3368,-1045.657 188.1922,-1039 223.2829,-1004.9245 189.6745,-969.6558 224.1922,-935 231.3152,-927.8484 240.4381,-922.5862 249.8959,-918.7157" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="251.1817,-921.9727 259.4036,-915.2906 248.8092,-915.387 251.1817,-921.9727" style=""></polygon>
+</g>
+<!-- LinkedTKN.approveExchange&#45;&gt;IPROX.readAddress -->
+<g id="edge24" class="edge" data-name="LinkedTKN.approveExchange->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M182.4551,-1065.3552C237.8754,-1063.7218 313.0151,-1059.1498 378.1983,-1047 529.351,-1018.8259 701.2419,-956.9529 781.6875,-926.1561" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="783.4232,-929.2384 791.4988,-922.3802 780.909,-922.7055 783.4232,-929.2384" style=""></polygon>
+</g>
+<!-- IEXC.sellTKN -->
+<g id="node35" class="node" data-name="IEXC.sellTKN">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-34" rx="40.015" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sellTKN</text>
+</g>
+<!-- LinkedTKN.approveExchange&#45;&gt;IEXC.sellTKN -->
+<g id="edge26" class="edge" data-name="LinkedTKN.approveExchange->IEXC.sellTKN">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M167.4614,-1055.2819C175.4963,-1051.3696 182.7714,-1046.0953 188.1922,-1039 252.3197,-955.0618 174.0863,-181.9913 224.1922,-89 232.5816,-73.4301 247.5328,-61.2289 262.0432,-52.3165" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="264.0331,-55.2098 270.9584,-47.1917 260.5444,-49.141 264.0331,-55.2098" style=""></polygon>
+</g>
+<!-- LinkedTKN.devClaim -->
+<g id="node17" class="node" data-name="LinkedTKN.devClaim">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="102.0961" cy="-796" rx="44.6108" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="102.0961" y="-791.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">devClaim</text>
+</g>
+<!-- LinkedTKN._devClaim -->
+<g id="node23" class="node" data-name="LinkedTKN._devClaim">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.1952" cy="-796" rx="49.2677" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="301.1952" y="-791.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_devClaim</text>
+</g>
+<!-- LinkedTKN.devClaim&#45;&gt;LinkedTKN._devClaim -->
+<g id="edge27" class="edge" data-name="LinkedTKN.devClaim->LinkedTKN._devClaim">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M150.8012,-796C176.9467,-796 209.4885,-796 237.6077,-796" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="237.7473,-799.5001 247.7473,-796 237.7472,-792.5001 237.7473,-799.5001" style=""></polygon>
+</g>
+<!-- LinkedTKN._transfer&#45;&gt;LinkedTKN._updateNormRate -->
+<g id="edge30" class="edge" data-name="LinkedTKN._transfer->LinkedTKN._updateNormRate">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M343.1134,-900.834C355.7824,-896.8441 368.8076,-890.6405 378.1983,-881 414.6819,-843.5463 377.3692,-806.1139 414.1983,-769 417.9227,-765.2468 422.1785,-762.0153 426.748,-759.233" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="428.6575,-762.1827 435.8648,-754.417 425.3879,-755.9932 428.6575,-762.1827" style=""></polygon>
+</g>
+<!-- LinkedTKN._transfer&#45;&gt;IPROX.readAddress -->
+<g id="edge28" class="edge" data-name="LinkedTKN._transfer->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M346.5474,-908C438.7474,-908 648.5842,-908 758.1897,-908" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="758.4765,-911.5001 768.4765,-908 758.4765,-904.5001 758.4765,-911.5001" style=""></polygon>
+</g>
+<!-- _custodian.transfer -->
+<g id="node36" class="node" data-name="_custodian.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-603" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-598.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedTKN._transfer&#45;&gt;_custodian.transfer -->
+<g id="edge29" class="edge" data-name="LinkedTKN._transfer->_custodian.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.0077,-901.6416C356.7303,-897.7002 369.5612,-891.3211 378.1983,-881 442.6285,-804.008 360.0609,-742.5468 414.1983,-658 424.5381,-641.8524 441.4967,-629.3056 457.3023,-620.3001" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="459.2617,-623.2208 466.4164,-615.4066 455.9503,-617.0535 459.2617,-623.2208" style=""></polygon>
+</g>
+<!-- amount.mul -->
+<g id="node37" class="node" data-name="amount.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-518" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-513.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedTKN._transfer&#45;&gt;amount.mul -->
+<g id="edge31" class="edge" data-name="LinkedTKN._transfer->amount.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.2777,-901.8626C357.0166,-897.9344 369.7888,-891.5073 378.1983,-881 464.3174,-773.3985 342.4323,-690.6614 414.1983,-573 425.4794,-554.5045 445.6071,-540.8539 463.0768,-531.7783" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="464.9875,-534.7402 472.4357,-527.2053 461.9144,-528.4509 464.9875,-534.7402" style=""></polygon>
+</g>
+<!-- sender.transfer -->
+<g id="node38" class="node" data-name="sender.transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-433" rx="36.4816" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-428.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">transfer</text>
+</g>
+<!-- LinkedTKN._transfer&#45;&gt;sender.transfer -->
+<g id="edge32" class="edge" data-name="LinkedTKN._transfer->sender.transfer">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.4343,-901.9864C357.1826,-898.0656 369.9208,-891.6116 378.1983,-881 432.1378,-811.8505 369.4714,-563.4362 414.1983,-488 423.9774,-471.5068 440.866,-458.9169 456.7702,-449.9722" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="458.7474,-452.8863 465.9594,-445.1249 455.4815,-446.6949 458.7474,-452.8863" style=""></polygon>
+</g>
+<!-- LinkedTKN._mint&#45;&gt;LinkedTKN._updateNormRate -->
+<g id="edge33" class="edge" data-name="LinkedTKN._mint->LinkedTKN._updateNormRate">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M335.1329,-742C354.2976,-742 379.268,-742 403.7986,-742" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="403.8966,-745.5001 413.8966,-742 403.8966,-738.5001 403.8966,-745.5001" style=""></polygon>
+</g>
+<!-- _totalSupply.add -->
+<g id="node31" class="node" data-name="_totalSupply.add">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-206" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-201.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">add</text>
+</g>
+<!-- LinkedTKN._mint&#45;&gt;_totalSupply.add -->
+<g id="edge35" class="edge" data-name="LinkedTKN._mint->_totalSupply.add">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M334.5694,-738.6781C350.3206,-735.2913 367.8849,-728.514 378.1983,-715 447.3954,-624.3294 330.7662,-280.7718 414.1983,-203 468.0057,-152.8431 700.6039,-184.8932 791.3389,-199.6908" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="790.9921,-203.1809 801.4295,-201.3611 792.1353,-196.2749 790.9921,-203.1809" style=""></polygon>
+</g>
+<!-- LinkedTKN._mint&#45;&gt;amount.mul -->
+<g id="edge34" class="edge" data-name="LinkedTKN._mint->amount.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M333.9744,-737.7656C349.3807,-734.1475 366.8196,-727.4388 378.1983,-715 422.144,-666.9605 376.7051,-626.2285 414.1983,-573 426.6741,-555.2884 446.8152,-541.6466 463.9931,-532.3795" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="465.8585,-535.3565 473.164,-527.6831 462.6678,-529.1259 465.8585,-535.3565" style=""></polygon>
+</g>
+<!-- LinkedTKN._burn&#45;&gt;LinkedTKN._updateNormRate -->
+<g id="edge36" class="edge" data-name="LinkedTKN._burn->LinkedTKN._updateNormRate">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M331.2112,-696.3192C358.8027,-703.9664 400.5433,-715.5351 435.1141,-725.1167" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="434.5501,-728.5923 445.1217,-727.8904 436.4198,-721.8466 434.5501,-728.5923" style=""></polygon>
+</g>
+<!-- _totalSupply.sub -->
+<g id="node32" class="node" data-name="_totalSupply.sub">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="827.7808" cy="-152" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="827.7808" y="-147.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sub</text>
+</g>
+<!-- LinkedTKN._burn&#45;&gt;_totalSupply.sub -->
+<g id="edge38" class="edge" data-name="LinkedTKN._burn->_totalSupply.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M302.3079,-669.7452C307.8334,-585.7362 335.2821,-237.5724 414.1983,-171 524.4843,-77.9646 716.1085,-119.1506 793.7009,-141.2676" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="792.8644,-144.6695 803.4449,-144.1175 794.8295,-137.951 792.8644,-144.6695" style=""></polygon>
+</g>
+<!-- value.mul -->
+<g id="node39" class="node" data-name="value.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-348" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-343.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedTKN._burn&#45;&gt;value.mul -->
+<g id="edge37" class="edge" data-name="LinkedTKN._burn->value.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M304.501,-669.7537C314.0011,-621.5382 345.2346,-488.5855 414.1983,-403 427.7008,-386.2431 447.6767,-372.6802 464.5115,-363.2155" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="466.3357,-366.2084 473.4799,-358.3846 463.0161,-360.0455 466.3357,-366.2084" style=""></polygon>
+</g>
+<!-- LinkedTKN._updateNormRate&#45;&gt;IPROX.startBlock -->
+<g id="edge39" class="edge" data-name="LinkedTKN._updateNormRate->IPROX.startBlock">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M565.9708,-751.4403C615.9638,-759.749 684.0897,-774.3027 740.4866,-798 760.9354,-806.5924 781.9176,-819.8825 798.1848,-831.3596" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="796.5467,-834.4937 806.7038,-837.5079 800.6433,-828.8176 796.5467,-834.4937" style=""></polygon>
+</g>
+<!-- LinkedTKN._updateNormRate&#45;&gt;newBlockNum.sub -->
+<g id="edge40" class="edge" data-name="LinkedTKN._updateNormRate->newBlockNum.sub">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M519.9748,-724.5218C538.9876,-709.2305 564.5201,-685.2444 577.8615,-658 617.529,-576.9951 540.9726,-519.6478 605.8615,-457 655.5512,-409.0264 743.6891,-416.7255 792.6046,-425.8157" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="791.9303,-429.2501 802.4194,-427.757 793.2886,-422.3831 791.9303,-429.2501" style=""></polygon>
+</g>
+<!-- LinkedTKN._updateNormRate&#45;&gt;baseRate.rpow -->
+<g id="edge41" class="edge" data-name="LinkedTKN._updateNormRate->baseRate.rpow">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M519.4183,-724.7417C538.3633,-709.4125 564.0911,-685.2584 577.8615,-658 612.389,-589.6527 547.4816,-537.5509 605.8615,-488 651.4786,-449.2817 690.6596,-454.8744 740.4866,-488 801.604,-528.6317 820.0201,-621.239 825.5012,-667.9516" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="822.0299,-668.4087 826.5607,-677.9859 828.9912,-667.6737 822.0299,-668.4087" style=""></polygon>
+</g>
+<!-- LinkedTKN._devClaim&#45;&gt;LinkedTKN.balanceOfDev -->
+<g id="edge43" class="edge" data-name="LinkedTKN._devClaim->LinkedTKN.balanceOfDev">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M354.6924,-796C374.5318,-796 397.4449,-796 418.97,-796" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="419.0748,-799.5001 429.0747,-796 419.0747,-792.5001 419.0748,-799.5001" style=""></polygon>
+</g>
+<!-- LinkedTKN._devClaim&#45;&gt;LinkedTKN._updateNormRate -->
+<g id="edge42" class="edge" data-name="LinkedTKN._devClaim->LinkedTKN._updateNormRate">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M342.5147,-784.548C369.4107,-777.0935 404.9609,-767.2405 435.0774,-758.8935" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="436.3602,-762.17 445.0621,-756.1261 434.4905,-755.4243 436.3602,-762.17" style=""></polygon>
+</g>
+<!-- LinkedTKN._devClaim&#45;&gt;IPROX.readAddress -->
+<g id="edge44" class="edge" data-name="LinkedTKN._devClaim->IPROX.readAddress">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M344.3174,-806.6438C365.3578,-811.7501 391.0617,-817.8598 414.1983,-823 539.6078,-850.8619 687.1393,-880.4121 767.7295,-896.2812" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="767.2082,-899.7457 777.6957,-898.2411 768.559,-892.8772 767.2082,-899.7457" style=""></polygon>
+</g>
+<!-- LinkedTKN._devClaim&#45;&gt;_totalSupply.add -->
+<g id="edge46" class="edge" data-name="LinkedTKN._devClaim->_totalSupply.add">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M349.8107,-788.3497C360.7372,-784.3384 371.1653,-778.2456 378.1983,-769 450.4746,-673.9863 329.7053,-317.335 414.1983,-233 440.4909,-206.7567 693.492,-205.2834 790.3327,-205.6947" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="790.527,-209.1956 800.545,-205.7476 790.5634,-202.1957 790.527,-209.1956" style=""></polygon>
+</g>
+<!-- pendingClaim.mul -->
+<g id="node40" class="node" data-name="pendingClaim.mul">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="496.0299" cy="-263" rx="22.9375" ry="13.9375" style=""></ellipse>
+<text text-anchor="middle" x="496.0299" y="-258.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mul</text>
+</g>
+<!-- LinkedTKN._devClaim&#45;&gt;pendingClaim.mul -->
+<g id="edge45" class="edge" data-name="LinkedTKN._devClaim->pendingClaim.mul">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M349.7303,-788.2881C360.6583,-784.278 371.1072,-778.2011 378.1983,-769 439.5717,-689.3645 363.4285,-404.7808 414.1983,-318 425.1382,-299.3006 445.262,-285.6477 462.8151,-276.6219" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="464.7418,-279.5785 472.2277,-272.081 461.7002,-273.2738 464.7418,-279.5785" style=""></polygon>
+</g>
+<!-- key -->
+<g id="node41" class="node" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="163.03359999084472,-1548.9375 41.15859999084473,-1548.9375 41.15859999084473,-1469.0625 163.03359999084472,-1469.0625 163.03359999084472,-1548.9375 " style=""></polygon>
+<text text-anchor="start" x="86.7321" y="-1534.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Internal Call</text>
+<text text-anchor="start" x="82.8401" y="-1514.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">External Call</text>
+<text text-anchor="start" x="60.3015" y="-1494.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Defined Contract</text>
+<text text-anchor="start" x="46.6988" y="-1474.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node42" class="node" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="324.13269856002245,-1548.9375 278.25769856002245,-1548.9375 278.25769856002245,-1469.0625 324.13269856002245,-1469.0625 324.13269856002245,-1548.9375 " style=""></polygon>
+<text text-anchor="start" x="288.9543" y="-1534.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="288.9543" y="-1514.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#445773" stroke="transparent" points="291.2576972229004,-1493.0625 291.2576972229004,-1504.9375 311.1326972229004,-1504.9375 311.1326972229004,-1493.0625 291.2576972229004,-1493.0625 " style=""></polygon>
+<text text-anchor="start" x="288.9543" y="-1494.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#e8726d" points="293.25769676005046,-1475.0625 293.25769676005046,-1482.9375 309.13269676005046,-1482.9375 309.13269676005046,-1475.0625 293.25769676005046,-1475.0625 " style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge47" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M159.0961,-1539C212.4707,-1539 228.3163,-1539 276.9999,-1539" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="277.1953,-1542.5001 287.1952,-1539 277.1952,-1535.5001 277.1953,-1542.5001" style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge48" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M159.0961,-1519C212.4707,-1519 228.3163,-1519 276.9999,-1519" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="277.1953,-1522.5001 287.1952,-1519 277.1952,-1515.5001 277.1953,-1522.5001" style=""></polygon>
+</g>
+</g>
+</svg>
