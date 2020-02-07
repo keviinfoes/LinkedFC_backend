@@ -39,14 +39,14 @@ An increase in complexity ~= increase in user/contract risk. Minimizing complexi
 7. Now you can interact with the deployed contracts.
 
 ## POC deployed contract - Ropsten
-- **Proxy contract**: 0x023493D0C4625c8502F2993A7B7db37798a2dCb1 
-- **Token contract**: 0x6B2dF5E744ccCC94c5B1c01BF8349b543594157c
-- **Collateral contract**: 0x3AA50B60A7a54EA6950f9f074E81FbF86d893352
-- **Custodian contract**: 0xf2A89A8F5A1d09B00C56bEB6486fEED6087824c1
-- **Tax contract**: 0xC9c0E917F7Fd6B02d0751112Dc7e2DbC1Bf49D2D
-- **Oracle contract**: 0xC66E42175D0C9Af6726DBE54Fb9A7dcd7128c5A6
-- **Defcon contract**: 0x55843c792f77ca62a688e7cC96FCc63A4b4b0BDe
-- **Exchange contract**: 0x6417573b78b8d3E4Ba756c02b7Fc975348213333
+- **Proxy contract**: 0x8BCcDa0e784BC60DDC545B40A752D486FC8250fB 
+- **Token contract**: 0x1D42651aed782d3e0722310E31C46a522E2828d1
+- **Collateral contract**: 0x3f67DdB5D43e85A2d4Bb28C67A8F0f010Af15dBd
+- **Custodian contract**: 0x6ebdeb747d1a31D26f271598627cad8Aa91D3B2B
+- **Tax contract**: 0xaa5163F5346651C2Bc618cD81Ce45229e765c8a3
+- **Oracle contract**: 0x2CDA3512891aFF224a953D5BE459A4e21cA731Ae
+- **Defcon contract**: 0xe0C8622F3A9ECeb4b697A3200ce4FAAFD138bAa9
+- **Exchange contract**: 0x1524D19638E2B1B8b8B010196d5c705A74581738
 
 ## Front end
 For the front end implementation see: [linked front end](https://github.com/keviinfoes/LinkedFC_frontend).
