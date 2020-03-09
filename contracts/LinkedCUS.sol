@@ -58,7 +58,7 @@ contract LinkedCUS is Ownable {
     }
     function burn(address burner, uint256 amount) onlyCollateral external returns (bool success) {
             IERC20 token = IERC20(proxy.readAddress()[0]);
-            assert(token.burn(burner, amount));
+	    assert(token.burn(burner, amount));
             return true;
     }
     

@@ -91,6 +91,7 @@ contract LinkedPROXY is Ownable, Pausable {
      */
     function activateDefcon() onlyOwner external returns (bool) {
             defconActive = true;
+	    Pausable.pause();
             return defconActive;
     }
 }

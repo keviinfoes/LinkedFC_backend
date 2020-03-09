@@ -12,17 +12,16 @@ const BN = require('bn.js');
 //Console log the addresses of the deployed contracts
 contract('LinkedPROXY', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -37,8 +36,8 @@ contract('LinkedPROXY', async accounts => {
 						 DEFCON.address,
 						 EXCHANGE.address,
 						 accounts[0]
-						);	
-		await TOKEN.initialize(PROXY.address);	
+						);
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
@@ -48,7 +47,7 @@ contract('LinkedPROXY', async accounts => {
 	});
 	describe('Initialize', function () {
 		//Initialize proxy contract and check successful initialization
-		it("Proxy contract initialized", async () => {
+		it("should initialize proxy contract", async () => {
 			let active = await PROXY.initialized.call();
 			let token = await PROXY.token.call();
 			let collateral = await PROXY.collateral.call();
@@ -58,7 +57,7 @@ contract('LinkedPROXY', async accounts => {
 			let defcon = await PROXY.defcon.call();
 			let exchange = await PROXY.exchange.call();
 			let dev = await PROXY.dev.call();
-			
+
 			/* PRINT ADDRESSES
 			console.log("PROXY address: " + PROXY.address);
 			console.log("TOKEN address: " + TOKEN.address);
@@ -78,10 +77,10 @@ contract('LinkedPROXY', async accounts => {
 			assert.equal(tax, TAXATION.address, "Taxation initialized address does not match");
 			assert.equal(defcon, DEFCON.address, "Defcon initialized address does not match");
 			assert.equal(exchange, EXCHANGE.address, "Exchange initialized address does not match");
-			assert.equal(dev, accounts[0], "Dev initialized address does not match");		
+			assert.equal(dev, accounts[0], "Dev initialized address does not match");
 		});
 		//Initialize other contracts and check successful initialization
-		it("Other contracts initialized", async () => {
+		it("should initialize other system contracts", async () => {
 			let activeTKN = await TOKEN.initialized.call();
 			assert.equal(activeTKN, true, "Initialized TOKEN is not called");
 			let activeCOL = await COLLATERAL.initialized.call();
@@ -97,8 +96,8 @@ contract('LinkedPROXY', async accounts => {
 			let activeEXC = await EXCHANGE.initialized.call();
 			assert.equal(activeEXC, true, "Initialized EXCHANGE is not called");
 		});
-		//readAddress check 
-		it("Read address check", async () => {
+		//readAddress check
+		it("should return address of contracts", async () => {
 			let readAddressOutput = await PROXY.readAddress.call();
 			assert.equal(TOKEN.address, readAddressOutput[0], "Readaddress TOKEN is not called");
 			assert.equal(COLLATERAL.address, readAddressOutput[1], "Readaddress COLLATERAL is not called");
@@ -106,46 +105,45 @@ contract('LinkedPROXY', async accounts => {
 			assert.equal(ORACLE.address, readAddressOutput[3], "Readaddress ORACLE is not called");
 			assert.equal(TAXATION.address, readAddressOutput[4], "Readaddress TAXATION is not called");
 			assert.equal(DEFCON.address, readAddressOutput[5], "Readaddress DEFCON is not called");
-			assert.equal(EXCHANGE.address, readAddressOutput[6], "Readaddress EXCHANGE is not called");		
+			assert.equal(EXCHANGE.address, readAddressOutput[6], "Readaddress EXCHANGE is not called");
 		});
 	});
 
 	describe('Oracle', function () {
 		//Change oracle and check succes
-		it("Change oracle", async () => {
+		it("should change price oracle", async () => {
 			await PROXY.changeOracle('0x79C4077CB6af3112aCF4B298f4B5B40b7f596b7D');
 			let newOracle = await PROXY.oracle.call();
-			assert.equal(newOracle, '0x79C4077CB6af3112aCF4B298f4B5B40b7f596b7D', "changeOracle is not called");	
-			await PROXY.changeOracle(ORACLE.address);			
+			assert.equal(newOracle, '0x79C4077CB6af3112aCF4B298f4B5B40b7f596b7D', "changeOracle is not called");
+			await PROXY.changeOracle(ORACLE.address);
 		});
 	});
 	describe('Pause contracts', function () {
-		//readAddress check 
-		it("Pause contract check", async () => {
+		//readAddress check
+		it("should pause the system", async () => {
 			await PROXY.pause();
 			let paused = await PROXY.checkPause.call();
 			assert.equal(paused, true, "Pause is not called");
-			let priceUpdate = await truffleAssert.reverts(ORACLE.updateRate(10000));		
+			let priceUpdate = await truffleAssert.reverts(ORACLE.updateRate(10000));
 			await PROXY.unpause()
 			let unpaused = await PROXY.checkPause.call();
-			assert.equal(unpaused, false, "unPause is not called");	
+			assert.equal(unpaused, false, "unPause is not called");
 		});
 	});
 })
 
-contract('LinkedCOL', async accounts => {	
+contract('LinkedCOL', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -161,8 +159,8 @@ contract('LinkedCOL', async accounts => {
 						 EXCHANGE.address,
 						 accounts[0]
 						);
-			
-		await TOKEN.initialize(PROXY.address);	
+
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
@@ -173,7 +171,7 @@ contract('LinkedCOL', async accounts => {
 	});
 	describe('Open CP', async () => {
 		//Initialize other contracts and check successful initialization
-		it("Open Collateral Position account 0", async () => {	
+		it("should open collateral position account[0]", async () => {
 			let amount = 20000000000000000000000;
 			let amountETH = 2000000000000000000;
 			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
@@ -183,7 +181,7 @@ contract('LinkedCOL', async accounts => {
 			let balance = await TOKEN.balanceOf.call(accounts[0]);
 			assert.equal(balance, amount, "Balance token is different from CP account 0");
 		});
-		it("Open Collateral Position account 1", async () => {	
+		it("should open collateral position account[1]", async () => {
 			let amount = 40000000000000000000000;
 			let amountETH = 4000000000000000000;
 			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {from: accounts[1], value: amountETH});
@@ -193,7 +191,7 @@ contract('LinkedCOL', async accounts => {
 			let balance = await TOKEN.balanceOf.call(accounts[1]);
 			assert.equal(balance, amount, "Balance token is different from CP account 1");
 		});
-		it("Transfer Collateral Position account 0 -> 1", async () => {	
+		it("should transfer collateral position account[0] to account[1]", async () => {
 			let initial = await COLLATERAL.individualCPdata.call(accounts[0], 0);
 			await COLLATERAL.transfer(accounts[1], 0);
 			let user_0 = await COLLATERAL.individualCPdata.call(accounts[0], 0);
@@ -202,9 +200,9 @@ contract('LinkedCOL', async accounts => {
 			assert.equal(user_0[1], 0, "Transfer: CP sender not deducted");
 			assert.equal(initial[0].toString(), user_1[0].toString(), "Transfer: receiver not added");
 		});
-	});	
-	describe('Change CP', async () => {	
-		it("Deposit ETH Collateral Position", async () => {	
+	});
+	describe('Change CP', async () => {
+		it("should deposit ETH in collateral position", async () => {
 			let amountETH = 4000000000000000000;
 			let Position = await COLLATERAL.individualCPdata.call(accounts[1], 0);
 			await COLLATERAL.depositETHCP(0, {from: accounts[1], value: amountETH});
@@ -212,7 +210,7 @@ contract('LinkedCOL', async accounts => {
 			let NEWPosition = await COLLATERAL.individualCPdata.call(accounts[1], 0);
 			assert.equal(check.toString(), NEWPosition[0].toString(), "Change CP: deposit ETH not added");
 		});
-		it("Deposit Token Collateral Position", async () => {	
+		it("should deposit tokens in collateral position", async () => {
 			let amountTOKEN = new BN("200000000000000000000");
 			let Position = await COLLATERAL.cPosition.call(accounts[1], 0);
 			let BNPosition = new BN(Position[1].toString());
@@ -226,7 +224,7 @@ contract('LinkedCOL', async accounts => {
 			let NEWPosition = await COLLATERAL.cPosition.call(accounts[1], 0);
 			assert.equal(NEWPosition[1].toString(), NewPositionCheck.toString(), "Change CP: deposit Token not deducted");
 		});
-		it("Withdraw ETH Collateral Position", async () => {	
+		it("should withdraw ETH from collateral position", async () => {
 			let amountETH = 2000000000000000000;
 			let Position = await COLLATERAL.individualCPdata.call(accounts[1], 0);
 			await COLLATERAL.withdrawETHCP(amountETH.toLocaleString('fullwide', { useGrouping: false }), 0, {from: accounts[1]});
@@ -234,7 +232,7 @@ contract('LinkedCOL', async accounts => {
 			let NEWPosition = await COLLATERAL.individualCPdata.call(accounts[1], 0);
 			assert.equal(check.toString(), NEWPosition[0].toString(), "Change CP: withdraw ETH not deducted");
 		});
-		it("Withdraw Token Collateral Position", async () => {	
+		it("should withdraw tokens from collateral position", async () => {
 			let amountTOKEN = new BN("200000000000000000000");
 			let Position = await COLLATERAL.cPosition.call(accounts[1], 0);
 			let BNPosition = new BN(Position[1].toString());
@@ -248,12 +246,9 @@ contract('LinkedCOL', async accounts => {
 			let NEWPosition = await COLLATERAL.cPosition.call(accounts[1], 0);
 			assert.equal(NEWPosition[1].toString(), NewPositionCheck.toString(), "Change CP: withdraw Token not added");
 		});
-
-
-
 	});
 	describe('Close CP', function () {
-		it("Close Collateral Position", async () => {
+		it("should close collateral positions", async () => {
 			let Position = await COLLATERAL.individualCPdata.call(accounts[1], 0);
 			let amount = 20000000000000000000000;
 			let amountETH = 2000000000000000000;
@@ -267,17 +262,16 @@ contract('LinkedCOL', async accounts => {
 
 contract('LinkedCUS', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -293,8 +287,8 @@ contract('LinkedCUS', async accounts => {
 						 EXCHANGE.address,
 						 accounts[0]
 						);
-			
-		await TOKEN.initialize(PROXY.address);	
+
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
@@ -304,7 +298,7 @@ contract('LinkedCUS', async accounts => {
 		await ORACLE.updateRate(20000);
 	});
 	describe('Custodian Collateral', function () {
-		it("Received ETH", async () => {
+		it("should receive ETH in opening collateral position", async () => {
 			let amount = 10000000000000000000000;
 			let amountETH = 2000000000000000000;
 			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
@@ -316,17 +310,16 @@ contract('LinkedCUS', async accounts => {
 
 contract('LinkedORCL', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -342,8 +335,8 @@ contract('LinkedORCL', async accounts => {
 						 EXCHANGE.address,
 						 accounts[0]
 						);
-			
-		await TOKEN.initialize(PROXY.address);	
+
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
@@ -353,28 +346,26 @@ contract('LinkedORCL', async accounts => {
 		await ORACLE.updateRate(20000);
 	});
 	describe('Update price', function () {
-		it("Simple price update", async () => {
+		it("should update the price", async () => {
 			await ORACLE.updateRate(20000);
 			let price = await PROXY.rate.call();
-			assert.equal(price, 20000, "Update price: updateRate is not called");		
-		});	
+			assert.equal(price, 20000, "Update price: updateRate is not called");
+		});
 	});
 });
 
 contract('LinkedTAX', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -400,7 +391,7 @@ contract('LinkedTAX', async accounts => {
 		await ORACLE.updateRate(20000);
 	});
 	describe('Stability calculations', function () {
-		it("StabilityReward per block < normRate", async () => {
+		it("should add stabilityReward per block < normRate", async () => {
 			//Open CP with 1 billion
 			await ORACLE.updateRate(100000000000);
 			let amount = 100000000000000000000000000000;
@@ -416,7 +407,7 @@ contract('LinkedTAX', async accounts => {
 			//console.log(Reward)
 			assert(Reward < CheckNorm, "Stability calculations: fee calculation error");
 		});
-		it("StabilityFee per block < normRate", async () => {
+		it("should add stabilityFee per block < normRate", async () => {
 			await ORACLE.updateRate(100000000000);
 			let amount = 100000000000000000000000000000;
 			let amountETH = 2000000000000000000;
@@ -436,17 +427,16 @@ contract('LinkedTAX', async accounts => {
 
 contract('LinkedEXC', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -462,8 +452,8 @@ contract('LinkedEXC', async accounts => {
 						 EXCHANGE.address,
 						 accounts[0]
 						);
-			
-		await TOKEN.initialize(PROXY.address);	
+
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
@@ -473,63 +463,39 @@ contract('LinkedEXC', async accounts => {
 		await ORACLE.updateRate(20000);
 	});
 	describe('Deposit', function () {
-		it("ETH deposit", async () => {
+		it("should deposit ETH in exchange", async () => {
 			let amountETH = 2000000000000000000;
-			await EXCHANGE.sellETH({value: amountETH})
-			let balance = await web3.eth.getBalance(EXCHANGE.address); 
+			await EXCHANGE.depositETH({value: amountETH})
+			let balance = await web3.eth.getBalance(EXCHANGE.address);
 			let ClaimETH = await EXCHANGE.claimOfETH.call(accounts[0]);
 			assert.equal(balance, amountETH, "Deposit: Balance exchange contract not equal");
 			assert.equal(ClaimETH, amountETH, "Deposit: Balance claim not equal")
 		});
-		it("Tokens deposit", async () => {
+		it("should deposit tokens in exchange", async () => {
 			await ORACLE.updateRate(20000);
 			let amount = 20000000000000000000000;
 			let amountETH = 2000000000000000000;
 			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
 			let amountSell = 10000000000000000000000;
 			await TOKEN.depositExchange(amountSell.toLocaleString('fullwide', { useGrouping: false }));
+			let normRateAfter = await TAXATION.viewNormRateFee.call();
 			let ClaimTokens = await EXCHANGE.claimOfTKN.call(accounts[0]);
-			assert.equal(amountSell, ClaimTokens, "Depositr: Tokens not deposited");
-	  	});
+			let normClaimTokens = ClaimTokens * normRateAfter / 10**18;
+			assert.equal(amountSell.toString(), normClaimTokens.toString(), "Deposit: Tokens not deposited");
+			});
 	});
 	describe('Withdraw', function () {
-		it("Remove claim ETH withdraw", async () => {
-			let amountETH = 2000000000000000000;
-			await EXCHANGE.removeClaimETH(amountETH.toLocaleString('fullwide', { useGrouping: false }))
-			let balance = await web3.eth.getBalance(EXCHANGE.address); 
-			let ClaimETH = await EXCHANGE.claimOfETH.call(accounts[0]);
-			assert.equal(balance, 0, "Remove claim: Balance exchange contract not equal");
-			assert.equal(ClaimETH, 0, "Remove claim: Balance claim not equal")
-		});
-		it("Remove claim Tokens", async () => {
-			//Claim adjusted for fee
-			let Claim = 9999999824177602100000;
-			await EXCHANGE.removeClaimTKN(Claim.toLocaleString('fullwide', { useGrouping: false }))
-			let ClaimNew = await EXCHANGE.claimOfTKN.call(accounts[0]);
-			assert(ClaimNew < 10000000000, "Remove claim: Balance exchange contract not equal");	
-			//Test fee on low claim value
-			for (i=1; i < 100; i++)	{
-				await ORACLE.updateRate(20000);
-			}
-			let ClaimBlock1 = await EXCHANGE.claimOfTKN.call(accounts[0]);
-			assert(ClaimBlock1 < ClaimNew, "Remove claim: Balance exchange contract not equal");
-			//Test withdraw small amount
-			let ClaimSmall = 1319461;
-			await EXCHANGE.removeClaimTKN(ClaimSmall.toLocaleString('fullwide', { useGrouping: false }))
-			let ClaimSmallNew = await EXCHANGE.claimOfTKN.call(accounts[0]);
-			assert.equal(ClaimSmallNew, 0, "Remove claim: Small amount remove to zero not possible")
-		}); 
-		it("Withdraw ETH", async () => {
+		it("should withdraw ETH from exchange", async () => {
 			let amount = 20000000000000000000000;
 			let amountETH = 2000000000000000000;
 			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
 			let amountSell = 10000000000000000000000;
 			await TOKEN.depositExchange(amountSell.toLocaleString('fullwide', { useGrouping: false }));
-			await EXCHANGE.sellETH({value: amountETH})
+			await EXCHANGE.depositETH({value: amountETH})
 			let balance = await web3.eth.getBalance(accounts[0]);
 			amountETHBuy = 200000000000000000;
 			let total = await EXCHANGE.totalReserve.call();
-			await EXCHANGE.buyETH(amountETHBuy.toLocaleString('fullwide', { useGrouping: false }));
+			await EXCHANGE.withdrawETH(amountETHBuy.toLocaleString('fullwide', { useGrouping: false }));
 			let balanceNew = await web3.eth.getBalance(accounts[0]);
 			let balanceDiff = balanceNew - balance;
 			let balanceDiffCheck = 190000000000000000;
@@ -540,9 +506,8 @@ contract('LinkedEXC', async accounts => {
 			assert(balanceDiff > balanceDiffCheck, "Withdraw ETH: balance change is not 0.2ETH minus gas");
 			assert(balanceDiff < balanceDiffCheckmax, "Withdraw ETH: balance change is not 0.2ETH minus gas");
 			assert.equal(totalChange, amountETHBuy, "Withdraw ETH: total cchange is not 0.2ETH");
-		}); 
-		it("Withdraw tokens", async () => {
-			let claimETH = await EXCHANGE.claimOfETH.call(accounts[0]);
+		});
+		it("should withdraw tokens from exchange", async () => {
 			let base = 10**20;
 			let BNbase = new BN(web3.utils.toBN(base));
 			let total = await EXCHANGE.totalReserve.call();
@@ -551,34 +516,27 @@ contract('LinkedEXC', async accounts => {
 			let amountTKNBuy = "5000000000000000000000";
 			let BNamountTKNBuy = new BN(amountTKNBuy);
 			let BNamountTKNBuycheck = BNamountTKNBuy.div(BNbase);
-			await EXCHANGE.buyTKN(amountTKNBuy.toLocaleString('fullwide', { useGrouping: false }));
-			let claimETHNEW = await EXCHANGE.claimOfETH.call(accounts[0]);
+			await EXCHANGE.withdrawTKN(amountTKNBuy.toLocaleString('fullwide', { useGrouping: false }));
 			let totalNEW = await EXCHANGE.totalReserve.call();
 			let BNtotalNew = new BN(totalNEW[1]);
 			let totalNEWrounded = BNtotalNew.div(BNbase);
 			let totalDiff = totalrounded.sub(totalNEWrounded);
-			let ClaimETHChange = claimETH - claimETHNEW;
-			let ClaimETHChangeCheck = amountTKNBuy / 20000;
-			assert.equal(ClaimETHChange.toString(), ClaimETHChangeCheck.toString(), "Withdraw tokens: change in ETH claim not equal");
 			assert.equal(BNamountTKNBuycheck.toString(), totalDiff.toString(), "Withdraw tokens: change in total balance exchange not equal");
-		});  
+		});
 	});
 });
-
-/*
 contract('LinkedDEFCON', async accounts => {
 	let PROXY;
-	let TOKEN;	
+	let TOKEN;
 	let COLLATERAL;
 	let CUSTODIAN;
 	let ORACLE;
 	let TAXATION;
 	let DEFCON;
 	let EXCHANGE;
-		
 	before(async() => {
 		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();	
+		TOKEN = await LinkedTKN.deployed();
 		COLLATERAL = await LinkedCOL.deployed();
 		CUSTODIAN = await LinkedCUS.deployed();
 		ORACLE = await LinkedORCL.deployed();
@@ -594,24 +552,150 @@ contract('LinkedDEFCON', async accounts => {
 						 EXCHANGE.address,
 						 accounts[0]
 						);
-			
-		await TOKEN.initialize(PROXY.address);	
+		await TOKEN.initialize(PROXY.address);
 		await COLLATERAL.initialize(PROXY.address);
 		await CUSTODIAN.initialize(PROXY.address);
 		await ORACLE.initialize(PROXY.address);
 		await TAXATION.initialize(PROXY.address);
 		await DEFCON.initialize(PROXY.address);
 		await EXCHANGE.initialize(PROXY.address);
+		
+		let amount = 20000000000000000000000;
+		let amountETH = 2000000000000000000;
 		await ORACLE.updateRate(20000);
+		await TOKEN.approve(accounts[1], amount.toLocaleString('fullwide', { useGrouping: false }));
+		await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
 	});
-	describe('DEFCON', function () {
-		it("TO DO: Activate shutdown", async () => {
-    			assert.equal(true, true, "DEFCON: Activation failed");
-		});
-		it("TO DO: Pending shutdown", async () => {
-			assert.equal(true, true, "DEFCON: Shutdown error");
-	  });
+	describe('pause()', function () {
+		describe('oracle contract', function () {
+			it("should not be able to update price rate", async () => {
+					await PROXY.activateDefcon();
+					await truffleAssert.reverts(ORACLE.updateRate(20100));	
+			});
+		})
+		describe('token contract', function () {
+			it("should not be able to transfer tokens", async () => {
+					let amount = 20000000000000000000000;
+					await truffleAssert.reverts(TOKEN.transfer(accounts[1], 
+																amount.toLocaleString('fullwide', { useGrouping: false })));	
+			});
+			it("should not be able to transferFrom tokens", async () => {
+					let amount = 20000000000000000000000;
+					await truffleAssert.reverts(TOKEN.transferFrom(accounts[0], 
+											   						accounts[1],
+																	amount.toLocaleString('fullwide', { useGrouping: false }),
+																	{from: accounts[1]}));
+			});
+		})
+		describe('collateral contract', function () {
+			it("should not be able to open collateral position", async () => {
+					let amount = 20000000000000000000000;
+					let amountETH = 2000000000000000000;
+					await truffleAssert.reverts(
+						COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH})
+					);
+			});
+			it("should not be able to transfer collateral position", async () => {
+					await truffleAssert.reverts(
+						COLLATERAL.transfer(accounts[1],
+											"0"
+					));	
+			});
+			it("should not be able to deposit ETH to collateral position", async () => {
+					let amountETH = 2000000000000000000;
+					await truffleAssert.reverts(
+						COLLATERAL.depositETHCP("0",
+												{value: amountETH}
+					));	
+			});
+			it("should not be able to deposit Tokens (burn) to collateral position", async () => {
+					let amount = 20000000000000000000000;
+					await truffleAssert.reverts(
+						COLLATERAL.depositTokenCP(
+							amount.toLocaleString('fullwide', { useGrouping: false }),
+							"0"						
+					));	
+			});
+			it("should not be able to withdraw ETH from collateral position", async () => {
+					let amountETH = 200;
+					await truffleAssert.reverts(
+						COLLATERAL.withdrawETHCP(amountETH,
+												"0")
+					);						
+			});
+			it("should not be able to withdraw Tokens from collateral position", async () => {
+					let amountTKN = 200;
+					await truffleAssert.reverts(
+						COLLATERAL.withdrawTokenCP(amountTKN,
+											"0")
+					);				
+			});		
+		})
+		describe('exchange contract', function () {
+			it("should not be able to deposit exchange tokens", async () => {
+					let amountTKN = 200;
+					await truffleAssert.reverts(
+						TOKEN.depositExchange(amountTKN.toLocaleString('fullwide', { useGrouping: false }))
+					);			
+			});
+		})
 	});
-});
-*/
+	describe('setDefcon()', function () {
+			it("should return true if defcon is active", async () => {
+					let active = await PROXY.defconActive.call();
+					assert.equal(active, true, "defcon: Activation failed");
+			});
+			it("should add total ETH and Tokens to defcon contract", async () => {
+					let initETH = await DEFCON.totalETH.call();
+					let initTKNcp = await DEFCON.cpTokens.call()
+					let initTKNusr = await DEFCON.userTokens.call();
+					let initTKNtotal = await DEFCON.totalTokens.call();
+					assert.equal(0, initETH.toString(), "defcon: initial not zero");
+					assert.equal(0, initTKNcp.toString(), "defcon: initial not zero");
+					assert.equal(0, initTKNusr.toString(), "defcon: initial not zero");
+					assert.equal(0, initTKNtotal.toString(), "defcon: initial not zero");
 
+					await DEFCON.setDefcon();
+					
+					
+					//ADD DEFCON CHECK FOR TOTALS 
+					//BEFORE ADJUST DEFCON CODE - USE OF NORMALISED TOKENS
+
+			});
+
+			
+			/*
+			it("should give total ETH equal to total custodian contract", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+			it("should give total tokens equal to total collateral contract", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+			it("should give total tokens equal to total token contract", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+			*/
+	});
+
+	describe('defconClaimUser()', function () {
+		/*
+			it("should burn tokens of user", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+			it("should return portion of ETH to user", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+		*/
+	})
+	describe('defconClaimCP()', function () {
+		/*
+			it("should block collateral position from defcon claim", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+			it("should return portion of ETH to collateral holder", async () => {
+					assert.equal(true, true, "defcon: Activation failed");
+			});
+		*/
+	})
+
+});
