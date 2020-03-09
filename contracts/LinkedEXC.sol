@@ -94,14 +94,14 @@ contract LinkedEXC is Ownable {
     
     /**
      *  @dev Internal functions called by the above functions.
+     * 
+     * 
      */
     function _depositTKN(address receiver, uint256 amount) internal {
             IERC20 token = IERC20(proxy.readAddress()[0]);
-            ITAX tax = ITAX(proxy.readAddress()[4]);
             require(msg.sender == address(token), "Exchange: not the token contract");
-            uint256 normRateFee = tax.viewNormRateFee();
-            //normalise amount in claim
-            _claimsTKN[receiver] = _claimsTKN[receiver].add(amount.mul(normRateFee).div(proxy.base()));
+            //transfer function deposits normalised amount 
+            _claimsTKN[receiver] = _claimsTKN[receiver].add(amount);
     }
     
     function _depositETH() internal {
@@ -114,21 +114,22 @@ contract LinkedEXC is Ownable {
             ITAX tax = ITAX(proxy.readAddress()[4]);
             require(amount <= token.balanceOf(address(this)), "Exchange: not enough tokens in reserve");
             uint256 rateUSD = proxy.rate();
-            uint256 tokensExc = claimOfTKN(msg.sender);
             uint256 normRateFee = tax.viewNormRateFee();
+            //transfer function deposits normalised amount 
+            uint256 tokensExc = claimOfTKN(msg.sender).mul(normRateFee).div(proxy.base());
             if (tokensExc > 0) {
                 if (amount >= tokensExc) {
-                    uint256 rest = amount.sub(tokensExc);
+                    uint256 rest = (amount.mul(proxy.base()).div(normRateFee)).sub(tokensExc);
                     uint256 _amountETH = rest.div(rateUSD);
-                    _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(tokensExc.mul(normRateFee).div(proxy.base()));
+                    _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(tokensExc);
                     _claimsETH[msg.sender] = _claimsETH[msg.sender].sub(_amountETH);
                     assert(token.transfer(msg.sender, amount)); 
                 } else {
-                    _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(amount.mul(normRateFee).div(proxy.base()));
+                    _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(amount);
                     assert(token.transfer(msg.sender, amount)); 
                 }
             } else {
-                uint256 _amountETH = amount.div(rateUSD);
+                uint256 _amountETH = (amount.mul(proxy.base()).div(normRateFee)).div(rateUSD);
                 _claimsETH[msg.sender] = _claimsETH[msg.sender].sub(_amountETH);
                 assert(token.transfer(msg.sender, amount)); 
             }
@@ -151,7 +152,6 @@ contract LinkedEXC is Ownable {
                     _claimsETH[msg.sender] = _claimsETH[msg.sender].sub(amount);
                     msg.sender.transfer(amount);
                 }
-                
             } else {
                 uint256 _amountTKN = amount.mul(rateUSD);
                 _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(_amountTKN.mul(normRateFee).div(proxy.base()));

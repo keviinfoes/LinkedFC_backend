@@ -151,7 +151,7 @@ contract LinkedCOL is Ownable {
             ICUS custodian = ICUS(proxy.readAddress()[2]);
             uint256[7] memory info = _getCPdata(msg.sender, id);
             uint256 newAmountETH = info[2].sub(amount);
-            uint256 amountTokens = info[3].mul(proxy.base()).div(info[1]); 
+            uint256 amountTokens = (info[3].mul(proxy.base())).div(info[1]); 
             _liqArrayDelete(info[4], info[5], info[6]);
             if (newAmountETH == 0) {
                 _closeCP(id, amount, amountTokens, info[3]);
@@ -211,7 +211,7 @@ contract LinkedCOL is Ownable {
             cPosition[msg.sender][id].amountToken = newAmountTokens;
             cPosition[msg.sender][id].liqrange = newliqGroup;
             cPosition[msg.sender][id].liqid = liqRange[newliqGroup];
-            assert(custodian.mint(msg.sender, amount));
+            assert(custodian.mint(msg.sender, normAmount));
             return true;
     }
 
@@ -238,11 +238,11 @@ contract LinkedCOL is Ownable {
             } else {
                 uint256 availableToken = info[2].mul(proxy.rate()).mul(100).div(liqPer);
                 require(token.balanceOf(msg.sender) >= availableToken, "Collateral: < 110% | not enough tokens");
-                remFund = amountTokens.sub(availableToken);
+                remFund = remFund.add(amountTokens.sub(availableToken));
                 _liqArrayDelete(info[4], info[5], info[6]);
 		        _closeCP(id, info[2], amountTokens, info[3]);
                 assert(custodian.transfer(msg.sender, info[2])); 
-                return false;
+                return true;
             }
     }
     
@@ -328,7 +328,6 @@ contract LinkedCOL is Ownable {
             uint256 liq = cPosition[sender][id].liquidation;
             require(sender != address(0), "ERC20: transfer from the zero address");
 			require(recipient != address(0), "ERC20: transfer to the zero address");
-            liqInfo[info[4]][info[5]].account = recipient;
             cPosition[sender][id] = UserCP({
                 amountETH: 0,
                 amountToken: 0,
@@ -336,7 +335,9 @@ contract LinkedCOL is Ownable {
                 liqrange: 0,
                 liqid: 0
             });
-	    uint256 tempindex = index[recipient];
+	        uint256 tempindex = index[recipient];
+            liqInfo[info[4]][info[5]].account = recipient;
+            liqInfo[info[4]][info[5]].id = tempindex;
             index[recipient] += 1;
             cPosition[recipient][tempindex] = UserCP({
                 amountETH: info[2],

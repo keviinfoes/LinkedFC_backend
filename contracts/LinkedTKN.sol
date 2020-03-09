@@ -23,9 +23,9 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
     ITAX public tax;
     bool public initialized;
 	//Supply variables
-	mapping (address => uint256) private _balances;
+	mapping (address => uint256) public _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
-    uint256 public totalSupply;
+    	uint256 public totalSupply;
 	//Additional transfer fee variable
 	uint256 constant public FEE_ETH = 0 finney;
 
@@ -86,7 +86,9 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * Requirements:
 	 *
 	 * - `recipient` cannot be the zero address.
-	 * - the caller must have a balance of at least `amount`.
+	 * - the caller must have a balance of at least `amount`. 
+	 * 
+	 * NOTE: amount is the normalised amount. Do not use the relative amount (after tax). 
 	 */
 	function transfer(address recipient, uint256 amount) whenNotPaused external payable returns (bool) {
 			_transfer(msg.sender, recipient, amount);
@@ -179,11 +181,10 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
     }
     
     /**
-	 * @dev See `IERC20.approve`.
-	 *
-	 * Requirements:
-	 *
-	 * - `spender` cannot be the zero address.
+	 * @dev function to deposit tokens to the native exchange
+	 * 
+	 * NOTE: amount is the normalised amount. Do not use the relative amount (after tax).
+	 * 
 	 */
 	function depositExchange(uint256 value) whenNotPaused external returns (bool) {
 			IEXC exchange = IEXC(proxy.readAddress()[6]);
@@ -213,6 +214,8 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 * - `sender` cannot be the zero address.
 	 * - `recipient` cannot be the zero address.
 	 * - `sender` must have a balance of at least `amount`.
+	 * 
+	 * NOTE: amount is the normalised amount. Do not use the relative amount (after tax). 
 	 */
 	function _transfer(address payable sender, address recipient, uint256 amount) internal {
 			require(sender != address(0), "ERC20: transfer from the zero address");
@@ -220,10 +223,8 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 			require(msg.value >= FEE_ETH);
 			address payable _custodian = proxy.readAddress()[2];
 			uint256 _changeETH = msg.value.sub(FEE_ETH);
-            uint256 normRateFee = tax.viewNormRateFee();
-			uint256 normAmount = amount.mul(normRateFee).div(proxy.base());
-			_balances[sender] = _balances[sender].sub(normAmount);
-			_balances[recipient] = _balances[recipient].add(normAmount);
+			_balances[sender] = _balances[sender].sub(amount);
+			_balances[recipient] = _balances[recipient].add(amount);
 			emit Transfer(sender, recipient, amount, FEE_ETH);
 			_custodian.transfer(FEE_ETH);
 			sender.transfer(_changeETH);
@@ -261,8 +262,8 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	 */
 	function _burn(address account, uint256 value) internal {
 			require(account != address(0), "ERC20: burn from the zero address");
-		    uint256 normRateFee = tax.viewNormRateFee();
-            uint256 normAmount = value.mul(normRateFee).div(proxy.base());
+			uint256 normRateFee = tax.viewNormRateFee();
+            		uint256 normAmount = value.mul(normRateFee).div(proxy.base());
 			totalSupply = totalSupply.sub(normAmount);
 			_balances[account] = _balances[account].sub(normAmount);
 			emit Transfer(account, address(0), value, 0);
@@ -291,7 +292,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	/**
 	 * @dev Update the normalisation rate for the stability fee decuction. 
 	 * Uses the `safe` rpow for power calculation.
-     	 */
+     */
 	function _devClaim() internal {
             uint256 normRateFee = tax.viewNormRateFee();
             uint256 pendingClaim = balanceOfDev();

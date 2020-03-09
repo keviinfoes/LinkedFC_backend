@@ -56,10 +56,10 @@ contract LinkedDEFCON is Ownable {
             //Set total ETH to divide
             totalETH = address(custodian).balance;
             //Set normalised total tokens CP
-            uint256[3] memory _totalData = collateral.dataTotalCP();
+            uint256[3] memory _totalData = collateral.tldata();
             cpTokens = _totalData[2];
             //Set normalised total tokens Users
-            userTokens = token.gettotalSupply();
+            userTokens = token.totalSupply();
             totalTokens = userTokens.add(cpTokens);
             return true;
     }
@@ -70,7 +70,7 @@ contract LinkedDEFCON is Ownable {
     function defconClaimUser() onlyDefcon external returns (bool success){
             IERC20 token = IERC20(proxy.readAddress()[0]);  
             ICUS custodian = ICUS(proxy.readAddress()[2]);
-            uint256 amountTokens = token.balanceOf(msg.sender);
+            uint256 amountTokens = token._balances(msg.sender);
             uint256 amountClaim = amountTokens.mul(totalETH).div(totalTokens);
             assert(custodian.burn(msg.sender, amountTokens));
             assert(custodian.transfer(msg.sender, amountClaim)); 
@@ -80,7 +80,7 @@ contract LinkedDEFCON is Ownable {
     /**
      * Claim ETH during defcon for CP holders
      */
-    function defconClaimCP(uint256 id) external returns (bool success){
+    function defconClaimCP(uint256 id) onlyDefcon external returns (bool success){
             require(claimedCP[msg.sender][id] == false, "Defcon: already claimed");
 	        claimedCP[msg.sender][id] = true;
 	        ICOL collateral = ICOL(proxy.readAddress()[1]);
