@@ -1,6 +1,5 @@
 pragma solidity 0.5.11;
 
-import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -15,7 +14,7 @@ import "./IEXC.sol";
  *   Stable coin token contract. 
  *   Linked is a custodial stable coin with the goal of simplifying the implementation. 
  */
-contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
+contract LinkedTKN is IERC20, ERC20Detailed, MinterRole {
 	using SafeMath for uint256;
 
     //Proxy address for system contracts
@@ -25,14 +24,14 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	//Supply variables
 	mapping (address => uint256) public _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
-    	uint256 public totalSupply;
+    uint256 public totalSupply;
 	//Additional transfer fee variable
-	uint256 constant public FEE_ETH = 0 finney;
+	uint256 public FEE_ETH = 0;
 
     /**
      * Set proxy address
      */
-    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
+    function initialize(address proxyAddress) external returns (bool success) {
             require (initialized == false);
             require (proxyAddress != address(0));
             initialized = true;
@@ -46,6 +45,14 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
     
     modifier whenNotPaused() {
             require(!proxy.checkPause(), "Pausable: paused");
+            _;
+    }
+
+	/**
+     *  @dev Throws if called by any account other than the owner.
+     */
+    modifier owners() {
+            require(msg.sender == proxy.owner(), "Proxy: pause is active");
             _;
     }
     
@@ -202,6 +209,14 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
     }
 
 	/**
+	 * @dev Claim te amount for the developer.
+     */
+    function ethFee(uint256 amount) owners external returns (bool success) {
+            _ethFee(amount);
+            return true;
+    }
+
+	/**
 	 * @dev Moves tokens `amount` from `sender` to `recipient`.
 	 *
 	 * This is internal function is equivalent to `transfer`, and can be used to
@@ -263,7 +278,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
 	function _burn(address account, uint256 value) internal {
 			require(account != address(0), "ERC20: burn from the zero address");
 			uint256 normRateFee = tax.viewNormRateFee();
-            		uint256 normAmount = value.mul(normRateFee).div(proxy.base());
+            uint256 normAmount = value.mul(normRateFee).div(proxy.base());
 			totalSupply = totalSupply.sub(normAmount);
 			_balances[account] = _balances[account].sub(normAmount);
 			emit Transfer(account, address(0), value, 0);
@@ -300,5 +315,12 @@ contract LinkedTKN is IERC20, ERC20Detailed, Ownable, MinterRole {
             uint256 normAmount = pendingClaim.mul(normRateFee).div(proxy.base());
             totalSupply = totalSupply.add(normAmount);
             _balances[dev] = _balances[dev].add(normAmount);
+	}
+
+	/**
+	 * @dev Update the transaction fee in ETH.
+     */
+	function _ethFee(uint256 amount) internal {
+            FEE_ETH = amount;
 	}
 }

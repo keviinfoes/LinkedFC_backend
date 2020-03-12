@@ -2,7 +2,6 @@ pragma solidity 0.5.11;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/ownership/Ownable.sol";
 
 import "./IPROXY.sol";
 
@@ -11,7 +10,7 @@ import "./IPROXY.sol";
  * 	The custodian contract holds the ether and 
  *	minst/burns the tokens.
  */
-contract LinkedCUS is Ownable {
+contract LinkedCUS {
     using SafeMath for uint256;
     
     //Proxy address for system contracts
@@ -26,7 +25,7 @@ contract LinkedCUS is Ownable {
     /**
      * Set proxy address
      */
-    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
+    function initialize(address proxyAddress) external returns (bool success) {
             require (initialized == false);
             require (proxyAddress != address(0));
             initialized = true;
@@ -40,11 +39,15 @@ contract LinkedCUS is Ownable {
     }
     
     /**
-     * @dev Throws if called by any account other than the owner.
+     * @dev Throws if called by any account other than the collateral address.
      */
     modifier onlyCollateral() {
             address payable collateral = proxy.readAddress()[1]; 
-            require(collateral == msg.sender, "Collateral contract not whitelisted");
+            address payable defcon = proxy.readAddress()[5];
+            require(    
+                        collateral == msg.sender || 
+                        (defcon == msg.sender && proxy.defconActive() == true), 
+                        "Collateral contract not whitelisted");
             _;
     }
     

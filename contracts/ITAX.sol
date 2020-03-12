@@ -7,4 +7,5 @@ pragma solidity 0.5.11;
 interface ITAX {
     function viewNormRateReward() external view returns (uint256);
     function viewNormRateFee() external view returns (uint256);
+    function adjustLiqCorrection(uint256 amount) external returns (bool);
 }

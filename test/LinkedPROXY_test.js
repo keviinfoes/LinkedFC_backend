@@ -258,6 +258,49 @@ contract('LinkedCOL', async accounts => {
 			assert.equal(PositionNew[0], 0, "Close CP: ETH in position not zero");
   		});
 	});
+	describe('Liquidate CP', function () {
+		it("should liquidate collateral positions 140% ", async () => {
+			let amount = 20000000000000000000000;
+			let amountETH = 2000000000000000000;
+			let amount2 = 40000000000000000000000;
+			let amountETH2 = 4000000000000000000;
+			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
+			await COLLATERAL.openCP(amount2.toLocaleString('fullwide', { useGrouping: false }), {from: accounts[1], value: amountETH2});
+			let index = await COLLATERAL.index.call(accounts[0])
+			await ORACLE.updateRate(14000);
+			await COLLATERAL.liquidateCP(accounts[0], (index - 1), {from: accounts[1]});
+			let position = await COLLATERAL.cPosition.call(accounts[0], (index - 1));
+			assert.equal(position[0].toString(), 0, "Liquidate CP: liquidation failed");
+			assert.equal(position[1].toString(), 0, "Liquidate CP: liquidation failed");
+		});
+		
+		it("should increase liquidation correction for debt calculation (<100%)", async () => {
+			await ORACLE.updateRate(20000);
+			let amount = 20000000000000000000000;
+			let amountETH = 2000000000000000000;
+			let amount2 = 40000000000000000000000;
+			let amountETH2 = 4000000000000000000;
+			await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
+			await COLLATERAL.openCP(amount2.toLocaleString('fullwide', { useGrouping: false }), {from: accounts[1], value: amountETH2});
+			let index = await COLLATERAL.index.call(accounts[0])
+			await ORACLE.updateRate(9000);
+			let correctionOLD = await TAXATION.liquidationCorrection.call();
+			assert.equal(correctionOLD, 0, "Liquidate CP: start correction not zero");
+			await COLLATERAL.liquidateCP(accounts[0], (index - 1), {from: accounts[1]});
+			let position = await COLLATERAL.cPosition.call(accounts[0], (index - 1));
+			let correction = await TAXATION.liquidationCorrection.call();
+			assert(correction, "Liquidate CP: liquidation correction not added");
+			assert.equal(position[0].toString(), 0, "Liquidate CP: liquidation failed"); 
+		});
+		it("should have no effect on balance totals", async () => {
+			let totalCP = await COLLATERAL.dataTotalCP.call();
+			let totalDEBT = totalCP[2];
+			let totalTKN = await TOKEN.gettotalSupply.call();
+			let totalDEV = await TOKEN.balanceOfDev.call();
+			let subtotalTKN = totalTKN.add(totalDEV);
+			assert.equal(subtotalTKN.toString(), totalDEBT.toString(), "Liquidate CP: balance not equal");
+		});
+	});
 });
 
 contract('LinkedCUS', async accounts => {
@@ -421,10 +464,28 @@ contract('LinkedTAX', async accounts => {
 			let CheckNorm = Norm - 1 * 10**18;
 			//console.log(Fee);
 			assert(Fee < CheckNorm, "Stability calculations: fee calculation error");
-	  	});
+		});
+		it("should adjust the rate reward from 1.5% to 2%", async () => {
+			let base = 10**18;
+			let BNbase = new BN(base.toString());
+			let raterewardOLD = await TAXATION.baseRateReward.call();
+			let ratefee = await TAXATION.baseRateFee.call();
+			await TAXATION.updateNormRate(ratefee, ratefee);
+			let raterewardNEW = await TAXATION.baseRateReward.call();
+			let additionrewardNEW = await TAXATION.additionReward.call();
+			let checkAddition = raterewardOLD.sub(BNbase);
+			assert.equal(raterewardNEW.toString(), ratefee.toString(), "Taxation: update ratereward failed");
+			assert.equal(additionrewardNEW.toString(), checkAddition.toString(), "Taxation: update ratereward addition failed");
+			await TAXATION.updateNormRate(raterewardOLD, ratefee);
+		});
+		it("should adjust the rate fee from 2% to 1.5% ", async () => {
+			let ratereward = await TAXATION.baseRateReward.call();
+			await TAXATION.updateNormRate(ratereward, ratereward);
+			let ratefeeNEW = await TAXATION.baseRateFee.call();
+			assert.equal(ratefeeNEW.toString(), ratereward.toString(), "Taxation: update ratefee failed");
+		});
 	});
 });
-
 contract('LinkedEXC', async accounts => {
 	let PROXY;
 	let TOKEN;
@@ -562,9 +623,14 @@ contract('LinkedDEFCON', async accounts => {
 		
 		let amount = 20000000000000000000000;
 		let amountETH = 2000000000000000000;
+		let amountSell = 10000000000000000000000;
 		await ORACLE.updateRate(20000);
+		//Create position 1 for defcon test
 		await TOKEN.approve(accounts[1], amount.toLocaleString('fullwide', { useGrouping: false }));
 		await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
+		//Create position 2 and send tokens to exchange for defcon test
+		await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
+		await TOKEN.depositExchange(amountSell.toLocaleString('fullwide', { useGrouping: false }));
 	});
 	describe('pause()', function () {
 		describe('oracle contract', function () {
@@ -645,57 +711,95 @@ contract('LinkedDEFCON', async accounts => {
 					let active = await PROXY.defconActive.call();
 					assert.equal(active, true, "defcon: Activation failed");
 			});
-			it("should add total ETH and Tokens to defcon contract", async () => {
-					let initETH = await DEFCON.totalETH.call();
-					let initTKNcp = await DEFCON.cpTokens.call()
-					let initTKNusr = await DEFCON.userTokens.call();
-					let initTKNtotal = await DEFCON.totalTokens.call();
-					assert.equal(0, initETH.toString(), "defcon: initial not zero");
-					assert.equal(0, initTKNcp.toString(), "defcon: initial not zero");
-					assert.equal(0, initTKNusr.toString(), "defcon: initial not zero");
-					assert.equal(0, initTKNtotal.toString(), "defcon: initial not zero");
-
-					await DEFCON.setDefcon();
-					
-					
-					//ADD DEFCON CHECK FOR TOTALS 
-					//BEFORE ADJUST DEFCON CODE - USE OF NORMALISED TOKENS
-
-			});
-
 			
-			/*
-			it("should give total ETH equal to total custodian contract", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should add total ETH and Tokens to defcon contract", async () => {
+					await DEFCON.setDefcon();
+					let balanceETH = await web3.eth.getBalance(CUSTODIAN.address);
+					let balanceETHdefcon = await DEFCON.totalETH.call();
+					assert.equal(balanceETH.toString(), balanceETHdefcon.toString(), "defcon: ETH store failed");
 			});
-			it("should give total tokens equal to total collateral contract", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should add total Tokens to defcon contract", async () => {
+					let balanceTKN = await TOKEN.totalSupply.call();
+					let balanceTKNdefcon = await DEFCON.userTokensnorm.call();
+					assert.equal(balanceTKN.toString(), balanceTKNdefcon.toString(), "defcon: ETH store failed");
 			});
-			it("should give total tokens equal to total token contract", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should store safe token amount based on the current price rate", async () => {
+					let rate = await PROXY.rate.call();
+					let BNrate = new BN(rate.toString());
+					let balanceETHdefcon = await DEFCON.totalETH.call();
+					let checkSafe =  balanceETHdefcon.mul(BNrate);
+					let safeDEFCON = await DEFCON.safe.call();
+					assert.equal(safeDEFCON.toString(), checkSafe.toString(), "defcon: eth store safe failed");
 			});
-			*/
+			it("should divide ETH over user and CP fair", async () => {
+					let balanceETHusr = await DEFCON.totalETHusr.call();
+					let balanceETHcp = await DEFCON.totalETHcp.call();
+					let balanceETH = await web3.eth.getBalance(CUSTODIAN.address);
+					let balanceETHcheck = balanceETHusr.add(balanceETHcp);
+					assert.equal(balanceETH.toString(), balanceETHcheck.toString(), "defcon: eth division failed");
+			});	
 	});
-
 	describe('defconClaimUser()', function () {
-		/*
-			it("should burn tokens of user", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should withdraw ETH for user", async () => {
+					let balanceETHusr = await web3.eth.getBalance(accounts[0]);
+					let BNold = new BN(balanceETHusr.toString());
+					//Send transaction claim and calculate gascost
+					let transaction = await DEFCON.defconClaimUser();
+					let transaction2 = await web3.eth.getTransaction(transaction.receipt.transactionHash);
+					let txt_cost = transaction.receipt.gasUsed * transaction2.gasPrice;
+					let BNtxt_cost = new BN(txt_cost);
+					//Calculate balance ETH change user
+					let balanceETHusrNEW = await web3.eth.getBalance(accounts[0]);
+					let BNnew = new BN(balanceETHusrNEW.toString());
+					let balanceUSRdiff = BNnew.sub(BNold).add(BNtxt_cost);
+					//Read claimed ETH user
+					let claimedETH = await DEFCON.claimedETH.call();
+					assert.equal(balanceUSRdiff.toString(), claimedETH.toString(), "defcon: withdraw ETH user failed");
 			});
-			it("should return portion of ETH to user", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should allow only one withdraw for user", async () => {
+					await truffleAssert.reverts(DEFCON.defconClaimUser());	
 			});
-		*/
+	})
+	describe('defconClaimExc()', function () {
+			it("should return portion of ETH to exchange holder", async () => {
+					let balanceEXCusr = await web3.eth.getBalance(accounts[0]);
+					let BNold = new BN(balanceEXCusr.toString());
+					let claimedETHold = await DEFCON.claimedETH.call();
+					let transaction = await DEFCON.defconClaimExc();
+					let transaction2 = await web3.eth.getTransaction(transaction.receipt.transactionHash);
+					let txt_cost = transaction.receipt.gasUsed * transaction2.gasPrice;
+					let BNtxt_cost = new BN(txt_cost);
+					//Calculate balance ETH change user
+					let balanceEXCuserNEW = await web3.eth.getBalance(accounts[0]);
+					let BNnew = new BN(balanceEXCuserNEW.toString());
+					let claimedETHnew = await DEFCON.claimedETH.call();
+					let claimedETHdiff = claimedETHnew.sub(claimedETHold);
+					let balanceUSRdiff = BNnew.sub(BNold).add(BNtxt_cost);
+					assert.equal(balanceUSRdiff.toString(), claimedETHdiff.toString(), "defcon: withdraw ETH exchange failed");
+			});
+			it("should allow only one withdraw for exchange token owners", async () => {	
+					await truffleAssert.reverts(DEFCON.defconClaimExc());	
+			});
 	})
 	describe('defconClaimCP()', function () {
-		/*
-			it("should block collateral position from defcon claim", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
+			it("should return ETH for collateral holder", async () => {
+					let balanceCPusr = await web3.eth.getBalance(accounts[0])
+					let BNold = new BN(balanceCPusr.toString());
+					let claimedETHold = await DEFCON.claimedETH.call();
+					let transaction = await DEFCON.defconClaimCP(0);
+					let transaction2 = await web3.eth.getTransaction(transaction.receipt.transactionHash);
+					let txt_cost = transaction.receipt.gasUsed * transaction2.gasPrice;
+					let BNtxt_cost = new BN(txt_cost);
+					//Calculate balance ETH change user
+					let balanceCPuserNEW = await web3.eth.getBalance(accounts[0]);
+					let BNnew = new BN(balanceCPuserNEW.toString());
+					let claimedETHnew = await DEFCON.claimedETH.call();
+					let claimedETHdiff = claimedETHnew.sub(claimedETHold);
+					let balanceUSRdiff = BNnew.sub(BNold).add(BNtxt_cost);
+					assert.equal(balanceUSRdiff.toString(), claimedETHdiff.toString(), "defcon: withdraw ETH CP failed");
+			});	
+			it("should allow only one withdraw for CP owners", async () => {
+					await truffleAssert.reverts(DEFCON.defconClaimCP(0));	
 			});
-			it("should return portion of ETH to collateral holder", async () => {
-					assert.equal(true, true, "defcon: Activation failed");
-			});
-		*/
 	})
-
 });

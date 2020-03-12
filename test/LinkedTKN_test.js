@@ -588,4 +588,16 @@ contract('LinkedTKN', async accounts => {
 			assert.equal(totalCheck.toString(), devclaim.toString(), "decvlaim: new claim is not difference totalsupply");
 		})
 	})
+	describe('update fee', function () {
+		it('should update the fee from 0 to 1 finney', async () => {
+			let amount = 1000000000000000;
+			await TOKEN.ethFee(amount);
+			let fee = await TOKEN.FEE_ETH.call();
+			assert.equal(fee.toString(), amount.toString(), "update fee: ETH transaction fee not updated");		
+		})
+		it('should fail transfer fee paid < 1 finney and succeed fee > 1', async () => {
+			await TOKEN.transfer(accounts[1], 10, {value: 1000000000000000});
+			await truffleAssert.reverts(TOKEN.transfer(accounts[0], 10));
+		})	
+	})
 })
