@@ -116,7 +116,7 @@ contract LinkedCOL {
     /**
      *  @dev Transfer collateral position to new user
      */
-    function transfer(address recipient, uint256 id) whenNotPaused external returns (bool) {
+    function transfer(address recipient, uint256 id) whenNotPaused external returns (bool success) {
 			_transfer(msg.sender, recipient, id);
 			emit TransferCP(msg.sender, recipient, id);
 			return true;

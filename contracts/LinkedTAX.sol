@@ -74,7 +74,7 @@ contract LinkedTAX {
 
         function adjustLiqCorrection(uint256 amount) external returns (bool success) {
                 address collateral = proxy.readAddress()[1];
-                require(msg.sender == collateral, "Proxy: pause is active");
+                require(msg.sender == collateral, "Tax: sender is not collateral contract");
                 liquidationCorrection = liquidationCorrection.add(amount);
                 return true;
         }        

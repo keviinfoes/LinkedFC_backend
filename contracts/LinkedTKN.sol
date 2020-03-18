@@ -24,7 +24,7 @@ contract LinkedTKN is IERC20, ERC20Detailed, MinterRole {
 	//Supply variables
 	mapping (address => uint256) public _balances;
 	mapping (address => mapping (address => uint256)) private _allowances;
-    uint256 public totalSupply;
+    	uint256 public totalSupply;
 	//Additional transfer fee variable
 	uint256 public FEE_ETH = 0;
 
