@@ -17,7 +17,7 @@ contract LinkedORCL {
      *  @dev Throws if called by any account other than the owner.
      */
     modifier owners() {
-            require(msg.sender == proxy.owner(), "Proxy: pause is active");
+            require(msg.sender == proxy._owner(), "Proxy: pause is active");
             _;
     }
 

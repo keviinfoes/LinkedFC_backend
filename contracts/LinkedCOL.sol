@@ -117,9 +117,9 @@ contract LinkedCOL {
      *  @dev Transfer collateral position to new user
      */
     function transfer(address recipient, uint256 id) whenNotPaused external returns (bool success) {
-			_transfer(msg.sender, recipient, id);
-			emit TransferCP(msg.sender, recipient, id);
-			return true;
+	     _transfer(msg.sender, recipient, id);
+	     emit TransferCP(msg.sender, recipient, id);
+	     return true;
 	}
 
     /**
@@ -135,10 +135,7 @@ contract LinkedCOL {
             tldata._supplyCPETH = tldata._supplyCPETH.add(msg.value);
             _liqArrayDelete(info[4], info[5], info[6]);
             _liqArrayAdd(newliqGroup, id);
-            cPosition[msg.sender][id].liquidation = liq;
-            cPosition[msg.sender][id].amountETH = newAmountETH;
-            cPosition[msg.sender][id].liqrange = newliqGroup;
-            cPosition[msg.sender][id].liqid = liqRange[newliqGroup];
+            _storeCP(id, newAmountETH, cPosition[msg.sender][id].amountToken, liq, newliqGroup);
             custodian.transfer(msg.value);
             return true;
     }
@@ -162,10 +159,7 @@ contract LinkedCOL {
                 uint256 liq = info[3].div(newAmountETH).mul(minCol).div(100);
                 uint256 newliqGroup = liq.div(1000);
                 _liqArrayAdd(newliqGroup, id);
-                cPosition[msg.sender][id].liquidation = liq;
-                cPosition[msg.sender][id].liqrange = newliqGroup;
-                cPosition[msg.sender][id].liqid = liqRange[newliqGroup];
-                cPosition[msg.sender][id].amountETH = newAmountETH;
+                _storeCP(id, newAmountETH, cPosition[msg.sender][id].amountToken, liq, newliqGroup);
                 tldata._supplyCPETH = tldata._supplyCPETH.sub(amount);
             }
             assert(custodian.transfer(msg.sender, amount));
@@ -188,10 +182,7 @@ contract LinkedCOL {
             tldata._supplyCPToken = tldata._supplyCPToken.sub(normAmount);
             _liqArrayDelete(info[4], info[5], info[6]);
             _liqArrayAdd(newliqGroup, id);
-            cPosition[msg.sender][id].liquidation = liq;
-            cPosition[msg.sender][id].amountToken = newAmountTokens;
-            cPosition[msg.sender][id].liqrange = newliqGroup;
-            cPosition[msg.sender][id].liqid = liqRange[newliqGroup];
+            _storeCP(id, cPosition[msg.sender][id].amountETH, newAmountTokens, liq, newliqGroup);
             assert(custodian.burn(msg.sender, amount));
             return true;
     }
@@ -210,10 +201,7 @@ contract LinkedCOL {
             tldata._supplyCPToken = tldata._supplyCPToken.add(normAmount);
             _liqArrayDelete(info[4], info[5], info[6]);
             _liqArrayAdd(newliqGroup, id);
-            cPosition[msg.sender][id].liquidation = liq;
-            cPosition[msg.sender][id].amountToken = newAmountTokens;
-            cPosition[msg.sender][id].liqrange = newliqGroup;
-            cPosition[msg.sender][id].liqid = liqRange[newliqGroup];
+            _storeCP(id, cPosition[msg.sender][id].amountETH, newAmountTokens, liq, newliqGroup);
             assert(custodian.mint(msg.sender, normAmount));
             return true;
     }
@@ -285,6 +273,14 @@ contract LinkedCOL {
             return _getCPData;
     }
     
+    function _storeCP(uint256 _index, uint256 ethereum, uint256 tokens, uint256 liq, uint256  liqGroup ) internal {
+            cPosition[msg.sender][_index].amountETH = ethereum;
+            cPosition[msg.sender][_index].amountToken = tokens;
+            cPosition[msg.sender][_index].liquidation = liq;
+            cPosition[msg.sender][_index].liqrange = liqGroup;
+            cPosition[msg.sender][_index].liqid = liqRange[liqGroup];
+    }
+
     function _liqArrayAdd(uint256 newliqGroup, uint256 id) internal {
             liqRange[newliqGroup] = liqRange[newliqGroup].add(1);
             liqInfo[newliqGroup][liqRange[newliqGroup]].id = id;
@@ -309,14 +305,10 @@ contract LinkedCOL {
                 _supplyCPToken: tldata._supplyCPToken.add(normAmount)
                 });
             index[msg.sender] += 1;
-            cPosition[msg.sender][_index].amountETH = msg.value;
-            cPosition[msg.sender][_index].liquidation = liq;
-            cPosition[msg.sender][_index].amountToken = normAmount;
-            cPosition[msg.sender][_index].liqrange = liqGroup;
-            cPosition[msg.sender][_index].liqid = liqRange[liqGroup];
+            _storeCP(_index, msg.value, normAmount, liq, liqGroup);
             emit OpenCP(msg.sender, _index);
-	    custodian.transfer(msg.value);
             assert(cust.mint(msg.sender, amount));
+            custodian.transfer(msg.value);
     }
     
     function _closeCP(uint256 id, address account, uint256 amountETH, uint256 amountNormTokens) internal {
@@ -338,7 +330,7 @@ contract LinkedCOL {
             uint256[7] memory info = _getCPdata(msg.sender, id);
             uint256 liq = cPosition[sender][id].liquidation;
             require(sender != address(0), "ERC20: transfer from the zero address");
-	    require(recipient != address(0), "ERC20: transfer to the zero address");
+            require(recipient != address(0), "ERC20: transfer to the zero address");
             cPosition[sender][id] = UserCP({
                 amountETH: 0,
                 amountToken: 0,
@@ -346,7 +338,7 @@ contract LinkedCOL {
                 liqrange: 0,
                 liqid: 0
             });
-	        uint256 tempindex = index[recipient];
+	    uint256 tempindex = index[recipient];
             liqInfo[info[4]][info[5]].account = recipient;
             liqInfo[info[4]][info[5]].id = tempindex;
             index[recipient] += 1;
@@ -356,6 +348,6 @@ contract LinkedCOL {
                 liquidation: liq,
                 liqrange: info[4],
                 liqid: info[5]
-            });      
+            }); 
     }
 }

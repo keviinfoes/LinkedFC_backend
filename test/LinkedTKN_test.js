@@ -1,204 +1,234 @@
-const LinkedPROXY = artifacts.require("LinkedPROXY");
-const LinkedTKN = artifacts.require("LinkedTKN");
-const LinkedCOL = artifacts.require("LinkedCOL");
-const LinkedCUS = artifacts.require("LinkedCUS");
-const LinkedORCL = artifacts.require("LinkedORCL");
-const LinkedTAX = artifacts.require("LinkedTAX");
-const LinkedDEFCON = artifacts.require("LinkedDEFCON");
-const LinkedEXC = artifacts.require("LinkedEXC");
-const truffleAssert = require('truffle-assertions');
+const LinkedFactory = artifacts.require("LinkedFactory")
+const LinkedFactoryTKN = artifacts.require("LinkedFactoryTKN")
+const LinkedFactoryCOL = artifacts.require("LinkedFactoryCOL")
+const LinkedFactoryCUS = artifacts.require("LinkedFactoryCUS")
+const LinkedFactoryORCL = artifacts.require("LinkedFactoryORCL")
+const LinkedFactoryTAX = artifacts.require("LinkedFactoryTAX")
+const LinkedFactoryDEFCON = artifacts.require("LinkedFactoryDEFCON")
+const LinkedFactoryEXC = artifacts.require("LinkedFactoryEXC")
+
+const LinkedPROXY = artifacts.require("LinkedPROXY")
+const LinkedTKN = artifacts.require("LinkedTKN")
+const LinkedCOL = artifacts.require("LinkedCOL")
+const LinkedCUS = artifacts.require("LinkedCUS")
+const LinkedORCL = artifacts.require("LinkedORCL")
+const LinkedTAX = artifacts.require("LinkedTAX")
+const LinkedDEFCON = artifacts.require("LinkedDEFCON")
+const LinkedEXC = artifacts.require("LinkedEXC")
+const truffleAssert = require('truffle-assertions')
 const BN = require('bn.js')
 
-const expect = require('chai').use(require('chai-bn')(web3.utils.BN)).expect;
+const expect = require('chai').use(require('chai-bn')(web3.utils.BN)).expect
 
 function when(name) {
 	return 'when (' + name + ')'
 }
 contract('LinkedTKN', async accounts => {
-	let PROXY;
-	let TOKEN;
-	let COLLATERAL;
-	let CUSTODIAN;
-	let ORACLE;
-	let TAXATION;
-	let DEFCON;
-	let EXCHANGE;
+	let Factory
+	let FactoryTKN
+	let FactoryCOL
+	let FactoryCUS
+	let FactoryORCL
+	let FactoryTAX
+	let FactoryDEFCON
+	let FactoryEXC
+	let PROXY
+	let TOKEN
+	let COLLATERAL
+	let CUSTODIAN
+	let ORACLE
+	let TAXATION
+	let DEFCON
+	let EXCHANGE
 	let alice = accounts[0];
 	let bob = accounts[1];
 	let charles = accounts[3]
 	before(async() => {
-		PROXY = await LinkedPROXY.deployed();
-		TOKEN = await LinkedTKN.deployed();
-		COLLATERAL = await LinkedCOL.deployed();
-		CUSTODIAN = await LinkedCUS.deployed();
-		ORACLE = await LinkedORCL.deployed();
-		TAXATION = await LinkedTAX.deployed();
-		DEFCON = await LinkedDEFCON.deployed();
-		EXCHANGE = await LinkedEXC.deployed();
-		await PROXY.initialize(TOKEN.address,
-						 COLLATERAL.address,
-						 CUSTODIAN.address,
-						 ORACLE.address,
-						 TAXATION.address,
-						 DEFCON.address,
-						 EXCHANGE.address,
-						 accounts[0]
-						);
-		await TOKEN.initialize(PROXY.address);
-		await COLLATERAL.initialize(PROXY.address);
-		await CUSTODIAN.initialize(PROXY.address);
-		await ORACLE.initialize(PROXY.address);
-		await TAXATION.initialize(PROXY.address);
-		await DEFCON.initialize(PROXY.address);
-		await EXCHANGE.initialize(PROXY.address);
-		await ORACLE.updateRate(20000);
-	});
+		Factory = await LinkedFactory.deployed()
+		FactoryTKN = await LinkedFactoryTKN.deployed()
+		FactoryCOL = await LinkedFactoryCOL.deployed()
+		FactoryCUS = await LinkedFactoryCUS.deployed()
+		FactoryORCL = await LinkedFactoryORCL.deployed()
+		FactoryTAX = await LinkedFactoryTAX.deployed()
+		FactoryDEFCON = await LinkedFactoryDEFCON.deployed()
+		FactoryEXC = await LinkedFactoryEXC.deployed()
+		await Factory.initialize(FactoryTKN.address,
+							FactoryCOL.address,
+						 	FactoryCUS.address,
+						 	FactoryORCL.address,
+						 	FactoryTAX.address,
+						 	FactoryDEFCON.address,
+						 	FactoryEXC.address
+						)
+		await FactoryTKN.initialize(Factory.address)
+		await FactoryCOL.initialize(Factory.address)
+		await FactoryCUS.initialize(Factory.address)
+		await FactoryORCL.initialize(Factory.address)
+		await FactoryTAX.initialize(Factory.address)
+		await FactoryDEFCON.initialize(Factory.address)
+		await FactoryEXC.initialize(Factory.address)
+		
+		await Factory.createAsset()
+		let asset_1 = await Factory.assets(0)
+		PROXY = await LinkedPROXY.at(asset_1[0])
+		TOKEN = await LinkedTKN.at(asset_1[1])
+		COLLATERAL = await LinkedCOL.at(asset_1[2])
+		CUSTODIAN = await LinkedCUS.at(asset_1[3])
+		ORACLE = await LinkedORCL.at(asset_1[4])
+		TAXATION = await LinkedTAX.at(asset_1[5])
+		DEFCON = await LinkedDEFCON.at(asset_1[6])
+		EXCHANGE = await LinkedEXC.at(asset_1[7])
+
+		await ORACLE.updateRate(20000)
+	})
+
+
 	describe('totalSupply()', function () {
 			it('should have initial supply of 0', async () => {
-				let totalSupply = await TOKEN.gettotalSupply.call();
-				assert.equal(totalSupply, 0, "Initial supply: initial supply not zero");
+				let totalSupply = await TOKEN.gettotalSupply.call()
+				assert.equal(totalSupply, 0, "Initial supply: initial supply not zero")
 			})
 			it('should return the correct supply after mint (open CP)', async () => {
-				let amount = new BN("20000000000000000000000");
-				let amountETH = 2000000000000000000;
-				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
-				let totalSupply = await TOKEN.gettotalSupply.call();
-				assert.equal(amount.toString(), totalSupply.toString(), "Initial supply: supply not equal after open CP");
+				let amount = new BN("20000000000000000000000")
+				let amountETH = 2000000000000000000
+				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH})
+				let totalSupply = await TOKEN.gettotalSupply.call()
+				assert.equal(amount.toString(), totalSupply.toString(), "Initial supply: supply not equal after open CP")
 				//Add multiple blocks for testing
-				await ORACLE.updateRate(20000);
-				await ORACLE.updateRate(21000);
-				await ORACLE.updateRate(22000);
-				let balance = await TOKEN.balanceOf.call(alice);
-				let totalSupplyNew = await TOKEN.gettotalSupply.call();
-				assert.equal(balance.toString(), totalSupplyNew.toString(), "Initial supply: balance - supply not equal after blocks");
-				let totalCOL = await COLLATERAL.dataTotalCP.call();
-				let BNtotalCOL = new BN(totalCOL[2]);
-				let totalTKN = await TOKEN.gettotalSupply.call();
-				let BNtotalTKN = new BN(totalTKN);
-				let totalDEV = await TOKEN.balanceOfDev.call();
-				let BNtotalDEV = new BN(totalDEV);
-				let subtotalTKN = BNtotalTKN.add(BNtotalDEV);
-				assert.equal(BNtotalCOL.toString(), subtotalTKN.toString(), "Initial supply: total TKN - total COL not equal after burn");
+				await ORACLE.updateRate(20000)
+				await ORACLE.updateRate(21000)
+				await ORACLE.updateRate(22000)
+				let balance = await TOKEN.balanceOf.call(alice)
+				let totalSupplyNew = await TOKEN.gettotalSupply.call()
+				assert.equal(balance.toString(), totalSupplyNew.toString(), "Initial supply: balance - supply not equal after blocks")
+				let totalCOL = await COLLATERAL.dataTotalCP.call()
+				let BNtotalCOL = new BN(totalCOL[2])
+				let totalTKN = await TOKEN.gettotalSupply.call()
+				let BNtotalTKN = new BN(totalTKN)
+				let totalDEV = await TOKEN.balanceOfDev.call()
+				let BNtotalDEV = new BN(totalDEV)
+				let subtotalTKN = BNtotalTKN.add(BNtotalDEV)
+				assert.equal(BNtotalCOL.toString(), subtotalTKN.toString(), "Initial supply: total TKN - total COL not equal after burn")
 			})
 			//PROBLEM TOTAL NOT EQUAL TO CHANGE CP TOKENS
 			it('should return the correct supply after burn', async () => {
 				//Create two collateral positions for bob (one to burn)
-				let amount = 20000000000000000000000;
-				let amountETH = 2000000000000000000;
-				let base = 10**18;
-				let BNbase = new BN(web3.utils.toBN(base));
-				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {from: bob, value: amountETH});
-				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {from: bob, value: amountETH});
+				let amount = 20000000000000000000000
+				let amountETH = 2000000000000000000
+				let base = 10**18
+				let BNbase = new BN(web3.utils.toBN(base))
+				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {from: bob, value: amountETH})
+				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {from: bob, value: amountETH})
 				//After withdraw (burn) call - test total coll
-				await COLLATERAL.withdrawETHCP(amountETH.toLocaleString('fullwide', { useGrouping: false }), 0, {from: bob});
-				let cpAlice0 = await COLLATERAL.cPosition.call(alice, 0, {from: alice});
-				let BNcpAlice0 = new BN(cpAlice0[1]);
-				let cpBOB0 = await COLLATERAL.cPosition.call(bob, 0, {from: bob});
-				let BNcpBOB0 = new BN(cpBOB0[1]);
-				let cpBOB1 = await COLLATERAL.cPosition.call(bob, 1, {from: bob});
-				let BNcpBOB1 = new BN(cpBOB1[1]);
-				let cpTotal = BNcpAlice0.add(BNcpBOB0.add(BNcpBOB1));
-				let totalNORMcol = await COLLATERAL.tldata.call();
-				assert.equal(cpTotal.toString(), totalNORMcol[2].toString(), "Initial supply: total COL - total individual COL not equal after burn");
+				await COLLATERAL.withdrawETHCP(amountETH.toLocaleString('fullwide', { useGrouping: false }), 0, {from: bob})
+				let cpAlice0 = await COLLATERAL.cPosition.call(alice, 0, {from: alice})
+				let BNcpAlice0 = new BN(cpAlice0[1])
+				let cpBOB0 = await COLLATERAL.cPosition.call(bob, 0, {from: bob})
+				let BNcpBOB0 = new BN(cpBOB0[1])
+				let cpBOB1 = await COLLATERAL.cPosition.call(bob, 1, {from: bob})
+				let BNcpBOB1 = new BN(cpBOB1[1])
+				let cpTotal = BNcpAlice0.add(BNcpBOB0.add(BNcpBOB1))
+				let totalNORMcol = await COLLATERAL.tldata.call()
+				assert.equal(cpTotal.toString(), totalNORMcol[2].toString(), "Initial supply: total COL - total individual COL not equal after burn")
 				//After withdraw (burn) call - test total tokens
 				let balanceAlice = await TOKEN._balances.call(alice)
-				let BNbalanceAlice = new BN(balanceAlice);
+				let BNbalanceAlice = new BN(balanceAlice)
 				let balanceBob = await TOKEN._balances.call(bob)
-				let BNbalanceBob = new BN(balanceBob);
-				let balanceTotal = BNbalanceAlice.add(BNbalanceBob);
-				let totalNORMtoken = await TOKEN.totalSupply.call();
-				assert.equal(balanceTotal.toString(), totalNORMtoken.toString(), "Initial supply: total TKN - total individual TKN not equal after burn");
+				let BNbalanceBob = new BN(balanceBob)
+				let balanceTotal = BNbalanceAlice.add(BNbalanceBob)
+				let totalNORMtoken = await TOKEN.totalSupply.call()
+				assert.equal(balanceTotal.toString(), totalNORMtoken.toString(), "Initial supply: total TKN - total individual TKN not equal after burn")
 				//Check total collateral contract == total token contract after burn
-				let totalCOL = await COLLATERAL.dataTotalCP.call();
-				let BNtotalCOL = new BN(totalCOL[2]);
-				let totalTKN = await TOKEN.gettotalSupply.call();
-				let BNtotalTKN = new BN(totalTKN);
-				let totalDEV = await TOKEN.balanceOfDev.call();
-				let BNtotalDEV = new BN(totalDEV);
-				let subtotalTKN = BNtotalTKN.add(BNtotalDEV);
-				assert.equal(BNtotalCOL.toString(), subtotalTKN.toString(), "Initial supply: total TKN - total COL not equal after burn");
-				assert(totalDEV > 0, "Initial supply: total DEV is negative after burn");
+				let totalCOL = await COLLATERAL.dataTotalCP.call()
+				let BNtotalCOL = new BN(totalCOL[2])
+				let totalTKN = await TOKEN.gettotalSupply.call()
+				let BNtotalTKN = new BN(totalTKN)
+				let totalDEV = await TOKEN.balanceOfDev.call()
+				let BNtotalDEV = new BN(totalDEV)
+				let subtotalTKN = BNtotalTKN.add(BNtotalDEV)
+				assert.equal(BNtotalCOL.toString(), subtotalTKN.toString(), "Initial supply: total TKN - total COL not equal after burn")
+				assert(totalDEV > 0, "Initial supply: total DEV is negative after burn")
 			})
 			it('should return the correct supply after transaction', async () => {
-				let balanceBob = await TOKEN._balances.call(bob);
-				await TOKEN.transfer(alice, balanceBob, {from: bob});
-				let balanceAlice = await TOKEN._balances.call(alice);
-				let totalTKN = await TOKEN.totalSupply.call();
-				assert.equal(balanceAlice.toString(), totalTKN.toString(), "Initial supply: total TKN - total inidividual TKN COL not equal after transfer");
+				let balanceBob = await TOKEN._balances.call(bob)
+				await TOKEN.transfer(alice, balanceBob, {from: bob})
+				let balanceAlice = await TOKEN._balances.call(alice)
+				let totalTKN = await TOKEN.totalSupply.call()
+				assert.equal(balanceAlice.toString(), totalTKN.toString(), "Initial supply: total TKN - total inidividual TKN COL not equal after transfer")
 			})
 		})
 		describe('balanceOf(_owner)', function () {
 			it('should return the correct balances after mint', async () => {
-				let base = 10**18;
-				let BNbase = new BN(web3.utils.toBN(base));
-				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call());
-				let balanceAliceOLD = await TOKEN.balanceOf(alice);
-				let NORMbalanceAliceOLD = balanceAliceOLD.mul(normFeeOLD).div(BNbase);
-				let amount = new BN("20000000000000000000000");
-				let amountETH = 2000000000000000000;
-				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH});
-				let normFee = new BN(await TAXATION.viewNormRateFee.call());
-				let cpAlice1 = await COLLATERAL.cPosition.call(alice, 1, {from: alice});
-				let balanceAlice = await TOKEN.balanceOf(alice);
-				let NORMbalanceAlice = balanceAlice.mul(normFee).div(BNbase);
-				let NORMdiff = NORMbalanceAlice.sub(NORMbalanceAliceOLD);
-				let NORMdiffcheck = amount.mul(normFee).div(BNbase);
+				let base = 10**18
+				let BNbase = new BN(web3.utils.toBN(base))
+				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call())
+				let balanceAliceOLD = await TOKEN.balanceOf(alice)
+				let NORMbalanceAliceOLD = balanceAliceOLD.mul(normFeeOLD).div(BNbase)
+				let amount = new BN("20000000000000000000000")
+				let amountETH = 2000000000000000000
+				await COLLATERAL.openCP(amount.toLocaleString('fullwide', { useGrouping: false }), {value: amountETH})
+				let normFee = new BN(await TAXATION.viewNormRateFee.call())
+				let cpAlice1 = await COLLATERAL.cPosition.call(alice, 1, {from: alice})
+				let balanceAlice = await TOKEN.balanceOf(alice)
+				let NORMbalanceAlice = balanceAlice.mul(normFee).div(BNbase)
+				let NORMdiff = NORMbalanceAlice.sub(NORMbalanceAliceOLD)
+				let NORMdiffcheck = amount.mul(normFee).div(BNbase)
 				assert.equal(NORMdiff.toString(), NORMdiffcheck.toString(), "balanceOf: Balance after mint not equal")
 			})
 			it('should return the correct balances after transaction', async () => {
-				let base = 10**18;
-				let BNbase = new BN(web3.utils.toBN(base));
-				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call());
-				let balanceAliceOLD = await TOKEN.balanceOf(alice);
-				let NORMbalanceAliceOLD = balanceAliceOLD.mul(normFeeOLD).div(BNbase);
-				let amount = new BN("20000000000000000000000");
-				await TOKEN.transfer(bob, amount.toLocaleString('fullwide', { useGrouping: false }));
-				let normFee = new BN(await TAXATION.viewNormRateFee.call());
-				let cpAlice1 = await COLLATERAL.cPosition.call(alice, 1, {from: alice});
-				let balanceAlice = await TOKEN.balanceOf(alice);
-				let NORMbalanceAlice = balanceAlice.mul(normFee).div(BNbase);
-				let NORMdiff = NORMbalanceAliceOLD.sub(NORMbalanceAlice);
-				let NORMdiffcheck = amount;
+				let base = 10**18
+				let BNbase = new BN(web3.utils.toBN(base))
+				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call())
+				let balanceAliceOLD = await TOKEN.balanceOf(alice)
+				let NORMbalanceAliceOLD = balanceAliceOLD.mul(normFeeOLD).div(BNbase)
+				let amount = new BN("20000000000000000000000")
+				await TOKEN.transfer(bob, amount.toLocaleString('fullwide', { useGrouping: false }))
+				let normFee = new BN(await TAXATION.viewNormRateFee.call())
+				let cpAlice1 = await COLLATERAL.cPosition.call(alice, 1, {from: alice})
+				let balanceAlice = await TOKEN.balanceOf(alice)
+				let NORMbalanceAlice = balanceAlice.mul(normFee).div(BNbase)
+				let NORMdiff = NORMbalanceAliceOLD.sub(NORMbalanceAlice)
+				let NORMdiffcheck = amount
 				assert.equal(NORMdiff.toString(), NORMdiffcheck.toString(), "balanceOf: Balance after transfer not equal")
 			})
 			it('should return the correct balances after burn', async () => {
-				let base = 10**18;
-				let BNbase = new BN(web3.utils.toBN(base));
+				let base = 10**18
+				let BNbase = new BN(web3.utils.toBN(base))
 				//Read balance and collateral position data
-				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call());
-				let balanceAliceOLD = new BN(await TOKEN._balances.call(alice));
-				let amountREL = await COLLATERAL.cPosition.call(alice, 0);
-				let BNamountNORM = new BN(amountREL[1]);
+				let normFeeOLD = new BN(await TAXATION.viewNormRateFee.call())
+				let balanceAliceOLD = new BN(await TOKEN._balances.call(alice))
+				let amountREL = await COLLATERAL.cPosition.call(alice, 0)
+				let BNamountNORM = new BN(amountREL[1])
 				//Burn transaction
 				let amountETH = 2000000000000000000;
-				await COLLATERAL.withdrawETHCP(amountETH.toLocaleString('fullwide', { useGrouping: false }), 0);
+				await COLLATERAL.withdrawETHCP(amountETH.toLocaleString('fullwide', { useGrouping: false }), 0)
 				//Read balance after burn
-				let balanceAliceNEW = new BN(await TOKEN._balances.call(alice));
+				let balanceAliceNEW = new BN(await TOKEN._balances.call(alice))
 				//Calculate input value burn
-				let normReward = new BN(await TAXATION.viewNormRateReward.call());
-				let amountRELnew = BNamountNORM.mul(BNbase).div(normReward);
+				let normReward = new BN(await TAXATION.viewNormRateReward.call())
+				let amountRELnew = BNamountNORM.mul(BNbase).div(normReward)
 				//Calculate burn and check match with actual burn
-				let normFeeNEW = new BN(await TAXATION.viewNormRateFee.call());
-				let amountNORMfee = amountRELnew.mul(normFeeNEW).div(BNbase);
-				let balanceDIFF = balanceAliceOLD.sub(balanceAliceNEW);
+				let normFeeNEW = new BN(await TAXATION.viewNormRateFee.call())
+				let amountNORMfee = amountRELnew.mul(normFeeNEW).div(BNbase)
+				let balanceDIFF = balanceAliceOLD.sub(balanceAliceNEW)
 				assert.equal(amountNORMfee.toString(), balanceDIFF.toString(), "balanceOf: Balance after burn not equal")
 			})
 		})
 		describe('allowance(_owner, _spender)', function () {
 			describeIt(when('_owner != _spender'), alice, bob)
 			describeIt(when('_owner == _spender'), alice, alice)
-			let initialAllowances = [[accounts[0], accounts[1], 0]];
+			let initialAllowances = [[accounts[0], accounts[1], 0]]
 			it('should have correct initial allowance', async function () {
 				for (let i = 0; i < initialAllowances.length; i++) {
 					let owner = initialAllowances[i][0]
 					let spender = initialAllowances[i][1]
 					let expectedAllowance = initialAllowances[i][2]
-					let BNexpectedAllowance = new BN(expectedAllowance);
+					let BNexpectedAllowance = new BN(expectedAllowance)
 						expect(await TOKEN.allowance.call(owner, spender)).to.be.bignumber.equal(BNexpectedAllowance)
 				}
 			})
 			it('should return the correct allowance', async function () {
-				let amount = 20000000000000000000000;
+				let amount = 20000000000000000000000
 				await TOKEN.approve(bob, amount.toLocaleString('fullwide', { useGrouping: false }), { from: alice })
 				await TOKEN.approve(charles, (amount * 2).toLocaleString('fullwide', { useGrouping: false }), { from: alice })
 				await TOKEN.approve(charles, (amount * 3).toLocaleString('fullwide', { useGrouping: false }), { from: bob })
@@ -214,7 +244,7 @@ contract('LinkedTKN', async accounts => {
 			})
 			function describeIt(name, from, to) {
 				describe(name, function () {
-					let amount = 20000000000000000000000;
+					let amount = 20000000000000000000000
 					it('should return the correct allowance', async function () {
 						await TOKEN.approve(to, amount.toLocaleString('fullwide', { useGrouping: false }), { from: from })
 						expect(await TOKEN.allowance.call(from, to)).to.be.bignumber.equal(amount.toLocaleString('fullwide', { useGrouping: false }))
@@ -224,7 +254,7 @@ contract('LinkedTKN', async accounts => {
 		})
 		// NOTE: assumes that approve should always succeed
 		describe('approve(_spender, _value)', function () {
-			let amount = 20000000000000000000000;
+			let amount = 20000000000000000000000
 			describeIt(when('_spender != sender'), alice, bob)
 			describeIt(when('_spender == sender'), alice, alice)
 			function describeIt(name, from, to) {
@@ -289,11 +319,11 @@ contract('LinkedTKN', async accounts => {
 			}
 		})
 		let credit = async function (to, amount, amountETH) {
-					await ORACLE.updateRate(20000);
-					return await COLLATERAL.openCP(amount, { from: to, value: amountETH});
+					await ORACLE.updateRate(20000)
+					return await COLLATERAL.openCP(amount, { from: to, value: amountETH})
 		}
-		let amountETH = 2000000000000000000;
-		let amount = 20000000000000000000000;
+		let amountETH = 2000000000000000000
+		let amount = 20000000000000000000000
 		describe('transfer(_to, _value)', function () {
 			describeIt(when('_to != sender'), alice, bob)
 			describeIt(when('_to == sender'), alice, alice)
@@ -321,8 +351,8 @@ contract('LinkedTKN', async accounts => {
 					})
 					it('should revert when trying to transfer something while having nothing', async function () {
 						//Transfer all balance to other address
-						let balance = await TOKEN._balances.call(from);
-						await TOKEN.transfer(accounts[4], balance.toLocaleString('fullwide', { useGrouping: false }), {from: from});
+						let balance = await TOKEN._balances.call(from)
+						await TOKEN.transfer(accounts[4], balance.toLocaleString('fullwide', { useGrouping: false }), {from: from})
 						//Test transfer nothing
 						await truffleAssert.reverts(TOKEN.transfer(to, (amount).toLocaleString('fullwide', { useGrouping: false }), { from: from }))
 					})
@@ -330,8 +360,8 @@ contract('LinkedTKN', async accounts => {
 						await credit(from,
 												(amount * 3).toLocaleString('fullwide', { useGrouping: false }),
 												(amountETH * 3).toLocaleString('fullwide', { useGrouping: false })
-												);
-						let balance = await TOKEN._balances.call(from);
+												)
+						let balance = await TOKEN._balances.call(from)
 						await truffleAssert.reverts(TOKEN.transfer(to, (balance * 2).toLocaleString('fullwide', { useGrouping: false }), { from: from }))
 						await TOKEN.transfer('0x0000000000000000000000000000000000000001', (balance/2).toLocaleString('fullwide', { useGrouping: false }), { from: from })
 						await truffleAssert.reverts(TOKEN.transfer(to, (balance).toLocaleString('fullwide', { useGrouping: false }), { from: from }))
@@ -341,7 +371,7 @@ contract('LinkedTKN', async accounts => {
 						await credit(from,
 												(amount * 3).toLocaleString('fullwide', { useGrouping: false }),
 												(amountETH * 3).toLocaleString('fullwide', { useGrouping: false })
-												);
+												)
 						let supply1 = await TOKEN.totalSupply.call()
 						await TOKEN.transfer(to, (amount * 3).toLocaleString('fullwide', { useGrouping: false }), { from: from })
 						let supply2 = await TOKEN.totalSupply.call()
@@ -390,7 +420,7 @@ contract('LinkedTKN', async accounts => {
 			async function testTransferEvent(from, to, amount, amountETH) {
 				if (amount > 0) {
 					await COLLATERAL.openCP((amount*2).toLocaleString('fullwide', { useGrouping: false }),
-																	{ from: from, value: (amountETH*2).toLocaleString('fullwide', { useGrouping: false })});
+																	{ from: from, value: (amountETH*2).toLocaleString('fullwide', { useGrouping: false })})
 				}
 				let result = await TOKEN.transfer(to, amount, { from: from })
 				let log = result.logs[0]
@@ -435,7 +465,7 @@ contract('LinkedTKN', async accounts => {
 						await credit(from,
 										(amount * 3).toLocaleString('fullwide', { useGrouping: false }),
 										(amountETH * 3).toLocaleString('fullwide', { useGrouping: false })
-										);
+										)
 						assert.isTrue(await TOKEN.transferFrom.call(from, to, (amount).toLocaleString('fullwide', { useGrouping: false }), { from: via }))
 						assert.isTrue(await TOKEN.transferFrom.call(from, to, (amount * 2).toLocaleString('fullwide', { useGrouping: false }), { from: via }))
 						assert.isTrue(await TOKEN.transferFrom.call(from, to, (amount * 3).toLocaleString('fullwide', { useGrouping: false }), { from: via }))
@@ -564,40 +594,40 @@ contract('LinkedTKN', async accounts => {
 	})
 	describe('devclaim', function () {
 		it('should return devclaim as difference between total collateral and tokens', async () => {
-			let devaddress = await PROXY.readAddress.call();
-			let devclaim = await TOKEN.balanceOfDev.call();
+			let devaddress = await PROXY.readAddress.call()
+			let devclaim = await TOKEN.balanceOfDev.call()
 			let totalSupplyCOL = await COLLATERAL.dataTotalCP.call()
 			let totalSupplyTKN = await TOKEN.gettotalSupply.call()
 			let totalSupplyDIF = totalSupplyCOL[2].sub(totalSupplyTKN)
 			assert.equal(totalSupplyDIF.toString(), devclaim.toString(), "devclaim: claim is not the difference in totalsupply");
 		})
 		it('should add devclaim to balance of dev', async () => {
-			let devaddress = await PROXY.readAddress.call();
-			let totalSupply = await TOKEN.totalSupply.call();
-			let devbalance = await TOKEN._balances.call(devaddress[7]);
+			let devaddress = await PROXY.readAddress.call()
+			let totalSupply = await TOKEN.totalSupply.call()
+			let devbalance = await TOKEN._balances.call(devaddress[7])
 			await TOKEN.devClaim()
-			let totalSupplyNEW = await TOKEN.totalSupply.call();
-			let devbalanceNEW = await TOKEN._balances.call(devaddress[7]);
-			let totalDIF = totalSupplyNEW.sub(totalSupply);
-			let balanceDIF = devbalanceNEW.sub(devbalance);
-			assert.equal(totalDIF.toString(), balanceDIF.toString(), "decvlaim: balance is not added to dev correctly");
-			let devclaim = await TOKEN.balanceOfDev.call();
-			let totalSupplyTKN = await TOKEN.gettotalSupply.call();
-			let totalSupplyCOL = await COLLATERAL.dataTotalCP.call();
-			let totalCheck = totalSupplyCOL[2].sub(totalSupplyTKN);
-			assert.equal(totalCheck.toString(), devclaim.toString(), "decvlaim: new claim is not difference totalsupply");
+			let totalSupplyNEW = await TOKEN.totalSupply.call()
+			let devbalanceNEW = await TOKEN._balances.call(devaddress[7])
+			let totalDIF = totalSupplyNEW.sub(totalSupply)
+			let balanceDIF = devbalanceNEW.sub(devbalance)
+			assert.equal(totalDIF.toString(), balanceDIF.toString(), "decvlaim: balance is not added to dev correctly")
+			let devclaim = await TOKEN.balanceOfDev.call()
+			let totalSupplyTKN = await TOKEN.gettotalSupply.call()
+			let totalSupplyCOL = await COLLATERAL.dataTotalCP.call()
+			let totalCheck = totalSupplyCOL[2].sub(totalSupplyTKN)
+			assert.equal(totalCheck.toString(), devclaim.toString(), "decvlaim: new claim is not difference totalsupply")
 		})
 	})
 	describe('update fee', function () {
 		it('should update the fee from 0 to 1 finney', async () => {
-			let amount = 1000000000000000;
-			await TOKEN.ethFee(amount);
-			let fee = await TOKEN.FEE_ETH.call();
-			assert.equal(fee.toString(), amount.toString(), "update fee: ETH transaction fee not updated");		
+			let amount = 1000000000000000
+			await TOKEN.ethFee(amount)
+			let fee = await TOKEN.FEE_ETH.call()
+			assert.equal(fee.toString(), amount.toString(), "update fee: ETH transaction fee not updated")	
 		})
 		it('should fail transfer fee paid < 1 finney and succeed fee > 1', async () => {
-			await TOKEN.transfer(accounts[1], 10, {value: 1000000000000000});
-			await truffleAssert.reverts(TOKEN.transfer(accounts[0], 10));
+			await TOKEN.transfer(accounts[1], 10, {value: 1000000000000000})
+			await truffleAssert.reverts(TOKEN.transfer(accounts[0], 10))
 		})	
 	})
 })

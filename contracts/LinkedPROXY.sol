@@ -1,6 +1,5 @@
 pragma solidity 0.5.11;
 
-import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/lifecycle/Pausable.sol";
 
 /** 
@@ -8,8 +7,9 @@ import "@openzeppelin/contracts/lifecycle/Pausable.sol";
  *   contains the reference to the different contracts in 
  *   the linked system.  
  */
-contract LinkedPROXY is Ownable, Pausable {
+contract LinkedPROXY is Pausable {
     
+        address public _owner;
         //System address variables
         address payable public token;
         address payable public collateral;
@@ -29,6 +29,15 @@ contract LinkedPROXY is Ownable, Pausable {
     
         event UpdateRate(uint256 Rate);
     
+        /**
+        * @dev Throws if called by any account other than the owner.
+        */
+        modifier onlyOwner() {
+                require(msg.sender == _owner, "Ownable: caller is not the owner");
+                _;
+        }
+
+
         function initialize(address payable tokenAddress,
                         address payable collateralAddress,
                         address payable custodianAddress,
@@ -37,7 +46,7 @@ contract LinkedPROXY is Ownable, Pausable {
                         address payable defconAddress,
                         address payable exchangeAddress,
                         address payable devAddress) 
-            onlyOwner external returns (bool succes) {
+             external returns (bool succes) {
                 require(initialized != true);
                 token = tokenAddress;
                 collateral = collateralAddress;
@@ -50,6 +59,7 @@ contract LinkedPROXY is Ownable, Pausable {
                 initialized = true;
                 startBlock = block.number;
                 base = 10**18;
+                _owner = devAddress;
                 return true;                
         }
     
