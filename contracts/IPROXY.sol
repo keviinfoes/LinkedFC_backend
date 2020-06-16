@@ -12,4 +12,6 @@ interface IPROX {
     function updateRate(uint newRate) external returns (bool success);
     function checkPause() external view returns (bool);
     function defconActive() external view returns (bool);
+    function _owner() external view returns (address);
+    function updateStartBlock(uint256 newBlock) external returns (bool);
 }

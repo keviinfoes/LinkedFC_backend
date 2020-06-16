@@ -1,7 +1,6 @@
 pragma solidity 0.5.11;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import "./IPROXY.sol";
@@ -15,15 +14,32 @@ import "./ITAX.sol";
  *  stablecoin and Ether on 1 stablecoin for 1 USD (in ETH).
  * 
  */
-contract LinkedEXC is Ownable {
+contract LinkedEXC {
     using SafeMath for uint256;
  
     //Proxy address for system contracts
     IPROX public proxy;
     bool public initialized;
     //Exchange variables
-    mapping (address => uint256) private _claimsTKN;
-    mapping (address => uint256) private _claimsETH;
+    mapping (address => uint256) public _claimsTKN;
+    mapping (address => uint256) public _claimsETH;
+
+
+    /**
+     *  @dev Throws if called by any account other than the owner.
+     */
+    modifier notpaused() {
+            require(proxy.checkPause() != true, "Proxy: pause is active");
+            _;
+    }
+
+    /**
+     *  @dev Throws if called by any account other than the owner.
+     */
+    modifier paused() {
+            require(proxy.checkPause() == true, "Proxy: pause is active");
+            _;
+    }
 
     /**
      * @dev Fallback function. Makes the contract payable.
@@ -33,7 +49,7 @@ contract LinkedEXC is Ownable {
     /**
      * Set proxy address
      */
-    function initialize(address proxyAddress) onlyOwner external returns (bool success) {
+    function initialize(address proxyAddress) external returns (bool success) {
             require (initialized == false);
             require (proxyAddress != address(0));
             initialized = true;
@@ -63,7 +79,7 @@ contract LinkedEXC is Ownable {
     /**
      * Deposit tokens (sell) and receive a claim for buying ETH  
      */
-    function depositTKN(address receiver, uint256 amount) external returns (bool) {
+    function depositTKN(address receiver, uint256 amount) notpaused external returns (bool) {
             _depositTKN(receiver, amount);
             return true;
     }
@@ -71,7 +87,7 @@ contract LinkedEXC is Ownable {
     /**
      * Deposit ETH (sell) and receive a claim for buying tokens
      */
-    function depositETH() external payable returns (bool) {
+    function depositETH() notpaused external payable returns (bool) {
             _depositETH();
             return true;
     }
@@ -79,7 +95,7 @@ contract LinkedEXC is Ownable {
     /**
      * Withraw tokens (buy)) with a claim after deposit of ETH
      */
-    function withdrawTKN(uint256 amount) external payable returns (bool) {
+    function withdrawTKN(uint256 amount) notpaused external payable returns (bool) {
             _withdrawTKN(amount);
             return true;
     }
@@ -87,11 +103,19 @@ contract LinkedEXC is Ownable {
     /**
      * Withraw ETH (buy) with a claim after deposit of tokens
      */
-    function withdrawETH(uint256 amount) external returns (bool) {
+    function withdrawETH(uint256 amount) notpaused external returns (bool) {
             _withdrawETH(amount);
             return true;
     }
     
+        /**
+     * Withraw ETH (buy) with a claim after deposit of tokens
+     */
+    function withdrawETHpause() paused external returns (bool) {
+            _withdrawETHpause();
+            return true;
+    }
+
     /**
      *  @dev Internal functions called by the above functions.
      * 
@@ -157,5 +181,11 @@ contract LinkedEXC is Ownable {
                 _claimsTKN[msg.sender] = _claimsTKN[msg.sender].sub(_amountTKN.mul(normRateFee).div(proxy.base()));
                 msg.sender.transfer(amount);
             }
+    }
+
+    function _withdrawETHpause() internal {
+            uint256 amount = _claimsETH[msg.sender];
+            _claimsETH[msg.sender] = 0;
+            msg.sender.transfer(amount);
     }
 }

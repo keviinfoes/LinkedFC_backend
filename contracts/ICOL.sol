@@ -7,4 +7,5 @@ interface ICOL {
 	function dataTotalCP() external view returns (uint256[3] memory);
 	function individualCPdata(address account, uint256 id) external view returns (uint256[2] memory);
 	function tldata() external view returns (uint256[3] memory);
+	function cPosition(address account, uint256 id) external view returns (uint256[5] memory);
 }
